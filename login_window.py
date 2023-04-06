@@ -13,40 +13,55 @@ h6_fs = 13
 
 heading_font = 'Arial'
 normal_font = 'Century Gothic'
-        
+
+
 class LoginFrame(ttk.Frame):
     def style_configurations(self):
         styles = ttk.Style()
-        styles.configure("id_number_label.TLabel", foreground='black', font=(normal_font, h5_fs))
-        styles.configure("primary.TButton", font=(normal_font, h5_fs), width = 50, padding = 10)
-        styles.configure("primary.Outline.TButton", font=(normal_font, h5_fs), width = 50, padding = 10)
-        
+        styles.configure("id_number_label.TLabel",
+                         foreground='black', font=(normal_font, h5_fs))
+        styles.configure("primary.TButton", font=(
+            normal_font, h5_fs), width=50, padding=10)
+        styles.configure("primary.Outline.TButton", font=(
+            normal_font, h5_fs), width=50, padding=10)
+
     def __init__(self, master):
         super().__init__(master)
 
         self.style_configurations()
+        self.configure(padding=(170, 0))
 
-        self.configure(padding = (170, 0))
+        self.id_number_label = ttk.Label(
+            master=self, text="ID Number", style="id_number_label.TLabel")
+        self.password_label = ttk.Label(
+            master=self, text="Password", style="id_number_label.TLabel")
 
-        self.id_number_label = ttk.Label(master = self, text="ID Number", style="id_number_label.TLabel")
-        self.password_label = ttk.Label(master = self, text="Password", style="id_number_label.TLabel")
+        self.id_number_entry = ttk.Entry(
+            master=self, font=(heading_font, h5_fs), width=50)
+        self.password_entry = ttk.Entry(master=self, font=(
+            heading_font, h5_fs), width=50, show="*")
 
-        self.id_number_entry = ttk.Entry(master = self, font = (heading_font, h5_fs), width = 50)
-        self.password_entry = ttk.Entry(master = self, font = (heading_font, h5_fs), width = 50, show = "*")
+        self.login_button = ttk.Button(
+            master=self, text="Login", style="primary.TButton")
+        self.create_account_button = ttk.Button(
+            master=self, text="Create Account", style="primary.Outline.TButton")
 
-        self.login_button = ttk.Button(master =self, text = "Login", style="primary.TButton")
-        self.create_account_button = ttk.Button(master = self, text = "Create Account", style="primary.Outline.TButton")
-
-        self.id_number_label.grid(row = 0, column = 0, columnspan = 2, pady = 10, sticky = W)
-        self.id_number_entry.grid(row = 1, column = 0, columnspan = 2, pady = (0, 10), sticky = W)
-        self.password_label.grid(row = 2, column = 0, columnspan = 2, pady = 10, sticky = W)
-        self.password_entry.grid(row = 3, column = 0, columnspan = 2, pady = (0, 10), sticky = W)
-        self.login_button.grid(row = 4, column = 0, columnspan = 2, pady = (55, 10), sticky = "w")
-        self.create_account_button.grid(row = 5, column = 0, columnspan = 2, pady = (10, 10), sticky = "w")
+        self.id_number_label.grid(
+            row=0, column=0, columnspan=2, pady=10, sticky=W)
+        self.id_number_entry.grid(
+            row=1, column=0, columnspan=2, pady=(0, 10), sticky=W)
+        self.password_label.grid(
+            row=2, column=0, columnspan=2, pady=10, sticky=W)
+        self.password_entry.grid(
+            row=3, column=0, columnspan=2, pady=(0, 10), sticky=W)
+        self.login_button.grid(
+            row=4, column=0, columnspan=2, pady=(55, 10), sticky="w")
+        self.create_account_button.grid(
+            row=5, column=0, columnspan=2, pady=(10, 10), sticky="w")
 
 
 class LoginWindow(ttk.Window):
-    
+
     def style_configurations(self):
         styles = ttk.Style()
         styles.configure('title_label.TLabel', font=(heading_font, h3_fs))
@@ -69,10 +84,9 @@ class LoginWindow(ttk.Window):
             self, text="WattWise : Kiosk Test Generator and Checker", style="title_label.TLabel", justify="center")
         self.title_label.grid(row=0, column=0, columnspan=2,
                               padx=20, pady=(70, 40), sticky=N)
-    
+
         self.login_frame = LoginFrame(self)
-        self.login_frame.grid(row = 1, column = 0, sticky = NSEW)
-        
+        self.login_frame.grid(row=1, column=0, sticky=NSEW)
 
     def open_in_center_screen(self):
         self.window_width = 1100
