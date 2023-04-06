@@ -13,16 +13,6 @@ h6_fs = 13
 
 heading_font = 'Arial'
 normal_font = 'Century Gothic'
-
-def on_entry_click(event):
-    """function that gets called whenever entry is clicked"""
-    if entry.get() == 'Type your id number here':
-        entry.delete(0, "end")  # delete all the text in the entry
-        entry.insert(0, '')  # insert blank for user input
-
-def on_focusout(event):
-    if entry.get() == '':
-        entry.insert(0, 'Type your id number here')
         
 class LoginFrame(ttk.Frame):
     def style_configurations(self):
