@@ -9,7 +9,7 @@ class App(ttk.Window):
     # Style Configurations
     def style_configurations(self):
         styles = ttk.Style()
-        styles.configure('photo_label.TLabel', font=("Century Gothic", 24))
+        styles.configure('title_label.TLabel', font=("Century Gothic", 24))
 
     def __init__(self):
         super().__init__()
@@ -23,10 +23,11 @@ class App(ttk.Window):
         self.grid_columnconfigure((0, 1), weight=1)
 
         img = tk.PhotoImage(file="logo.png")
-        self.photo_label = ttk.Label(
-            self, text="WattWise : Kiosk Test Generator and Checker", style="photo_label.TLabel", justify="center")
-        self.photo_label.grid(row=0, column=0, columnspan=2,
+        self.title_label = ttk.Label(
+            self, text="WattWise : Kiosk Test Generator and Checker", style="title_label.TLabel", justify="center")
+        self.title_label.grid(row=0, column=0, columnspan=2,
                               padx=20, pady=20, sticky=N)
+    
 
     def open_in_center_screen(self):
         self.window_width = 1100
