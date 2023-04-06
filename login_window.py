@@ -83,7 +83,7 @@ class LoginWindow(ttk.Window):
         self.title_label = ttk.Label(
             self, text="WattWise : Kiosk Test Generator and Checker", style="title_label.TLabel", justify="center")
         self.title_label.grid(row=0, column=0, columnspan=2,
-                              padx=20, pady=(70, 40), sticky=N)
+                              padx=20, pady=(80, 40), sticky=N)
 
         self.login_frame = LoginFrame(self)
         self.login_frame.grid(row=1, column=0, sticky=NSEW)
