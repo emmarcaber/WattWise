@@ -1,10 +1,6 @@
-import tkinter as tk
-import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
-from create_account_window import CreateAccountWindow 
+
 from PIL import Image
 
-# Heading Font Sizes
 h1_fs = 39
 h2_fs = 31
 h3_fs = 25
@@ -14,7 +10,6 @@ h6_fs = 13
 
 heading_font = 'Arial'
 normal_font = 'Century Gothic'
-
 
 class LoginFrame(ttk.Frame):
     def style_configurations(self):
@@ -47,8 +42,7 @@ class LoginFrame(ttk.Frame):
         self.login_button = ttk.Button(
             master=self, text="Login", style="primary.TButton")
         self.create_account_button = ttk.Button(
-            master=self, text="Create Account", style="primary.Outline.TButton",
-            command = self.open_create_account_window)
+            master=self, text="Create Account", style="primary.Outline.TButton")
 
         self.id_number_label.grid(
             row=0, column=0, columnspan=2, pady=10, sticky=W)
@@ -63,12 +57,11 @@ class LoginFrame(ttk.Frame):
         self.create_account_button.grid(
             row=5, column=0, columnspan=2, pady=(10, 10), sticky="w")
 
-    def open_create_account_window(self):
-        CreateAccountWindow()
-        self.master.destroy()
+    # def open_create_account_window(self):
+    #     self.master.destroy()
+    #     create_account_window = CreateAccountWindow()
 
-
-class LoginWindow(ttk.Window):
+class CreateAccountWindow(ttk.Window):
 
     def style_configurations(self):
         styles = ttk.Style()
@@ -77,7 +70,7 @@ class LoginWindow(ttk.Window):
     def __init__(self):
         super().__init__()
 
-        self.title("WattWise")
+        self.title("WattWise | Create Account")
         self.open_in_center_screen()
         self.style_configurations()
 
@@ -114,5 +107,5 @@ class LoginWindow(ttk.Window):
 
 
 if __name__ == '__main__':
-    app = LoginWindow()
+    app = CreateAccountWindow()
     app.mainloop()
