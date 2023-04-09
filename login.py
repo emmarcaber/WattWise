@@ -15,7 +15,6 @@ normal_font = 'Century Gothic'
 
 
 def style_configurations(self):
-    self.style = Style(theme='darkly')
 
     self.style.configure("title_label.TLabel", font=(
         normal_font, h5_fs), width=50, padding=10, foreground='white', justify="center")
@@ -32,8 +31,8 @@ class LoginWindow:
     def __init__(self, master):
         self.master = master
         self.master.title("WattWise")
-
         self.master.geometry("500x500")
+        self.style = Style(theme='darkly')
 
         style_configurations(self)
 
@@ -63,11 +62,16 @@ class LoginWindow:
                                           )
         self.register_button.pack(padx=10, pady=10)
 
+        self.message_label = ttk.Label(self.login_frame, text="")
+        self.message_label.pack(pady=10)
+
     def login(self):
         pass
 
     def create_account(self):
-        account_window = tk.Toplevel(self.master)
+        self.login_frame.destroy()
+
+        account_window = self.master
         account_window.title("Create Account")
         account_window.geometry("500x500")
 
@@ -91,10 +95,17 @@ class LoginWindow:
         confirm_password_entry = ttk.Entry(account_frame, show="*", width=68)
         confirm_password_entry.pack(pady=(0, 10))
 
-        submit_button = ttk.Button(account_frame, style="primary.TButton", text="Create", command=self.submit_account, )
+        message_label = ttk.Label(account_frame, text="")
+        message_label.pack(pady=10)
+
+        submit_button = ttk.Button(account_frame, style="primary.TButton", text="Create",
+                                   command=self.submit_account)
         submit_button.pack(pady=10)
 
     def submit_account(self):
+        pass
+
+    def insert_db(self, id_number, password):
         pass
 
 
