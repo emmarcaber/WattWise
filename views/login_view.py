@@ -1,4 +1,6 @@
 import sys
+sys.path.append('../')
+
 import create_account_view
 from config.styles import (h1, h2,
                            h3, h4,
@@ -10,7 +12,6 @@ from ttkbootstrap import Style
 import ttkbootstrap as ttk
 import tkinter as tk
 
-sys.path.append('../')
 
 
 class Login:
