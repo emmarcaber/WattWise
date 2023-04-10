@@ -1,7 +1,7 @@
 import sys
 sys.path.append('../')
                            
-import login_test_view
+import login_view
 from config.styles import (h1, h2,
                            h3, h4,
                            h5, h6,
@@ -102,7 +102,7 @@ class CreateAccount:
     def cancel_button_clicked(self):
         self.create_account_frame.destroy()
 
-        login_test_view.Login(self.master)
+        login_view.Login(self.master)
 
 
 if __name__ == '__main__':
