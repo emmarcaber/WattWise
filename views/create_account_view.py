@@ -1,16 +1,11 @@
 import sys
-sys.path.append('../')
-                           
 import login_view
-from config.styles import (h1, h2,
-                           h3, h4,
-                           h5, h6,
-                           normal_font, heading_font,
+import ttkbootstrap as ttk
+from ttkbootstrap import Style
+from config.styles import (h5, heading_font,
                            style_configurations)
 
-from ttkbootstrap import Style
-import ttkbootstrap as ttk
-import tkinter as tk
+sys.path.append('../')
 
 
 class CreateAccount:
@@ -25,14 +20,13 @@ class CreateAccount:
         screen_width = self.master.winfo_screenwidth()
         screen_height = self.master.winfo_screenheight()
 
-        x_cordinate = int((screen_width/2) - (self.window_width/2))
-        y_cordinate = int((screen_height/2) - (self.window_height/2))
+        x_coordinate = int((screen_width/2) - (self.window_width/2))
+        y_coordinate = int((screen_height/2) - (self.window_height/2))
 
-        # print(x_cordinate, y_cordinate)
         self.master.geometry("{}x{}+{}+{}".format(self.window_width,
                                                   self.window_height,
-                                                  x_cordinate,
-                                                  y_cordinate),
+                                                  x_coordinate,
+                                                  y_coordinate),
                              )
 
         self.master.minsize(self.window_width, self.window_height)
@@ -90,13 +84,13 @@ class CreateAccount:
                                         )
 
         self.first_name_label.grid(
-            row=1, column=0, pady=10, padx = (130, 0), sticky="w")
+            row=1, column=0, pady=10, padx=(130, 0), sticky="w")
         self.last_name_label.grid(
-            row=1, column=1, pady=10, padx = (0, 130), sticky="w")
+            row=1, column=1, pady=10, padx=(0, 130), sticky="w")
         self.first_name_entry.grid(
-            row=2, column=0, pady=(0, 10), padx= (130, 30), sticky="w")
+            row=2, column=0, pady=(0, 10), padx=(130, 30), sticky="w")
         self.last_name_entry.grid(
-            row=2, column=1, pady=(0, 10), padx= (0, 130), sticky="w")
+            row=2, column=1, pady=(0, 10), padx=(0, 130), sticky="w")
         self.id_number_label.grid(
             row=3, column=0, columnspan=2, pady=10, padx=130, sticky="w")
         self.id_number_entry.grid(
@@ -113,7 +107,6 @@ class CreateAccount:
             row=9, column=0, pady=(35, 10), padx=(128, 0), sticky="w")
         self.create_account_button.grid(
             row=9, column=1, pady=(35, 10), padx=(0, 128), sticky="w")
-
 
     def cancel_button_clicked(self):
         self.create_account_frame.destroy()

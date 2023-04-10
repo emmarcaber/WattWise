@@ -1,16 +1,11 @@
 import sys
-sys.path.append('../')
-
-import tkinter as tk
+import create_account_view
 import ttkbootstrap as ttk
 from ttkbootstrap import Style
-
-import create_account_view
-from config.styles import (h1, h2,
-                           h3, h4,
-                           h5, h6,
-                           normal_font, heading_font,
+from config.styles import (h5, heading_font,
                            style_configurations)
+
+sys.path.append('../')
 
 
 class Login:
@@ -25,14 +20,13 @@ class Login:
         screen_width = self.master.winfo_screenwidth()
         screen_height = self.master.winfo_screenheight()
 
-        x_cordinate = int((screen_width/2) - (self.window_width/2))
-        y_cordinate = int((screen_height/2) - (self.window_height/2))
+        x_coordinate = int((screen_width/2) - (self.window_width/2))
+        y_coordinate = int((screen_height/2) - (self.window_height/2))
 
-        # print(x_cordinate, y_cordinate)
         self.master.geometry("{}x{}+{}+{}".format(self.window_width,
                                                   self.window_height,
-                                                  x_cordinate,
-                                                  y_cordinate),
+                                                  x_coordinate,
+                                                  y_coordinate),
                              )
 
         self.master.minsize(self.window_width, self.window_height)
@@ -91,7 +85,6 @@ class Login:
             row=6, column=0, columnspan=2, pady=(55, 10), padx=128, sticky="w")
         self.create_account_button.grid(
             row=7, column=0, columnspan=2, pady=(10, 10), padx=128, sticky="w")
-
 
     def create_account_clicked(self):
         self.login_frame.destroy()
