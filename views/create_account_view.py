@@ -20,7 +20,7 @@ class CreateAccount:
         self.master.title("WattWise | Create Account")
 
         self.window_width = 1100
-        self.window_height = 600
+        self.window_height = 680
 
         screen_width = self.master.winfo_screenwidth()
         screen_height = self.master.winfo_screenheight()
@@ -55,7 +55,7 @@ class CreateAccount:
                               column=0,
                               columnspan=2,
                               sticky="n",
-                              pady=(10, 30)
+                              pady=(5, 20)
                               )
 
         self.id_number_label = ttk.Label(
@@ -66,11 +66,19 @@ class CreateAccount:
             self.create_account_frame, text="Last Name", style="form_label.TLabel")
         self.password_label = ttk.Label(
             self.create_account_frame, text="Password", style="form_label.TLabel")
+        self.confirm_password_label = ttk.Label(
+            self.create_account_frame, text="Confirm Password", style="form_label.TLabel")
 
         self.id_number_entry = ttk.Entry(
             self.create_account_frame, font=(heading_font, h5), width=50)
         self.password_entry = ttk.Entry(self.create_account_frame, font=(
             heading_font, h5), width=50, show="*")
+        self.confirm_password_entry = ttk.Entry(self.create_account_frame, font=(
+            heading_font, h5), width=50, show="*")
+        self.first_name_entry = ttk.Entry(
+            self.create_account_frame, font=(heading_font, h5), width=23)
+        self.last_name_entry = ttk.Entry(self.create_account_frame, font=(
+            heading_font, h5), width=23)
 
         self.create_account_button = ttk.Button(self.create_account_frame,
                                                 text="Create Account",
@@ -81,23 +89,31 @@ class CreateAccount:
                                         command=self.cancel_button_clicked
                                         )
 
-        self.id_number_label.grid(
-            row=1, column=0, columnspan=2, pady=10, padx=130, sticky="w")
-        self.id_number_entry.grid(
-            row=2, column=0, columnspan=2, pady=(0, 10), padx=130, sticky="w")
-        self.password_label.grid(
-            row=4, column=0, columnspan=2, pady=10, padx=130, sticky="w")
-        self.password_entry.grid(
-            row=5, column=0, columnspan=2, pady=(0, 10), padx=130, sticky="w")
-        self.cancel_button.grid(
-            row=6, column=0, columnspan=2, pady=(55, 10), padx=128, sticky="w")
-        self.create_account_button.grid(
-            row=7, column=0, columnspan=2, pady=(10, 10), padx=128, sticky="w")
-
         self.first_name_label.grid(
-            row=3, column=0, pady=10, padx = (130, 0), sticky="w")
+            row=1, column=0, pady=10, padx = (130, 0), sticky="w")
         self.last_name_label.grid(
-            row=3, column=1, pady=10, sticky="w")
+            row=1, column=1, pady=10, padx = (0, 130), sticky="w")
+        self.first_name_entry.grid(
+            row=2, column=0, pady=(0, 10), padx= (130, 30), sticky="w")
+        self.last_name_entry.grid(
+            row=2, column=1, pady=(0, 10), padx= (0, 130), sticky="w")
+        self.id_number_label.grid(
+            row=3, column=0, columnspan=2, pady=10, padx=130, sticky="w")
+        self.id_number_entry.grid(
+            row=4, column=0, columnspan=2, pady=(0, 10), padx=130, sticky="w")
+        self.password_label.grid(
+            row=5, column=0, columnspan=2, pady=10, padx=130, sticky="w")
+        self.password_entry.grid(
+            row=6, column=0, columnspan=2, pady=(0, 10), padx=130, sticky="w")
+        self.confirm_password_label.grid(
+            row=7, column=0, columnspan=2, pady=10, padx=130, sticky="w")
+        self.confirm_password_entry.grid(
+            row=8, column=0, columnspan=2, pady=(0, 10), padx=130, sticky="w")
+        self.cancel_button.grid(
+            row=9, column=0, pady=(35, 10), padx=(128, 0), sticky="w")
+        self.create_account_button.grid(
+            row=9, column=1, pady=(35, 10), padx=(0, 128), sticky="w")
+
 
     def cancel_button_clicked(self):
         self.create_account_frame.destroy()
@@ -107,5 +123,5 @@ class CreateAccount:
 
 if __name__ == '__main__':
     root = ttk.Window()
-    Login(root)
+    CreateAccount(root)
     root.mainloop()
