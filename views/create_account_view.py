@@ -1,14 +1,9 @@
 import sys
 import login_view
-from config.styles import (h1, h2,
-                           h3, h4,
-                           h5, h6,
-                           normal_font, heading_font,
-                           style_configurations)
-
-from ttkbootstrap import Style
 import ttkbootstrap as ttk
-import tkinter as tk
+from ttkbootstrap import Style
+from config.styles import (h5, heading_font,
+                           style_configurations)
 
 sys.path.append('../')
 
@@ -25,10 +20,9 @@ class CreateAccount:
         screen_width = self.master.winfo_screenwidth()
         screen_height = self.master.winfo_screenheight()
 
-        x_coordinate = int((screen_width / 2) - (self.window_width / 2))
-        y_coordinate = int((screen_height / 2) - (self.window_height / 2))
+        x_coordinate = int((screen_width/2) - (self.window_width/2))
+        y_coordinate = int((screen_height/2) - (self.window_height/2))
 
-        # print(x_coordinate, y_coordinate)
         self.master.geometry("{}x{}+{}+{}".format(self.window_width,
                                                   self.window_height,
                                                   x_coordinate,
