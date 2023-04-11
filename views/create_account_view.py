@@ -133,7 +133,10 @@ class CreateAccount:
         elif password != confirm_password:
             messagebox.showerror("Error", "Passwords do not match")
         else:
-            user_model.User(id_number, password, first_name, last_name)
+            if user_model.User(id_number, password, first_name, last_name) == True:
+                self.create_account_frame.destroy()
+                login_view.Login(self.master)
+
 
     def cancel_button_clicked(self):
         self.create_account_frame.destroy()
@@ -143,5 +146,6 @@ class CreateAccount:
 
 if __name__ == '__main__':
     root = ttk.Window()
+    root.state("zoomed")
     CreateAccount(root)
     root.mainloop()
