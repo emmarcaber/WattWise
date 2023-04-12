@@ -381,7 +381,7 @@ class CollapsingFrame(ttk.Frame):
 
 
 if __name__ == '__main__':
-    
+# Knight_Sky35 
     app = ttk.Window("WattWise")
     boying(app)
     app.mainloop()
