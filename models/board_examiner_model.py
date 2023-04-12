@@ -380,8 +380,7 @@ class CollapsingFrame(ttk.Frame):
             child.btn.configure(image=self.images[0])
 
 
-if __name__ == '__main__':
-# Knight_Sky35 
+if __name__ == '__main__': # Knight_Sky35
     app = ttk.Window("WattWise")
     boying(app)
     app.mainloop()
