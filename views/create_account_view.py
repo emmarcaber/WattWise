@@ -1,3 +1,5 @@
+# Window for Creating User Accounts
+
 import sys
 from tkinter import messagebox
 

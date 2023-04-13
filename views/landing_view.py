@@ -1,3 +1,5 @@
+# Window after Succesful Login
+
 from datetime import datetime
 from random import choices
 import ttkbootstrap as ttk
