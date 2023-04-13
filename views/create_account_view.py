@@ -1,5 +1,10 @@
+# Window for Creating User Accounts
+
 import sys
+from tkinter import messagebox
+
 import login_view
+from models import user_model
 import ttkbootstrap as ttk
 from ttkbootstrap import Style
 from config.styles import (h5, heading_font,
@@ -76,7 +81,8 @@ class CreateAccount:
 
         self.create_account_button = ttk.Button(self.create_account_frame,
                                                 text="Create Account",
-                                                style="success.TButton")
+                                                style="success.TButton",
+                                                command=self.validate)
         self.cancel_button = ttk.Button(self.create_account_frame,
                                         text="Cancel",
                                         style="secondary.Outline.TButton",
@@ -108,6 +114,32 @@ class CreateAccount:
         self.create_account_button.grid(
             row=9, column=1, pady=(35, 10), padx=(0, 128), sticky="w")
 
+    def validate(self):
+
+        """
+        id_number = 'C20101098'
+        first_name = 'Luc Charl'
+        last_name = 'Dato'
+        password = '12345'
+        confirm_password = '12345'
+        """
+
+        id_number = self.id_number_entry.get()
+        first_name = self.first_name_entry.get()
+        last_name = self.last_name_entry.get()
+        password = self.password_entry.get()
+        confirm_password = self.confirm_password_entry.get()
+
+        if id_number == "" or first_name == "" or last_name == "" or password == "" or confirm_password == "":
+            messagebox.showerror("Error", "Please fill in all the fields!")
+        elif password != confirm_password:
+            messagebox.showerror("Error", "Passwords do not match")
+        else:
+            if user_model.User(id_number, password, first_name, last_name) == True:
+                self.create_account_frame.destroy()
+                login_view.Login(self.master)
+
+
     def cancel_button_clicked(self):
         self.create_account_frame.destroy()
 
@@ -116,5 +148,6 @@ class CreateAccount:
 
 if __name__ == '__main__':
     root = ttk.Window()
+    root.state("zoomed")
     CreateAccount(root)
     root.mainloop()
