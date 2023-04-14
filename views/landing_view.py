@@ -15,7 +15,7 @@ import sys
 PATH = Path(__file__).resolve().parent.parent / 'assets'
 
 
-class boying(ttk.Frame):
+class Landing(ttk.Frame):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -52,7 +52,6 @@ class boying(ttk.Frame):
             master=head_bar, text='GENERATE',
             image='add-to-backup-light',
             compound=LEFT,
-            command=_func,
         )
         btn.pack(side=LEFT, ipadx=5, ipady=5, padx=(1, 0), pady=1)
 
@@ -381,5 +380,5 @@ if __name__ == '__main__':
     root = ttk.Window("WattWise | Generate Questionnaire")
     root.state("zoomed")
     root.resizable(0, 0)
-    boying(root)
+    Landing(root)
     root.mainloop()
