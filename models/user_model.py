@@ -63,7 +63,7 @@ class UserDB:
         """
         try:
             self.cursor.execute("INSERT INTO users VALUES (?, ?, ?, ?)",
-                             (user.id_number, user.first_name, user.last_name, user.password, ))
+                             (user.id_number, user.password, user.first_name, user.last_name, ))
             self.connect.commit()
             return True
         except sqlite3.Error as er:
@@ -114,7 +114,7 @@ class UserDB:
             print_exception(er)
             return False
         
-        
+
     def close(self):
         try:
             self.connect.close()
