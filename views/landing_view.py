@@ -52,7 +52,7 @@ class boying(ttk.Frame):
             master=head_bar, text='GENERATE',
             image='add-to-backup-light',
             compound=LEFT,
-            command=_func
+            command=_func,
         )
         btn.pack(side=LEFT, ipadx=5, ipady=5, padx=(1, 0), pady=1)
 
@@ -62,17 +62,6 @@ class boying(ttk.Frame):
             master=head_bar,
             text='CHECK',
             image='play',
-            compound=LEFT,
-            command=_func
-        )
-        btn.pack(side=LEFT, ipadx=5, ipady=5, padx=0, pady=1)
-
-        # refresh
-        def _func(): return Messagebox.ok(message='Refreshing...')
-        btn = ttk.Button(
-            master=head_bar,
-            text='ANALYSIS',
-            image='refresh',
             compound=LEFT,
             command=_func
         )
@@ -88,17 +77,6 @@ class boying(ttk.Frame):
             command=_func
         )
         btn.pack(side=RIGHT, ipadx=5, ipady=5, padx=0, pady=1)
-
-        # settings
-        def _func(): return Messagebox.ok(message='Changing settings')
-        btn = ttk.Button(
-            master=head_bar,
-            text='Settings',
-            image='properties-light',
-            compound=LEFT,
-            command=_func
-        )
-        btn.pack(side=LEFT, ipadx=5, ipady=5, padx=0, pady=1)
 
         # right panel
         r_panel = ttk.Frame(self, style='bg.TFrame')
@@ -399,8 +377,9 @@ class CollapsingFrame(ttk.Frame):
 
 
 if __name__ == '__main__':
-    print(PATH)
-    root = ttk.Window("WattWise")
+    # print(PATH)
+    root = ttk.Window("WattWise | Generate Questionnaire")
     root.state("zoomed")
+    root.resizable(0, 0)
     boying(root)
     root.mainloop()
