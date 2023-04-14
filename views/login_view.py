@@ -1,13 +1,13 @@
 # Window for User Logging In
 
 import sys
+sys.path.append('../')
 import create_account_view
 import ttkbootstrap as ttk
 from ttkbootstrap import Style
 from config.styles import (h5, heading_font,
                            style_configurations)
 
-sys.path.append('../')
 
 
 class Login:
@@ -44,11 +44,11 @@ class Login:
         self.login_frame.pack(expand=False)
 
         self.title_label = ttk.Label(self.login_frame,
-                                     text="WattWise: Kiosk Test Generator and Checker",
+                                     text="LOGIN",
                                      style="title_label.TLabel",
                                      )
         self.title_label.grid(row=0,
-                              column=1,
+                              column=0,
                               columnspan=2,
                               sticky="n",
                               pady=(10, 30)
@@ -97,5 +97,6 @@ class Login:
 if __name__ == '__main__':
     root = ttk.Window()
     root.state('zoomed')
+    root.resizable(0, 0)
     Login(root)
     root.mainloop()
