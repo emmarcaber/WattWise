@@ -135,17 +135,19 @@ class CreateAccount:
 
         if id_number == "" or first_name == "" or last_name == "" or password == "" or confirm_password == "":
             messagebox.showerror("Error", "Please fill in all the fields!")
+        elif self.db.get_user(id_number):
+            messagebox.showerror("Error", "The ID number has been already taken!")
         elif password != confirm_password:
-            messagebox.showerror("Error", "Passwords do not match")
+            messagebox.showerror("Error", "Passwords do not match!")
         else:
             new_user = user_model.User(id_number, first_name, last_name, password)
             print(repr(new_user))
             if self.db.create_user(new_user) == True:
-                messagebox.showinfo("Success", "User is created successfully")
+                messagebox.showinfo("Success", "User is created successfully!")
                 self.create_account_frame.destroy()
                 login_view.Login(self.master)
             else:
-                messagebox.showerror("Error", "User is not created successfully")
+                messagebox.showerror("Error", "User is not created successfully!")
 
 
     def cancel_button_clicked(self):
