@@ -1,78 +1,65 @@
-import os
+"""User Model
 
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-
-class User(Base):
-    __tablename__ = 'users'
-
-    id_number = Column(String, primary_key=True)
-    first_name = Column(String)
-    last_name = Column(String)
-    password = Column(String)
-
-class UserDatabase:
-    def __init__(self, db_path='database/kiosk.db'):
-        os.makedirs(os.path.dirname(db_path), exist_ok=True)    # if file does not exist, create the file
-        db_uri = 'sqlite:///' + db_path                         # merge the path to create a uri
-        engine = create_engine(db_uri)
-        Base.metadata.create_all(engine)
-        self.Session = sessionmaker(bind=engine)
+Description:
+    Model for manipulating the User table inside the Database
+"""
+import sqlite3
+import sys
+import traceback
 
 
-
-    def create_user(self, id_number, first_name, last_name, password):
-        """Create user account
+class User:
+    def __init__(self, id_number: str, first_name: str, last_name: str, password: str):
+        """Create a user instance.
 
         Args:
-            id_number (string): user id_number
-            first_name (string): user first_name
-            last_name (string): user last_name
-            password (string): user password
+            id_number (string): User ID Number
+            first_name (string): User First Name
+            last_name (string): User Last Name
+            password (string): User Password
+        """
+        self.id_number = id_number
+        self.first_name = first_name
+        self.last_name = last_name
+        self.password = password
+
+    def __repr__(self):
+        return f"User('{self.id_number}', '{self.first_name}', '{self.last_name}')"
+
+
+class UserDB:
+    def __init__(self):
+        self.conn = sqlite3.connect('../database/kiosk.db')
+        self.cur = self.conn.cursor()
+
+        self.cur.execute('''
+            CREATE TABLE IF NOT EXISTS users (
+                id_number TEXT PRIMARY KEY,
+                first_name TEXT NOT NULL,
+                last_name TEXT NOT NULL,
+                password TEXT NOT NULL
+            )
+        ''')
+        self.conn.commit()
+
+    def create_user(self, user: User):
+        """Create user account based from a user object.
+
+        Args:
+            user: User object
 
         Returns:
-            object: instance of a user
+            bool: returns true if the creation and successful, false if not
         """
-        session = self.Session()
-        user = User(id_number=id_number, first_name=first_name, last_name=last_name, password=password)
-        session.add(user)
-        session.commit()
-        session.close()
-        return user
-
-    # Function to read user
-    def read_user(self, id_number):
-        session = self.Session()
-        user = session.query(User).filter(User.id_number == id_number).first()
-        session.close()
-        return user
-
-
-    # 
-    def update_user(self, id_number, first_name=None, last_name=None, password=None):
-        session = self.Session()
-        user = session.query(User).filter(User.id_number == id_number).first()
-        if user:
-            if first_name:
-                user.first_name = first_name
-            if last_name:
-                user.last_name = last_name
-            if password:
-                user.password = password
-            session.commit()
-        session.close()
-        return user
-
-    def delete_user(self, id_number):
-        session = self.Session()
-        user = session.query(User).filter(User.id_number == id_number).first()
-        if user:
-            session.delete(user)
-            session.commit()
-            session.close()
+        try:
+            self.cur.execute("INSERT INTO users VALUES (?, ?, ?, ?)",
+                             (user.id_number, user.first_name, user.last_name, user.password))
+            self.conn.commit()
             return True
-        session.close()
-        return False
+        except sqlite3.Error as er:
+            print('SQLite error: %s' % (' '.join(er.args)))
+            print("Exception class is: ", er.__class__)
+            print('SQLite traceback: ')
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            print(traceback.format_exception(exc_type, exc_value, exc_tb))
+            return False
