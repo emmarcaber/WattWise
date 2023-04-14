@@ -39,6 +39,9 @@ class CreateAccount:
     def __init__(self, master):
         self.master = master
 
+        # Get the user_model
+        self.db = user_model.UserDB()
+
         self.config_master()
         self.style = Style("litera")
         style_configurations(self)
@@ -47,7 +50,7 @@ class CreateAccount:
         self.create_account_frame.pack(expand=False)
 
         self.title_label = ttk.Label(self.create_account_frame,
-                                     text="WattWise: Kiosk Test Generator and Checker",
+                                     text="CREATE ACCOUNT",
                                      style="title_label.TLabel",
                                      )
         self.title_label.grid(row=0,
@@ -135,9 +138,14 @@ class CreateAccount:
         elif password != confirm_password:
             messagebox.showerror("Error", "Passwords do not match")
         else:
-            if user_model.User(id_number, password, first_name, last_name) == True:
+            new_user = user_model.User(id_number, first_name, last_name, password)
+            print(repr(new_user))
+            if self.db.create_user(new_user) == True:
+                messagebox.showinfo("Success", "User is created successfully")
                 self.create_account_frame.destroy()
                 login_view.Login(self.master)
+            else:
+                messagebox.showerror("Error", "User is not created successfully")
 
 
     def cancel_button_clicked(self):
@@ -149,5 +157,6 @@ class CreateAccount:
 if __name__ == '__main__':
     root = ttk.Window()
     root.state("zoomed")
+    root.resizable(0, 0)
     CreateAccount(root)
     root.mainloop()
