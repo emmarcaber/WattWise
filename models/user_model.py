@@ -27,12 +27,21 @@ class User:
         return f"User('{self.id_number}', '{self.first_name}', '{self.last_name}')"
 
 
-class UserDB:
-    def __init__(self):
-        self.conn = sqlite3.connect('../database/kiosk.db')
-        self.cur = self.conn.cursor()
+def print_exception(error):
+    print('SQLite error: %s' % (' '.join(error.args)))
+    print("Exception class is: ", error.__class__)
+    print('SQLite traceback: ')
+    exc_type, exc_value, exc_tb = sys.exc_info()
+    print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
-        self.cur.execute('''
+
+class UserDB:
+
+    def __init__(self):
+        self.connect = sqlite3.connect('../database/kiosk.db')
+        self.cursor = self.connect.cursor()
+
+        self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS users (
                 id_number TEXT PRIMARY KEY,
                 first_name TEXT NOT NULL,
@@ -40,7 +49,8 @@ class UserDB:
                 password TEXT NOT NULL
             )
         ''')
-        self.conn.commit()
+        self.connect.commit()
+
 
     def create_user(self, user: User):
         """Create user account based from a user object.
@@ -52,14 +62,63 @@ class UserDB:
             bool: returns true if the creation and successful, false if not
         """
         try:
-            self.cur.execute("INSERT INTO users VALUES (?, ?, ?, ?)",
-                             (user.id_number, user.first_name, user.last_name, user.password))
+            self.cursor.execute("INSERT INTO users VALUES (?, ?, ?, ?)",
+                             (user.id_number, user.first_name, user.last_name, user.password, ))
+            self.connect.commit()
+            return True
+        except sqlite3.Error as er:
+            print_exception(er)
+            return False
+        
+
+    def get_user(self, id_number):
+        try:
+            self.cursor.execute('SELECT * FROM users WHERE id_number = ?', (id_number, ))
+            row = self.cursor.fetchone()
+            if row:
+                return User(*row)
+            else:
+                return None
+        except sqlite3.Error as er:
+            print_exception(er)
+            return False
+        
+
+    def update_user(self, user):
+        try:
+            self.cursor.execute("UPDATE users SET first_name = ?, last_name = ?, password = ? WHERE id_number = ?",
+                                (user.first_name, user.last_name, user.password, user.id_number, ))
+            self.connect.commit()
+            return True
+        except sqlite3.Error as er:
+            print_exception(er)
+            return False
+
+
+    def delete_user(self, id_number):
+        try:
+            self.cursor.execute('DELETE FROM users WHERE id_number = ?', (id_number,))
             self.conn.commit()
             return True
         except sqlite3.Error as er:
-            print('SQLite error: %s' % (' '.join(er.args)))
-            print("Exception class is: ", er.__class__)
-            print('SQLite traceback: ')
-            exc_type, exc_value, exc_tb = sys.exc_info()
-            print(traceback.format_exception(exc_type, exc_value, exc_tb))
+            print_exception(er)
+            return False
+        
+
+    def get_all_users(self):
+        try:
+            self.cursor.execute('SELECT * FROM users')
+            rows = self.cursor.fetchall()
+            return [User(*row) for row in rows]
+        except sqlite3.Error as er:
+            print_exception(er)
+            return False
+        
+        
+    def close(self):
+        try:
+            self.connect.close()
+            return True
+        except sqlite3.Error as er:
+            print_exception(er)
             return False
