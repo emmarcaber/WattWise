@@ -962,7 +962,7 @@ class Second_gen_page(tk.Frame):
         space_label.pack()
 
         enter_num_label = tk.Label(self,
-                                        text='Enter amount',
+                                        text='Enter Number of Questions',
                                         font=('orbitron',13),
                                         bg='#3d3d5c',
                                         fg='white')
