@@ -976,7 +976,7 @@ class Second_gen_page(tk.Frame):
         number_entry.pack(ipady=7)
 
         def enter():
-            return(1)
+            return(1) #temporary
             
         enter_button = tk.Button(self,
                                         text='Enter',
