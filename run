@@ -1,0 +1,1068 @@
+import tkinter as tk
+import time
+
+#KNIGHTSKY35
+
+class SampleApp(tk.Tk):
+
+    def __init__(self, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
+
+        self.shared_data = {'Balance':tk.IntVar()}
+
+        container = tk.Frame(self)
+        container.pack(side="top", fill="both", expand=True)
+        container.grid_rowconfigure(0, weight=1)
+        container.grid_columnconfigure(0, weight=1)
+
+        self.frames = {}
+        for F in (LogInPage, MenuPage, GeneratePage, MathPage, EsasPage, EePage, Second_gen_page, CheckPage, AnalysisPage):
+            page_name = F.__name__
+            frame = F(parent=container, controller=self)
+            self.frames[page_name] = frame
+
+            
+            frame.grid(row=0, column=0, sticky="nsew")
+
+        self.show_frame("LogInPage")
+
+    def show_frame(self, page_name):
+        frame = self.frames[page_name]
+        frame.tkraise()
+
+
+class LogInPage(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent,bg='#3d3d5c')
+        self.controller = controller
+
+        self.controller.title('KIOSK')
+        #self.controller.iconphoto(False,tk.PhotoImage(file='D:/Playground/assets/icons8_registry_editor_blk_64px.png'))
+
+        heading_label = tk.Label(self,
+                                        text='PROJECT: WattWise',
+                                        font=('orbitron',45,'bold'),
+                                        foreground='#ffffff',
+                                        background='#3d3d5c')
+        heading_label.pack(pady=25)
+
+        space_label = tk.Label(self,height=4,bg='#3d3d5c')
+        space_label.pack()
+
+        id_label = tk.Label(self,
+                                        text='Enter your id number',
+                                        font=('orbitron',13),
+                                        bg='#3d3d5c',
+                                        fg='white')
+        id_label.pack(pady=10)
+
+        my_id = tk.StringVar()
+        id_entry_box = tk.Entry(self,
+                                        textvariable=my_id,
+                                        font=('orbitron',12),
+                                        width=22)
+        id_entry_box.focus_set()
+        id_entry_box.pack(ipady=7)
+
+        def handle_focus_in(_):
+            id_entry_box.configure(fg='black',show='*')
+            
+        id_entry_box.bind('<FocusIn>',handle_focus_in)
+
+        def check_id():
+           if my_id.get() == '123':
+               my_id.set('')
+               incorrect_id_label['text']=''
+               controller.show_frame('MenuPage')
+           else:
+               incorrect_id_label['text']='ID Number does NOT EXIST'
+                
+        enter_button = tk.Button(self,
+                                        text='Enter',
+                                        command=check_id,
+                                        relief='raised',
+                                        borderwidth = 3,
+                                        width=40,
+                                        height=3)
+        enter_button.pack(pady=10)
+
+        incorrect_id_label = tk.Label(self,
+                                        text='',
+                                        font=('orbitron',13),
+                                        fg='white',
+                                        bg='#33334d',
+                                        anchor='n')
+        incorrect_id_label.pack(fill='both',expand=True)
+
+        bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
+        bottom_frame.pack(fill='x',side='bottom')
+
+
+        def tick():
+            current_time = time.strftime('%I:%M:%S %p').lstrip('0').replace(' 0',' ')
+            time_label.config(text=current_time)
+            time_label.after(200,tick)
+            
+        time_label = tk.Label(bottom_frame,font=('orbitron',12))
+        time_label.pack(side='right')
+
+        tick()
+        
+
+class MenuPage(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent,bg='#3d3d5c')
+        self.controller = controller
+   
+        heading_label = tk.Label(self,
+                                        text='PROJECT: WattWise',
+                                        font=('orbitron',45,'bold'),
+                                        foreground='#ffffff',
+                                        background='#3d3d5c')
+        heading_label.pack(pady=25)
+
+        main_menu_label = tk.Label(self,
+                                        text='Main Menu',
+                                        font=('orbitron',20, 'bold'),
+                                        fg='white',
+                                        bg='#3d3d5c')
+        main_menu_label.pack()
+
+        selection_label = tk.Label(self,
+                                        text='Please make a selection',
+                                        font=('orbitron',13),
+                                        fg='white',
+                                        bg='#3d3d5c')
+        selection_label.pack(fill='x')
+
+        button_frame = tk.Frame(self,bg='#33334d')
+        button_frame.pack(fill='both',expand=True)
+
+        def generate():
+            controller.show_frame('GeneratePage')
+            
+        generate_button = tk.Button(button_frame,
+                                        text='GENERATE',
+                                        command=generate,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        generate_button.pack(pady=10)
+
+        def check():
+            controller.show_frame('CheckPage')
+            
+        check_button = tk.Button(button_frame,
+                                        text='CHECK',
+                                        command=check,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        check_button.pack(pady=10)
+
+        def analysis():
+            controller.show_frame('AnalysisPage')
+            
+        analysis_button = tk.Button(button_frame,
+                                        text='ANALYSIS',
+                                        command=analysis,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        analysis_button.pack(pady=10)
+
+        def exit():
+            controller.show_frame('LogInPage')
+            
+        exit_button = tk.Button(button_frame,
+                                        text='LOG OUT',
+                                        command=exit,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        exit_button.pack(pady=10)
+
+
+        bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
+        bottom_frame.pack(fill='x',side='bottom')
+
+
+        def tick():
+            current_time = time.strftime('%I:%M:%S %p').lstrip('0').replace(' 0',' ')
+            time_label.config(text=current_time)
+            time_label.after(200,tick)
+            
+        time_label = tk.Label(bottom_frame,font=('orbitron',12))
+        time_label.pack(side='right')
+
+        tick()
+
+
+class GeneratePage(tk.Frame):
+    
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent,bg='#3d3d5c')
+        self.controller = controller
+
+
+        heading_label = tk.Label(self,
+                                        text='PROJECT: WattWise',
+                                        font=('orbitron',45,'bold'),
+                                        foreground='#ffffff',
+                                        background='#3d3d5c')
+        heading_label.pack(pady=25)
+
+        choose_amount_label = tk.Label(self,
+                                        text='Choose the subject you want to take',
+                                        font=('orbitron',13),
+                                        fg='white',
+                                        bg='#3d3d5c')
+        choose_amount_label.pack()
+
+        button_frame = tk.Frame(self,bg='#33334d')
+        button_frame.pack(fill='both',expand=True)
+
+        
+        def mathp():
+            controller.show_frame('MathPage')
+            
+        mathematics_btn = tk.Button(button_frame,
+                                                        text='MATHEMATICS',
+                                                        command=mathp,
+                                                        relief='raised',
+                                                        borderwidth=3,
+                                                        width=50,
+                                                        height=5)
+        mathematics_btn.pack(pady=10)
+
+        def esasp():
+            controller.show_frame('EsasPage')
+
+        esas_btn = tk.Button(button_frame,
+                                                        text='ESAS',
+                                                        command=esasp,
+                                                        relief='raised',
+                                                        borderwidth=3,
+                                                        width=50,
+                                                        height=5)
+        esas_btn.pack(pady=10)
+
+        def eep():
+            controller.show_frame('EePage')
+
+        eeps_btn = tk.Button(button_frame,
+                                                        text='EEPS',
+                                                        command=eep,
+                                                        relief='raised',
+                                                        borderwidth=3,
+                                                        width=50,
+                                                        height=5)
+        eeps_btn.pack(pady=10)
+
+        def menu():
+            controller.show_frame('MenuPage')
+            
+        menu_button = tk.Button(button_frame,
+                                                        command=menu,
+                                                        text='Back',
+                                                        relief='raised',
+                                                        borderwidth=3,
+                                                        width=50,
+                                                        height=5)
+        menu_button.pack(pady=10)
+
+
+
+        bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
+        bottom_frame.pack(fill='x',side='bottom')
+
+
+        def tick():
+            current_time = time.strftime('%I:%M:%S %p').lstrip('0').replace(' 0',' ')
+            time_label.config(text=current_time)
+            time_label.after(200,tick)
+            
+        time_label = tk.Label(bottom_frame,font=('orbitron',12))
+        time_label.pack(side='right')
+
+        tick()
+
+
+class MathPage(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent,bg='#3d3d5c')
+        self.controller = controller
+   
+        heading_label = tk.Label(self,
+                                        text='PROJECT: WattWise',
+                                        font=('orbitron',45,'bold'),
+                                        foreground='#ffffff',
+                                        background='#3d3d5c')
+        heading_label.pack(pady=25)
+
+        main_menu_label = tk.Label(self,
+                                        text='MATHEMATICS',
+                                        font=('orbitron',20, 'bold'),
+                                        fg='white',
+                                        bg='#3d3d5c')
+        main_menu_label.pack()
+
+        selection_label = tk.Label(self,
+                                        text='Please make a selection',
+                                        font=('orbitron',13),
+                                        fg='white',
+                                        bg='#3d3d5c')
+        selection_label.pack(fill='x')
+
+        button_frame = tk.Frame(self)
+        button_frame.pack(fill='both',expand=True)
+
+        l_button_frame = tk.Frame(button_frame,bg='#33334d')
+        l_button_frame.pack(side = 'left', fill='both',expand=True)
+
+        c_button_frame = tk.Frame(button_frame,bg='#33334d')
+        c_button_frame.pack(side = 'left', fill='both',expand=True)
+
+        r_button_frame = tk.Frame(button_frame,bg='#33334d')
+        r_button_frame.pack(side = 'left', fill='both',expand=True)
+
+        def algebra_trigo():
+            controller.show_frame('Second_gen_page')
+
+        def analytical_geometry():
+            controller.show_frame('Second_gen_page')
+
+        def diff_cal():
+            controller.show_frame('Second_gen_page')
+
+        def complex_number():
+            controller.show_frame('Second_gen_page')
+
+        def prob_stat():
+            controller.show_frame('Second_gen_page')
+
+        def power_series():
+            controller.show_frame('Second_gen_page')
+
+        def fourier_analysis():
+            controller.show_frame('Second_gen_page')
+
+        def integral_cal():
+            controller.show_frame('Second_gen_page')
+
+        def laplace():
+            controller.show_frame('Second_gen_page')
+
+        def random():
+            controller.show_frame('Second_gen_page')
+
+        def exit():
+            controller.show_frame('LogInPage')
+            
+        algebra_trigo_button = tk.Button(l_button_frame,
+                                        text='Algebra Trigonometry',
+                                        command=algebra_trigo,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        algebra_trigo_button.pack(pady=10)
+            
+        analytical_geometry_button = tk.Button(l_button_frame,
+                                        text='Analytical Geometry',
+                                        command=analytical_geometry,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        analytical_geometry_button.pack(pady=10)
+            
+        diff_cal_button = tk.Button(l_button_frame,
+                                        text='Differential Calculus & Differential Equations',
+                                        command=diff_cal,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        diff_cal_button.pack(pady=10)
+            
+        complex_number_button = tk.Button(l_button_frame,
+                                        text='Complex Numbers',
+                                        command=complex_number,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        complex_number_button.pack(pady=10)
+            
+        prob_stat_button = tk.Button(c_button_frame,
+                                        text='Probability & Statistics Matrices',
+                                        command=prob_stat,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        prob_stat_button.pack(pady=10)
+            
+        power_series_button = tk.Button(c_button_frame,
+                                        text='Power Series',
+                                        command=power_series,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        power_series_button.pack(pady=10)
+            
+        fourier_analysis_button = tk.Button(c_button_frame,
+                                        text='Fourier Analysis',
+                                        command=fourier_analysis,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        fourier_analysis_button.pack(pady=10)
+            
+        integral_cal_button = tk.Button(c_button_frame,
+                                        text='Integral Calculus',
+                                        command=integral_cal,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        integral_cal_button.pack(pady=10)
+            
+        laplace_button = tk.Button(r_button_frame,
+                                        text='Laplace Transforms',
+                                        command=laplace,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        laplace_button.pack(pady=10)
+            
+        random_button = tk.Button(r_button_frame,
+                                        text='RANDOM',
+                                        command=random,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        random_button.pack(pady=10)
+            
+        exit_button = tk.Button(r_button_frame,
+                                        text='Log Out',
+                                        command=exit,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        exit_button.pack(pady=10)
+
+
+        bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
+        bottom_frame.pack(fill='x',side='bottom')
+
+
+        def tick():
+            current_time = time.strftime('%I:%M:%S %p').lstrip('0').replace(' 0',' ')
+            time_label.config(text=current_time)
+            time_label.after(200,tick)
+            
+        time_label = tk.Label(bottom_frame,font=('orbitron',12))
+        time_label.pack(side='right')
+
+        tick()
+
+
+class EsasPage(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent,bg='#3d3d5c')
+        self.controller = controller
+   
+        heading_label = tk.Label(self,
+                                        text='PROJECT: WattWise',
+                                        font=('orbitron',45,'bold'),
+                                        foreground='#ffffff',
+                                        background='#3d3d5c')
+        heading_label.pack(pady=25)
+
+        main_menu_label = tk.Label(self,
+                                        text='ESAS',
+                                        font=('orbitron',20, 'bold'),
+                                        fg='white',
+                                        bg='#3d3d5c')
+        main_menu_label.pack()
+
+        selection_label = tk.Label(self,
+                                        text='Please make a selection',
+                                        font=('orbitron',13),
+                                        fg='white',
+                                        bg='#3d3d5c')
+        selection_label.pack(fill='x')
+
+        button_frame = tk.Frame(self)
+        button_frame.pack(fill='both',expand=True)
+
+        l_button_frame = tk.Frame(button_frame,bg='#33334d')
+        l_button_frame.pack(side = 'left', fill='both',expand=True)
+
+        c_button_frame = tk.Frame(button_frame,bg='#33334d')
+        c_button_frame.pack(side = 'left', fill='both',expand=True)
+
+        r_button_frame = tk.Frame(button_frame,bg='#33334d')
+        r_button_frame.pack(side = 'left', fill='both',expand=True)
+
+        
+
+        def gen_chem():
+            controller.show_frame('Second_gen_page')
+        
+        def  col_physics():
+            controller.show_frame('Second_gen_page')
+
+        def computer():
+            controller.show_frame('Second_gen_page')
+
+        def material_eng():
+            controller.show_frame('Second_gen_page')
+
+        def fluid():
+            controller.show_frame('Second_gen_page')
+
+        def strength():
+            controller.show_frame('Second_gen_page')
+
+        def thermo():
+            controller.show_frame('Second_gen_page')
+
+        def law():
+            controller.show_frame('Second_gen_page')
+
+        def econ():
+            controller.show_frame('Second_gen_page')
+
+        def ethics():
+            controller.show_frame('Second_gen_page')
+
+        def contracts():
+            controller.show_frame('Second_gen_page')
+
+        def pec():
+            controller.show_frame('Second_gen_page')
+
+        def random():
+            controller.show_frame('Second_gen_page')
+
+        def exit():
+            controller.show_frame('LogInPage')
+
+           
+            
+        gen_chem_button = tk.Button(l_button_frame,
+                                        text='General Chemistry',
+                                        command=gen_chem,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        gen_chem_button.pack(pady=10)
+            
+        col_physics_button = tk.Button(l_button_frame,
+                                        text='College Physics',
+                                        command= col_physics,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        col_physics_button.pack(pady=10)
+            
+        computer_button = tk.Button(l_button_frame,
+                                        text='Computer Fundamentals & Programming Engineering',
+                                        command=computer,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        computer_button.pack(pady=10)
+            
+        material_eng_button = tk.Button(l_button_frame,
+                                        text='Materials Engineering Mechanics',
+                                        command=material_eng,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        material_eng_button.pack(pady=10)
+            
+        fluid_button = tk.Button(l_button_frame,
+                                        text='Fluid Mechanics',
+                                        command=fluid,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        fluid_button.pack(pady=10)
+            
+        strength_button = tk.Button(c_button_frame,
+                                        text='Strength of Materials',
+                                        command=strength,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        strength_button.pack(pady=10)
+            
+        thermo_button = tk.Button(c_button_frame,
+                                        text='Thermodynamics',
+                                        command=thermo,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        thermo_button.pack(pady=10)
+            
+        law_button = tk.Button(c_button_frame,
+                                        text='Electrical Engineering Law',
+                                        command=law,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        law_button.pack(pady=10)
+            
+        econ_button = tk.Button(c_button_frame,
+                                        text='Engineering Economics',
+                                        command=econ,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        econ_button.pack(pady=10)
+            
+        ethics_button = tk.Button(c_button_frame,
+                                        text='Code of Professional Ethics',
+                                        command=ethics,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        ethics_button.pack(pady=10)
+            
+        contracts_button = tk.Button(r_button_frame,
+                                        text='Engineering Management Contracts & Specifications',
+                                        command=contracts,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        contracts_button.pack(pady=10)
+            
+        pec_button = tk.Button(r_button_frame,
+                                        text='Philippine Electrical Code Parts 1 and 2',
+                                        command=pec,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        pec_button.pack(pady=10)
+            
+        random_button = tk.Button(r_button_frame,
+                                        text='Random',
+                                        command=random,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        random_button.pack(pady=10)
+            
+        exit_button = tk.Button(r_button_frame,
+                                        text='LOG OUT',
+                                        command=exit,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        exit_button.pack(pady=10)
+
+
+        bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
+        bottom_frame.pack(fill='x',side='bottom')
+
+
+        def tick():
+            current_time = time.strftime('%I:%M:%S %p').lstrip('0').replace(' 0',' ')
+            time_label.config(text=current_time)
+            time_label.after(200,tick)
+            
+        time_label = tk.Label(bottom_frame,font=('orbitron',12))
+        time_label.pack(side='right')
+
+        tick()
+
+
+class EePage(tk.Frame):
+
+     def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent,bg='#3d3d5c')
+        self.controller = controller
+   
+        heading_label = tk.Label(self,
+                                        text='PROJECT: WattWise',
+                                        font=('orbitron',45,'bold'),
+                                        foreground='#ffffff',
+                                        background='#3d3d5c')
+        heading_label.pack(pady=25)
+
+        main_menu_label = tk.Label(self,
+                                        text='EEPS',
+                                        font=('orbitron',20, 'bold'),
+                                        fg='white',
+                                        bg='#3d3d5c')
+        main_menu_label.pack()
+
+        selection_label = tk.Label(self,
+                                        text='Please make a selection',
+                                        font=('orbitron',13),
+                                        fg='white',
+                                        bg='#3d3d5c')
+        selection_label.pack(fill='x')
+
+        button_frame = tk.Frame(self)
+        button_frame.pack(fill='both',expand=True)
+
+        l_button_frame = tk.Frame(button_frame,bg='#33334d')
+        l_button_frame.pack(side = 'left', fill='both',expand=True)
+
+        c_button_frame = tk.Frame(button_frame,bg='#33334d')
+        c_button_frame.pack(side = 'left', fill='both',expand=True)
+
+        r_button_frame = tk.Frame(button_frame,bg='#33334d')
+        r_button_frame.pack(side = 'left', fill='both',expand=True)
+
+        
+
+        def elec_circuit():
+            controller.show_frame('Second_gen_page')
+
+        def theory_circuit():
+            controller.show_frame('Second_gen_page')
+
+        def power_trans():
+            controller.show_frame('Second_gen_page')
+
+        def instrument():
+            controller.show_frame('Second_gen_page')
+
+        def circuit_line():
+            controller.show_frame('Second_gen_page')
+
+        def control_sys():
+            controller.show_frame('Second_gen_page')
+
+        def electrical_machine():
+            controller.show_frame('Second_gen_page')
+
+        def com_dev():
+            controller.show_frame('Second_gen_page')
+
+        def elec_sys():
+            controller.show_frame('Second_gen_page')
+
+        def power_plant():
+            controller.show_frame('Second_gen_page')
+
+        def elec_pow_equip():
+            controller.show_frame('Second_gen_page')
+
+        def illumination():
+            controller.show_frame('Second_gen_page')
+
+        def build_wiring():
+            controller.show_frame('Second_gen_page')
+
+        def random():
+            controller.show_frame('Second_gen_page')
+
+        def exit():
+            controller.show_frame('LogInPage')
+            
+        elec_circuit_button = tk.Button(l_button_frame,
+                                        text='Electric Circuits Electronic',
+                                        command=elec_circuit,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        elec_circuit_button.pack(pady=10)
+            
+        theory_circuit_button = tk.Button(l_button_frame,
+                                        text='Theory & Circuits Energy Conversion',
+                                        command=theory_circuit,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        theory_circuit_button.pack(pady=10)
+            
+        power_trans_button = tk.Button(l_button_frame,
+                                        text='Power Transmission and Distribution',
+                                        command=power_trans,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        power_trans_button.pack(pady=10)
+            
+        instrument_button = tk.Button(l_button_frame,
+                                        text='Instrumentation & Measurement',
+                                        command=instrument,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        instrument_button.pack(pady=10)
+            
+        circuit_line_button = tk.Button(l_button_frame,
+                                        text='Circuit and Line Protection',
+                                        command=circuit_line,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        circuit_line_button.pack(pady=10)
+            
+        control_sys_button = tk.Button(c_button_frame,
+                                        text='Control System Principles of Communication',
+                                        command=control_sys,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        control_sys_button.pack(pady=10)
+            
+        electrical_machine_button = tk.Button(c_button_frame,
+                                        text='Electrical Machines Electrical Equipment',
+                                        command=electrical_machine,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        electrical_machine_button.pack(pady=10)
+            
+        com_dev_button = tk.Button(c_button_frame,
+                                        text='Components & Devices',
+                                        command=com_dev,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        com_dev_button.pack(pady=10)
+            
+        elec_sys_button = tk.Button(c_button_frame,
+                                        text='Electric Systems',
+                                        command=elec_sys,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        elec_sys_button.pack(pady=10)
+            
+        power_plant_button = tk.Button(c_button_frame,
+                                        text='Power Plant',
+                                        command=power_plant,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        power_plant_button.pack(pady=10)
+            
+        elec_pow_equip_button = tk.Button(r_button_frame,
+                                        text='Electronic Power Equipment',
+                                        command=elec_pow_equip,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        elec_pow_equip_button.pack(pady=10)
+            
+        illumination_button = tk.Button(r_button_frame,
+                                        text='Illumination',
+                                        command=illumination,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        illumination_button.pack(pady=10)
+            
+        build_wiring_button = tk.Button(r_button_frame,
+                                        text='Building Wiring',
+                                        command=build_wiring,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        build_wiring_button.pack(pady=10)
+            
+        random_button = tk.Button(r_button_frame,
+                                        text='Random',
+                                        command=random,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        random_button.pack(pady=10)
+            
+        exit_button = tk.Button(r_button_frame,
+                                        text='LOG OUT',
+                                        command=exit,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=50,
+                                        height=5)
+        exit_button.pack(pady=10)
+
+
+        bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
+        bottom_frame.pack(fill='x',side='bottom')
+
+
+        def tick():
+            current_time = time.strftime('%I:%M:%S %p').lstrip('0').replace(' 0',' ')
+            time_label.config(text=current_time)
+            time_label.after(200,tick)
+            
+        time_label = tk.Label(bottom_frame,font=('orbitron',12))
+        time_label.pack(side='right')
+
+        tick()  
+
+
+class Second_gen_page(tk.Frame):
+    
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent,bg='#3d3d5c')
+        self.controller = controller
+
+        heading_label = tk.Label(self,
+                                        text='PROJECT: WattWise',
+                                        font=('orbitron',45,'bold'),
+                                        foreground='#ffffff',
+                                        background='#3d3d5c')
+        heading_label.pack(pady=25)
+
+        space_label = tk.Label(self,height=4,bg='#3d3d5c')
+        space_label.pack()
+
+        enter_num_label = tk.Label(self,
+                                        text='Enter Number of Questions',
+                                        font=('orbitron',13),
+                                        bg='#3d3d5c',
+                                        fg='white')
+        enter_num_label.pack(pady=10)
+
+        num = tk.StringVar()
+        number_entry = tk.Entry(self,
+                                        textvariable=num,
+                                        font=('orbitron',12),
+                                        width=22)
+        number_entry.pack(ipady=7)
+
+        def enter():
+            return(1) #temporary
+            
+        enter_button = tk.Button(self,
+                                        text='Enter',
+                                        command=enter,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=40,
+                                        height=3)
+        enter_button.pack(pady=10)
+
+        two_tone_label = tk.Label(self,bg='#33334d')
+        two_tone_label.pack(fill='both',expand=True)
+
+        bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
+        bottom_frame.pack(fill='x',side='bottom')
+
+
+        def tick():
+            current_time = time.strftime('%I:%M:%S %p').lstrip('0').replace(' 0',' ')
+            time_label.config(text=current_time)
+            time_label.after(200,tick)
+            
+        time_label = tk.Label(bottom_frame,font=('orbitron',12))
+        time_label.pack(side='right')
+
+        tick() 
+
+
+class CheckPage(tk.Frame):
+    
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent,bg='#3d3d5c')
+        self.controller = controller
+
+        heading_label = tk.Label(self,
+                                        text='PROJECT: WattWise',
+                                        font=('orbitron',45,'bold'),
+                                        foreground='#ffffff',
+                                        background='#3d3d5c')
+        heading_label.pack(pady=25)
+
+        bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
+        bottom_frame.pack(fill='x',side='bottom')
+
+
+        def tick():
+            current_time = time.strftime('%I:%M:%S %p').lstrip('0').replace(' 0',' ')
+            time_label.config(text=current_time)
+            time_label.after(200,tick)
+            
+        time_label = tk.Label(bottom_frame,font=('orbitron',12))
+        time_label.pack(side='right')
+
+        tick()
+
+
+class AnalysisPage(tk.Frame):
+    
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent,bg='#3d3d5c')
+        self.controller = controller
+
+        
+        heading_label = tk.Label(self,
+                                                     text='PROJECT: WattWise',
+                                                     font=('orbitron',45,'bold'),
+                                                     foreground='#ffffff',
+                                                     background='#3d3d5c')
+        heading_label.pack(pady=25)
+
+        bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
+        bottom_frame.pack(fill='x',side='bottom')
+
+
+        def tick():
+            current_time = time.strftime('%I:%M:%S %p').lstrip('0').replace(' 0',' ')
+            time_label.config(text=current_time)
+            time_label.after(200,tick)
+            
+        time_label = tk.Label(bottom_frame,font=('orbitron',12))
+        time_label.pack(side='right')
+
+        tick()
+
+
+if __name__ == "__main__":
+    app = SampleApp()
+    app.state('zoomed')
+    app.mainloop()
