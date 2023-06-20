@@ -8,7 +8,7 @@ from ttkbootstrap import Style
 from config.styles import (h5, heading_font,
                            style_configurations)
 
-
+from tkinter import messagebox
 
 class Login:
 
@@ -89,8 +89,13 @@ class Login:
             row=7, column=0, columnspan=2, pady=(10, 10), padx=128, sticky="w")
 
     def create_account_clicked(self):
-        self.login_frame.destroy()
+        id_number = self.id_number_entry.get()
+        password = self.password_entry.get()
 
+        if id_number == "" or password == "":
+            messagebox.showerror("Error", "Please fill in all the fields!")
+
+        self.login_frame.destroy()
         create_account_view.CreateAccount(self.master)
 
 
