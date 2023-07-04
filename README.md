@@ -1,5 +1,5 @@
 # test
-This branch is responsible for testing sub-units that can be inserted in the dev branch. 
+This branch is solely responsible for testing sub-units that can be inserted in the dev branch. 
 
 ```
   NOTE: This branch will not be merged into the dev or main branch. 
