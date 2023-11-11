@@ -17,5 +17,6 @@ class LoginController(QObject):
         student_id = self.view.txtIDNumber.text()
 
         if (self.all_users.get(student_id)):
-            print("success")
+            user = self.all_users[student_id]
+            print(user['first_name'], user['last_name'])
         
