@@ -2,6 +2,8 @@ from PySide6.QtWidgets import QMainWindow
 from PySide6.QtGui import QIcon
 from PySide6.QtCore import QDateTime
 from ..uis.ui_login import Ui_MainWindow
+from app.controllers.login_controller import LoginController
+from app.models.user import User
 
 class LoginForm(QMainWindow, Ui_MainWindow):
 
@@ -27,13 +29,9 @@ class LoginForm(QMainWindow, Ui_MainWindow):
         self.update_datetime()
         self.timer = self.startTimer(1000)
         
-        self.txtIDNumber.textChanged.connect(self.verify_student_in_db)
+        self.model = User 
+        self.controller = LoginController(self, self.model)
     
-    
-    def verify_student_in_db(self):
-        print(self.txtIDNumber.text())
-
-        
     
     
     def update_datetime(self):

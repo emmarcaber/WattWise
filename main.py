@@ -11,7 +11,7 @@ def main():
     login_form.show()
 
     # Start the application event loop
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 if __name__ == "__main__":
     main()
