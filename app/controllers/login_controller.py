@@ -1,6 +1,7 @@
 from PySide6.QtCore import QObject
-from PySide6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import QMessageBox, QMainWindow
 from app.models.user import User
+from app.views.main_menu_view import MainMenu
 
 class LoginController(QObject):
     def __init__(self, view, model):
@@ -20,9 +21,15 @@ class LoginController(QObject):
         msg.setIcon(QMessageBox.Critical)
         msg.setText(text)
         return msg
+    
+    def invalid_credentials_error(self):
+        msg = self.message_box_error("Invalid ID Number or Password!")
+        msg.exec()
+
+        # Empty the fields
+        self.empty_fields()
 
     def empty_fields(self):
-        self.view.lineIDNumber.setText("")
         self.view.linePassword.setText("")
 
     def verify_student(self):
@@ -34,19 +41,23 @@ class LoginController(QObject):
             msg.exec()
 
         # Verify if there is existing student ID number in DB
-        if (self.all_users.get(student_id)):
+        elif (self.all_users.get(student_id)):
             current_student = self.all_users.get(student_id)
 
             if current_student['password'] == student_password:
                 msg = QMessageBox()
-                msg.setWindowTitle("Error")
+                msg.setWindowTitle("Success")
                 msg.setIcon(QMessageBox.Information)
                 msg.setText("Successfully login!")
                 msg.exec()
+                
+                self.main_menu_window = MainMenu()
+                self.main_menu_window.show()
+                self.view.hide()
+                
 
             else:
-                msg = self.message_box_error("Invalid ID Number or Password!")
-                msg.exec()
+                self.invalid_credentials_error()
 
-                # Empty the fields
-                self.empty_fields()
+        else:
+            self.invalid_credentials_error()

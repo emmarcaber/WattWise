@@ -8,225 +8,196 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (
-    QCoreApplication,
-    QDate,
-    QDateTime,
-    QLocale,
-    QMetaObject,
-    QObject,
-    QPoint,
-    QRect,
-    QSize,
-    QTime,
-    QUrl,
-    Qt,
-)
-from PySide6.QtGui import (
-    QBrush,
-    QColor,
-    QConicalGradient,
-    QCursor,
-    QFont,
-    QFontDatabase,
-    QGradient,
-    QIcon,
-    QImage,
-    QKeySequence,
-    QLinearGradient,
-    QPainter,
-    QPalette,
-    QPixmap,
-    QRadialGradient,
-    QTransform,
-)
-from PySide6.QtWidgets import (
-    QApplication,
-    QFrame,
-    QLabel,
-    QMainWindow,
-    QPushButton,
-    QSizePolicy,
-    QWidget,
-)
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QGridLayout,
+    QHBoxLayout, QLabel, QLayout, QMainWindow,
+    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+from app.resources import main_menu_rc
 
-# import resources_rc
-
-
-class Ui_MainWindow(object):
+class Ui_MainMenu(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
-            MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(802, 607)
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(1112, 600)
+        MainWindow.setStyleSheet(u"#header {\n"
+"	background-color: #004d99;\n"
+"	padding-left: 10px;\n"
+"	margin-left: 10px;\n"
+"	margin-right: 15px;\n"
+"}\n"
+"\n"
+"#title {\n"
+"	color: white;\n"
+"	font-weight: bold;\n"
+"	font-size: 36px;\n"
+"}\n"
+"\n"
+"#profileFrame {\n"
+"	padding-left: 10px;\n"
+"	background-color: #0073e6;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"	height: 160px;\n"
+"	font-size: 28px;\n"
+"	color: white;\n"
+"	margin-bottom: 20px;\n"
+"}\n"
+"\n"
+"#btnGenerate {\n"
+"	background-color: #00cc00;\n"
+"}\n"
+"\n"
+"#btnCheck {\n"
+"	background-color: #007acc;\n"
+"}\n"
+"\n"
+"#btnAnalysis {\n"
+"	background-color: #e6b800;\n"
+"}\n"
+"\n"
+"#btnLogout {\n"
+"	background-color: #e62e00;\n"
+"}\n"
+"\n"
+"#menuFrame {\n"
+"	padding: 10px 0px;\n"
+"}\n"
+"\n"
+"#labelWelcome {\n"
+"	font-size: 36px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"#labelStudentName {\n"
+"	font-size: 48px;\n"
+"	color: white;\n"
+"}")
         self.centralwidget = QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.centralwidget.setStyleSheet(
-            "#titleFrame {\n"
-            "	background-color: #004d99;\n"
-            "}\n"
-            "\n"
-            "#title {\n"
-            "	color: #ffffff;\n"
-            "}\n"
-            "\n"
-            "#profileWidget {\n"
-            "	background-color: #0073e6;\n"
-            "	border-radius: 20px;\n"
-            "}\n"
-            "\n"
-            "#optionWidget {\n"
-            "	background-color: #ffffff;\n"
-            "	border-radius: 20px;\n"
-            "	border: 2px solid #0073e6;\n"
-            "}\n"
-            "\n"
-            "#btnGenerate {\n"
-            "	color: #ffffff;\n"
-            "	background-color: #00cc00;\n"
-            "}\n"
-            "\n"
-            "#btnCheck {\n"
-            "	color: #ffffff;\n"
-            "	background-color: #007acc;\n"
-            "}\n"
-            "\n"
-            "#btnProfile {\n"
-            "	color: #ffffff;\n"
-            "	background-color: #e6b800;\n"
-            "}\n"
-            "\n"
-            "#btnLogout {\n"
-            "	color: #ffffff;\n"
-            "	background-color: #e62e00;\n"
-            "}\n"
-            "\n"
-            "#label_2, #label_3 {\n"
-            "	color: #ffffff;\n"
-            "}"
-        )
-        self.titleFrame = QWidget(self.centralwidget)
-        self.titleFrame.setObjectName("titleFrame")
-        self.titleFrame.setGeometry(QRect(0, 0, 801, 71))
-        self.logo = QLabel(self.titleFrame)
-        self.logo.setObjectName("logo")
-        self.logo.setGeometry(QRect(20, 10, 55, 51))
-        self.logo.setPixmap(QPixmap("logo_white1.png"))
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.gridLayout = QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.header = QFrame(self.centralwidget)
+        self.header.setObjectName(u"header")
+        self.formLayout = QFormLayout(self.header)
+        self.formLayout.setObjectName(u"formLayout")
+        self.logo = QLabel(self.header)
+        self.logo.setObjectName(u"logo")
+        self.logo.setEnabled(True)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.logo.sizePolicy().hasHeightForWidth())
+        self.logo.setSizePolicy(sizePolicy)
+        self.logo.setMaximumSize(QSize(100, 100))
+        self.logo.setFrameShadow(QFrame.Sunken)
+        self.logo.setPixmap(QPixmap(u":/images/assets/logo-white.png"))
         self.logo.setScaledContents(True)
-        self.title = QLabel(self.titleFrame)
-        self.title.setObjectName("title")
-        self.title.setGeometry(QRect(80, 10, 401, 51))
-        font = QFont()
-        font.setPointSize(20)
-        font.setBold(True)
-        self.title.setFont(font)
-        self.profileWidget = QWidget(self.centralwidget)
-        self.profileWidget.setObjectName("profileWidget")
-        self.profileWidget.setGeometry(QRect(20, 90, 341, 501))
-        self.label_2 = QLabel(self.profileWidget)
-        self.label_2.setObjectName("label_2")
-        self.label_2.setGeometry(QRect(60, 110, 231, 51))
-        font1 = QFont()
-        font1.setPointSize(24)
-        font1.setBold(True)
-        self.label_2.setFont(font1)
-        self.label_3 = QLabel(self.profileWidget)
-        self.label_3.setObjectName("label_3")
-        self.label_3.setGeometry(QRect(50, 160, 261, 71))
-        font2 = QFont()
-        font2.setPointSize(22)
-        font2.setBold(True)
-        self.label_3.setFont(font2)
-        self.optionWidget = QWidget(self.centralwidget)
-        self.optionWidget.setObjectName("optionWidget")
-        self.optionWidget.setGeometry(QRect(380, 90, 401, 501))
-        self.btnGenerate = QPushButton(self.optionWidget)
-        self.btnGenerate.setObjectName("btnGenerate")
-        self.btnGenerate.setGeometry(QRect(40, 110, 321, 71))
-        font3 = QFont()
-        font3.setPointSize(11)
-        font3.setBold(True)
-        self.btnGenerate.setFont(font3)
-        self.btnGenerate.setLayoutDirection(Qt.LeftToRight)
-        self.btnGenerate.setAutoFillBackground(False)
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.logo)
+
+        self.title = QLabel(self.header)
+        self.title.setObjectName(u"title")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.title)
+
+
+        self.gridLayout.addWidget(self.header, 0, 0, 1, 1)
+
+        self.horizontalFrame = QFrame(self.centralwidget)
+        self.horizontalFrame.setObjectName(u"horizontalFrame")
+        self.horizontalLayout = QHBoxLayout(self.horizontalFrame)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.profileFrame = QFrame(self.horizontalFrame)
+        self.profileFrame.setObjectName(u"profileFrame")
+        self.formLayout_3 = QFormLayout(self.profileFrame)
+        self.formLayout_3.setObjectName(u"formLayout_3")
+        self.formLayout_3.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.formLayout_3.setFormAlignment(Qt.AlignCenter)
+        self.labelWelcome = QLabel(self.profileFrame)
+        self.labelWelcome.setObjectName(u"labelWelcome")
+        self.labelWelcome.setAlignment(Qt.AlignCenter)
+
+        self.formLayout_3.setWidget(0, QFormLayout.SpanningRole, self.labelWelcome)
+
+        self.labelStudentName = QLabel(self.profileFrame)
+        self.labelStudentName.setObjectName(u"labelStudentName")
+        self.labelStudentName.setAlignment(Qt.AlignCenter)
+
+        self.formLayout_3.setWidget(1, QFormLayout.SpanningRole, self.labelStudentName)
+
+
+        self.horizontalLayout.addWidget(self.profileFrame)
+
+        self.menuFrame = QFrame(self.horizontalFrame)
+        self.menuFrame.setObjectName(u"menuFrame")
+        self.verticalLayout_2 = QVBoxLayout(self.menuFrame)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.btnGenerate = QPushButton(self.menuFrame)
+        self.btnGenerate.setObjectName(u"btnGenerate")
         icon = QIcon()
-        icon.addFile(
-            ":/White Icons/white Icon/printer.svg", QSize(), QIcon.Normal, QIcon.Off
-        )
+        icon.addFile(u":/images/assets/printer.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btnGenerate.setIcon(icon)
-        self.btnGenerate.setCheckable(False)
-        self.btnGenerate.setFlat(False)
-        self.btnCheck = QPushButton(self.optionWidget)
-        self.btnCheck.setObjectName("btnCheck")
-        self.btnCheck.setGeometry(QRect(40, 200, 321, 71))
-        self.btnCheck.setFont(font3)
-        self.btnCheck.setLayoutDirection(Qt.LeftToRight)
+        self.btnGenerate.setIconSize(QSize(50, 50))
+
+        self.verticalLayout_2.addWidget(self.btnGenerate)
+
+        self.btnCheck = QPushButton(self.menuFrame)
+        self.btnCheck.setObjectName(u"btnCheck")
         icon1 = QIcon()
-        icon1.addFile(
-            ":/White Icons/white Icon/archive.svg", QSize(), QIcon.Normal, QIcon.Off
-        )
+        icon1.addFile(u":/images/assets/archive.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btnCheck.setIcon(icon1)
-        self.btnProfile = QPushButton(self.optionWidget)
-        self.btnProfile.setObjectName("btnProfile")
-        self.btnProfile.setGeometry(QRect(40, 290, 321, 71))
-        self.btnProfile.setFont(font3)
-        self.btnProfile.setLayoutDirection(Qt.LeftToRight)
+        self.btnCheck.setIconSize(QSize(50, 50))
+
+        self.verticalLayout_2.addWidget(self.btnCheck)
+
+        self.btnAnalysis = QPushButton(self.menuFrame)
+        self.btnAnalysis.setObjectName(u"btnAnalysis")
         icon2 = QIcon()
-        icon2.addFile(
-            ":/White Icons/white Icon/smile.svg", QSize(), QIcon.Normal, QIcon.Off
-        )
-        self.btnProfile.setIcon(icon2)
-        self.btnLogout = QPushButton(self.optionWidget)
-        self.btnLogout.setObjectName("btnLogout")
-        self.btnLogout.setGeometry(QRect(40, 380, 321, 71))
-        self.btnLogout.setFont(font3)
-        self.btnLogout.setLayoutDirection(Qt.LeftToRight)
+        icon2.addFile(u":/images/assets/zoom-out.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnAnalysis.setIcon(icon2)
+        self.btnAnalysis.setIconSize(QSize(50, 50))
+
+        self.verticalLayout_2.addWidget(self.btnAnalysis)
+
+        self.btnLogout = QPushButton(self.menuFrame)
+        self.btnLogout.setObjectName(u"btnLogout")
         icon3 = QIcon()
-        icon3.addFile(
-            ":/White Icons/white Icon/log-out.svg", QSize(), QIcon.Normal, QIcon.Off
-        )
+        icon3.addFile(u":/images/assets/log-out.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btnLogout.setIcon(icon3)
-        self.label = QLabel(self.optionWidget)
-        self.label.setObjectName("label")
-        self.label.setGeometry(QRect(120, 30, 171, 41))
-        font4 = QFont()
-        font4.setPointSize(16)
-        font4.setBold(True)
-        self.label.setFont(font4)
-        self.line = QFrame(self.optionWidget)
-        self.line.setObjectName("line")
-        self.line.setGeometry(QRect(20, 80, 361, 20))
-        self.line.setFrameShape(QFrame.HLine)
-        self.line.setFrameShadow(QFrame.Sunken)
+        self.btnLogout.setIconSize(QSize(50, 50))
+
+        self.verticalLayout_2.addWidget(self.btnLogout)
+
+
+        self.horizontalLayout.addWidget(self.menuFrame)
+
+
+        self.gridLayout.addWidget(self.horizontalFrame, 1, 0, 1, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
-        self.btnGenerate.setDefault(False)
-
         QMetaObject.connectSlotsByName(MainWindow)
-
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(
-            QCoreApplication.translate("MainWindow", "MainWindow", None)
-        )
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.logo.setText("")
-        self.title.setText(
-            QCoreApplication.translate("MainWindow", "PROJECT: WattWise", None)
-        )
-        self.label_2.setText(QCoreApplication.translate("MainWindow", "WELCOME!", None))
-        self.label_3.setText(
-            QCoreApplication.translate("MainWindow", "JOBERT LIAN", None)
-        )
-        self.btnGenerate.setText(
-            QCoreApplication.translate("MainWindow", "GENERATE", None)
-        )
-        self.btnCheck.setText(QCoreApplication.translate("MainWindow", "CHECK", None))
-        self.btnProfile.setText(
-            QCoreApplication.translate("MainWindow", "PROFILE", None)
-        )
-        self.btnLogout.setText(QCoreApplication.translate("MainWindow", "LOGOUT", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", "MAIN MENU", None))
-
+        self.title.setText(QCoreApplication.translate("MainWindow", u"PROJECT: WattWise", None))
+        self.labelWelcome.setText(QCoreApplication.translate("MainWindow", u"Welcome,", None))
+        self.labelStudentName.setText(QCoreApplication.translate("MainWindow", u"EMMAR CABER", None))
+        self.btnGenerate.setText(QCoreApplication.translate("MainWindow", u"Generate", None))
+        self.btnCheck.setText(QCoreApplication.translate("MainWindow", u"Check", None))
+        self.btnAnalysis.setText(QCoreApplication.translate("MainWindow", u"Analysis", None))
+        self.btnLogout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
     # retranslateUi
+

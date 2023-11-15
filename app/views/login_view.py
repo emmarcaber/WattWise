@@ -1,11 +1,11 @@
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtGui import QIcon
 from PySide6.QtCore import QDateTime
-from ..uis.ui_login import Ui_MainWindow
+from ..uis.ui_login import Ui_Login
 from app.controllers.login_controller import LoginController
 from app.models.user import User
 
-class LoginForm(QMainWindow, Ui_MainWindow):
+class LoginForm(QMainWindow, Ui_Login):
 
     def __init__(self):
         super().__init__()
