@@ -14,13 +14,6 @@ class LoginForm(QMainWindow, Ui_MainWindow):
         self.setWindowTitle("WattWise | Login")
         self.showMaximized()
 
-        self.btnLogin.clicked.connect(self.clicked_login)
-
         self.model = User
         self.controler = LoginController(self, self.model)
 
-    def clicked_login(self):
-       username = self.lineIDNumber.text()
-       password = self.linePassword.text()
-
-       print(username, password)
