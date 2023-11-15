@@ -9,7 +9,6 @@ class LoginController(QObject):
         self.model = model
 
         # Connect signals from the view to controller methods
-        self.view.txtIDNumber.textChanged.connect(self.verify_student)
         self.all_users = User.read_users()
         print(self.all_users)
 

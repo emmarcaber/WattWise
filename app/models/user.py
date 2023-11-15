@@ -7,14 +7,14 @@ class User:
         connection = sqlite3.connect(db_path)
 
         cursor = connection.cursor()
-        cursor.execute("SELECT id_number,first_name,last_name FROM users")
+        cursor.execute("SELECT id_number, password, first_name,last_name FROM users")
         
         rows = cursor.fetchall()
         user_dict = {}
 
         for row in rows:
-            id_number, first_name, last_name = row
-            user_dict[id_number] = {'first_name': first_name, 'last_name': last_name}
+            id_number, password, first_name, last_name = row
+            user_dict[id_number] = {'password': password, 'first_name': first_name, 'last_name': last_name}
 
         cursor.close()
         return user_dict

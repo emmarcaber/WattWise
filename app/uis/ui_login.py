@@ -15,198 +15,110 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
-    QVBoxLayout, QWidget)
-import app.resources.login_rc
+from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QGridLayout,
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QSizePolicy, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(997, 623)
-        MainWindow.setStyleSheet(u"background-color: #eee;")
-        self.centralwidget = QWidget(MainWindow)
-        self.centralwidget.setObjectName(u"centralwidget")
-        self.frame = QFrame(self.centralwidget)
-        self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(9, 50, 979, 491))
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.btnLetterC = QPushButton(self.frame)
-        self.btnLetterC.setObjectName(u"btnLetterC")
-        self.btnLetterC.setGeometry(QRect(50, 210, 106, 241))
-        self.btnLetterC.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnLetterC.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
-        self.layoutWidget = QWidget(self.frame)
-        self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(180, 340, 631, 110))
-        self.horizontalLayout_2 = QHBoxLayout(self.layoutWidget)
-        self.horizontalLayout_2.setSpacing(25)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.btnSix = QPushButton(self.layoutWidget)
-        self.btnSix.setObjectName(u"btnSix")
-        self.btnSix.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnSix.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
+        MainWindow.resize(1144, 730)
+        MainWindow.setStyleSheet(u"#loginFrame {\n"
+"	background-color: #172F5F;\n"
+"	padding: 100px 300px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"	color: white;\n"
+"	font-size: 28px;\n"
+"	margin-top: 10px;\n"
+"}\n"
+"\n"
+"#lblTitle {\n"
+"	font-size: 60px;\n"
+"    font-weight: bold;\n"
+"	margin-bottom: 20px;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"	height: 50px;\n"
+"	margin-top: 10px;\n"
+"    border: 2px solid gray;\n"
+"	padding: 5px 15px;\n"
+"	font-size: 28px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover {\n"
+"	border: 2px solid #007bff;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid green;\n"
+"}\n"
+"\n"
+"#btnLogin {\n"
+"	margin-top: 30px;\n"
+"	height: 80px;\n"
+"	width: 100px;\n"
+"	color: white;\n"
+"	background-color: green;\n"
+"	border-radius: 15px;\n"
+"	font-size: 28px;\n"
+"}\n"
+"\n"
+"#btnLogin:hover {\n"
+"	border: 2px solid green;\n"
+"	color: green;\n"
+"	background-color: white;\n"
+"}")
+        self.LoginWidget = QWidget(MainWindow)
+        self.LoginWidget.setObjectName(u"LoginWidget")
+        self.gridLayout = QGridLayout(self.LoginWidget)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.loginFrame = QFrame(self.LoginWidget)
+        self.loginFrame.setObjectName(u"loginFrame")
+        self.loginFrame.setFrameShape(QFrame.StyledPanel)
+        self.loginFrame.setFrameShadow(QFrame.Raised)
+        self.formLayout = QFormLayout(self.loginFrame)
+        self.formLayout.setObjectName(u"formLayout")
+        self.lblTitle = QLabel(self.loginFrame)
+        self.lblTitle.setObjectName(u"lblTitle")
+        self.lblTitle.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_2.addWidget(self.btnSix)
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.lblTitle)
 
-        self.btnSeven = QPushButton(self.layoutWidget)
-        self.btnSeven.setObjectName(u"btnSeven")
-        self.btnSeven.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnSeven.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
+        self.lblUsername = QLabel(self.loginFrame)
+        self.lblUsername.setObjectName(u"lblUsername")
 
-        self.horizontalLayout_2.addWidget(self.btnSeven)
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.lblUsername)
 
-        self.btnEight = QPushButton(self.layoutWidget)
-        self.btnEight.setObjectName(u"btnEight")
-        self.btnEight.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnEight.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
+        self.lineIDNumber = QLineEdit(self.loginFrame)
+        self.lineIDNumber.setObjectName(u"lineIDNumber")
 
-        self.horizontalLayout_2.addWidget(self.btnEight)
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.lineIDNumber)
 
-        self.btnNine = QPushButton(self.layoutWidget)
-        self.btnNine.setObjectName(u"btnNine")
-        self.btnNine.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnNine.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
+        self.lblPassword = QLabel(self.loginFrame)
+        self.lblPassword.setObjectName(u"lblPassword")
 
-        self.horizontalLayout_2.addWidget(self.btnNine)
+        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.lblPassword)
 
-        self.btnZero = QPushButton(self.layoutWidget)
-        self.btnZero.setObjectName(u"btnZero")
-        self.btnZero.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnZero.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
+        self.linePassword = QLineEdit(self.loginFrame)
+        self.linePassword.setObjectName(u"linePassword")
+        self.linePassword.setEchoMode(QLineEdit.Password)
 
-        self.horizontalLayout_2.addWidget(self.btnZero)
+        self.formLayout.setWidget(5, QFormLayout.FieldRole, self.linePassword)
 
-        self.layoutWidget1 = QWidget(self.frame)
-        self.layoutWidget1.setObjectName(u"layoutWidget1")
-        self.layoutWidget1.setGeometry(QRect(180, 210, 631, 110))
-        self.horizontalLayout = QHBoxLayout(self.layoutWidget1)
-        self.horizontalLayout.setSpacing(25)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.btnOne = QPushButton(self.layoutWidget1)
-        self.btnOne.setObjectName(u"btnOne")
-        self.btnOne.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnOne.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
+        self.btnLogin = QPushButton(self.loginFrame)
+        self.btnLogin.setObjectName(u"btnLogin")
+        self.btnLogin.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.horizontalLayout.addWidget(self.btnOne)
+        self.formLayout.setWidget(6, QFormLayout.FieldRole, self.btnLogin)
 
-        self.btnTwo = QPushButton(self.layoutWidget1)
-        self.btnTwo.setObjectName(u"btnTwo")
-        self.btnTwo.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnTwo.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
 
-        self.horizontalLayout.addWidget(self.btnTwo)
+        self.gridLayout.addWidget(self.loginFrame, 0, 0, 1, 1)
 
-        self.btnThree = QPushButton(self.layoutWidget1)
-        self.btnThree.setObjectName(u"btnThree")
-        self.btnThree.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnThree.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
-
-        self.horizontalLayout.addWidget(self.btnThree)
-
-        self.btnFour = QPushButton(self.layoutWidget1)
-        self.btnFour.setObjectName(u"btnFour")
-        self.btnFour.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnFour.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
-
-        self.horizontalLayout.addWidget(self.btnFour)
-
-        self.btnFive = QPushButton(self.layoutWidget1)
-        self.btnFive.setObjectName(u"btnFive")
-        self.btnFive.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnFive.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"height: 100px;")
-
-        self.horizontalLayout.addWidget(self.btnFive)
-
-        self.btnDelete = QPushButton(self.frame)
-        self.btnDelete.setObjectName(u"btnDelete")
-        self.btnDelete.setGeometry(QRect(830, 210, 106, 241))
-        self.btnDelete.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnDelete.setStyleSheet(u"font-size: 40px;\n"
-"background-color: #888;\n"
-"color: white;\n"
-"height: 100px;")
-        self.layoutWidget2 = QWidget(self.frame)
-        self.layoutWidget2.setObjectName(u"layoutWidget2")
-        self.layoutWidget2.setGeometry(QRect(300, 40, 405, 146))
-        self.verticalLayout = QVBoxLayout(self.layoutWidget2)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.txtIDNumber = QLineEdit(self.layoutWidget2)
-        self.txtIDNumber.setObjectName(u"txtIDNumber")
-        self.txtIDNumber.setStyleSheet(u"font-size: 48px;\n"
-"font-family: Century Gothic;\n"
-"background-color: #0167FE;\n"
-"color: white;\n"
-"padding: 3px;\n"
-"height: 80px;")
-        self.txtIDNumber.setAlignment(Qt.AlignCenter)
-        self.txtIDNumber.setReadOnly(True)
-
-        self.verticalLayout.addWidget(self.txtIDNumber)
-
-        self.idNumberLabel = QLabel(self.layoutWidget2)
-        self.idNumberLabel.setObjectName(u"idNumberLabel")
-        self.idNumberLabel.setStyleSheet(u"font-size: 24px;\n"
-"font-family: Century Gothic;")
-        self.idNumberLabel.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout.addWidget(self.idNumberLabel)
-
-        self.dateLabel = QLabel(self.centralwidget)
-        self.dateLabel.setObjectName(u"dateLabel")
-        self.dateLabel.setGeometry(QRect(790, 560, 201, 19))
-        self.dateLabel.setStyleSheet(u"font-size: 16px;")
-        self.dateLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-        self.timeLabel = QLabel(self.centralwidget)
-        self.timeLabel.setObjectName(u"timeLabel")
-        self.timeLabel.setGeometry(QRect(850, 580, 141, 20))
-        self.timeLabel.setStyleSheet(u"font-size: 16px;")
-        self.timeLabel.setAlignment(Qt.AlignCenter)
-        self.labelLogo = QLabel(self.centralwidget)
-        self.labelLogo.setObjectName(u"labelLogo")
-        self.labelLogo.setGeometry(QRect(0, 0, 101, 101))
-        self.labelLogo.setCursor(QCursor(Qt.ArrowCursor))
-        self.labelLogo.setPixmap(QPixmap(u":/images/images/wattwise-logo.png"))
-        self.labelLogo.setScaledContents(True)
-        MainWindow.setCentralWidget(self.centralwidget)
+        MainWindow.setCentralWidget(self.LoginWidget)
 
         self.retranslateUi(MainWindow)
 
@@ -215,20 +127,11 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.btnLetterC.setText(QCoreApplication.translate("MainWindow", u"C", None))
-        self.btnSix.setText(QCoreApplication.translate("MainWindow", u"6", None))
-        self.btnSeven.setText(QCoreApplication.translate("MainWindow", u"7", None))
-        self.btnEight.setText(QCoreApplication.translate("MainWindow", u"8", None))
-        self.btnNine.setText(QCoreApplication.translate("MainWindow", u"9", None))
-        self.btnZero.setText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.btnOne.setText(QCoreApplication.translate("MainWindow", u"1", None))
-        self.btnTwo.setText(QCoreApplication.translate("MainWindow", u"2", None))
-        self.btnThree.setText(QCoreApplication.translate("MainWindow", u"3", None))
-        self.btnFour.setText(QCoreApplication.translate("MainWindow", u"4", None))
-        self.btnFive.setText(QCoreApplication.translate("MainWindow", u"5", None))
-        self.btnDelete.setText(QCoreApplication.translate("MainWindow", u"DEL", None))
-        self.idNumberLabel.setText(QCoreApplication.translate("MainWindow", u"ID NUMBER", None))
-        self.dateLabel.setText(QCoreApplication.translate("MainWindow", u"November 11, 2023", None))
-        self.timeLabel.setText(QCoreApplication.translate("MainWindow", u"07:36:53 PM", None))
-        self.labelLogo.setText("")
+        self.lblTitle.setText(QCoreApplication.translate("MainWindow", u"WattWise", None))
+        self.lblUsername.setText(QCoreApplication.translate("MainWindow", u"ID Number", None))
+        self.lineIDNumber.setPlaceholderText(QCoreApplication.translate("MainWindow", u"ID Number", None))
+        self.lblPassword.setText(QCoreApplication.translate("MainWindow", u"Password", None))
+        self.linePassword.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Password", None))
+        self.btnLogin.setText(QCoreApplication.translate("MainWindow", u"Login", None))
     # retranslateUi
+
