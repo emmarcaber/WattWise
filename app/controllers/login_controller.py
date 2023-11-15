@@ -51,7 +51,7 @@ class LoginController(QObject):
                 msg.setText("Successfully login!")
                 msg.exec()
                 
-                self.main_menu_window = MainMenu()
+                self.main_menu_window = MainMenu(f"{current_student['first_name']} {current_student['last_name']}")
                 self.main_menu_window.show()
                 self.view.hide()
                 

@@ -24,7 +24,7 @@ class Ui_MainMenu(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1112, 600)
+        MainWindow.resize(1112, 887)
         MainWindow.setStyleSheet(u"#header {\n"
 "	background-color: #004d99;\n"
 "	padding-left: 10px;\n"
@@ -55,23 +55,40 @@ class Ui_MainMenu(object):
 "	background-color: #00cc00;\n"
 "}\n"
 "\n"
+"#btnGenerate:hover {\n"
+"	background-color: #00FF00;\n"
+"}\n"
+"\n"
 "#btnCheck {\n"
 "	background-color: #007acc;\n"
+"}\n"
+"\n"
+"#btnCheck:hover {\n"
+"	background-color: #0099FF;\n"
 "}\n"
 "\n"
 "#btnAnalysis {\n"
 "	background-color: #e6b800;\n"
 "}\n"
 "\n"
+"#btnAnalysis:hover {\n"
+"	background-color: #FFD11A;\n"
+"}\n"
+"\n"
 "#btnLogout {\n"
 "	background-color: #e62e00;\n"
+"}\n"
+"\n"
+"#btnLogout:hover {\n"
+"	background-color: #FF481A;\n"
 "}\n"
 "\n"
 "#menuFrame {\n"
 "	padding: 10px 0px;\n"
 "}\n"
 "\n"
-"#labelWelcome {\n"
+"#labelWelcome"
+                        " {\n"
 "	font-size: 36px;\n"
 "	color: white;\n"
 "}\n"
@@ -142,6 +159,7 @@ class Ui_MainMenu(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.btnGenerate = QPushButton(self.menuFrame)
         self.btnGenerate.setObjectName(u"btnGenerate")
+        self.btnGenerate.setCursor(QCursor(Qt.PointingHandCursor))
         icon = QIcon()
         icon.addFile(u":/images/assets/printer.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btnGenerate.setIcon(icon)
@@ -151,6 +169,7 @@ class Ui_MainMenu(object):
 
         self.btnCheck = QPushButton(self.menuFrame)
         self.btnCheck.setObjectName(u"btnCheck")
+        self.btnCheck.setCursor(QCursor(Qt.PointingHandCursor))
         icon1 = QIcon()
         icon1.addFile(u":/images/assets/archive.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btnCheck.setIcon(icon1)
@@ -160,6 +179,7 @@ class Ui_MainMenu(object):
 
         self.btnAnalysis = QPushButton(self.menuFrame)
         self.btnAnalysis.setObjectName(u"btnAnalysis")
+        self.btnAnalysis.setCursor(QCursor(Qt.PointingHandCursor))
         icon2 = QIcon()
         icon2.addFile(u":/images/assets/zoom-out.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btnAnalysis.setIcon(icon2)
@@ -169,6 +189,7 @@ class Ui_MainMenu(object):
 
         self.btnLogout = QPushButton(self.menuFrame)
         self.btnLogout.setObjectName(u"btnLogout")
+        self.btnLogout.setCursor(QCursor(Qt.PointingHandCursor))
         icon3 = QIcon()
         icon3.addFile(u":/images/assets/log-out.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btnLogout.setIcon(icon3)
