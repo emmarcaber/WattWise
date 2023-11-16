@@ -21,6 +21,12 @@
 	margin-right: 15px;
 }
 
+#labelMainMenuTitle {
+	font-size:36px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
 #title {
 	color: white;
 	font-weight: bold;
@@ -170,6 +176,23 @@ QPushButton {
        <item>
         <widget class="QFrame" name="menuFrame">
          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="labelMainMenuTitle">
+            <property name="text">
+             <string>MAIN MENU</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="line">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QPushButton" name="btnGenerate">
             <property name="cursor">

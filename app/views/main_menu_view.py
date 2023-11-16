@@ -7,6 +7,8 @@ class MainMenu(QMainWindow, Ui_MainMenu):
 
         self.setupUi(self)
         self.setWindowTitle("WattWise | Main Menu")
+
+        self.student_name = student_name
         self.labelStudentName.setText(student_name + "!")
 
         self.showMaximized()
@@ -14,9 +16,17 @@ class MainMenu(QMainWindow, Ui_MainMenu):
         self.modifyWindow()
 
     def modifyWindow(self):
-        self.btnLogout.clicked.connect(self.logout)
+        self.btnLogout.clicked.connect(self.open_logout_window)
+        self.btnGenerate.clicked.connect(self.open_generate_window)
 
-    def logout(self):
+    def open_generate_window(self):
+        from app.views.generate_view import GenerateWindow
+        
+        self.generate_window = GenerateWindow(self.student_name, main_menu_window = self)
+        self.generate_window.show()
+        self.hide()
+
+    def open_logout_window(self):
         from app.views.login_view import LoginForm
 
         self.login_window = LoginForm()

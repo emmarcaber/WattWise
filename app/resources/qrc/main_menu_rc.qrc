@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="images">
+    <file>../../../assets/arrow-left.svg</file>
+    <file>../../../assets/chevrons-left.svg</file>
     <file>../../../assets/archive.svg</file>
     <file>../../../assets/gg.png</file>
     <file>../../../assets/log-out.svg</file>

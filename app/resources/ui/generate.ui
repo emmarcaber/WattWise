@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1112</width>
+    <height>1012</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#header {
+	background-color: #004d99;
+	padding-left: 10px;
+	margin-left: 10px;
+	margin-right: 15px;
+}
+
+#labelMainMenuTitle {
+	font-size:36px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#title {
+	color: white;
+	font-weight: bold;
+	font-size: 36px;
+}
+
+#btnBack {
+	background-color: lightblue;
+	color: black;
+	margin-top: 10px;
+	font-size: 28px;
+}
+
+#profileFrame {
+	padding-left: 10px;
+	background-color: #0073e6;
+	border-radius: 10px;
+}
+
+QPushButton {
+	height: 160px;
+	font-size: 32px;
+	color: white;
+	margin-bottom: 20px;
+	width: 500px;
+}
+
+#btnGenerate {
+	background-color: #00cc00;
+}
+
+#btnGenerate:hover {
+	background-color: #00FF00;
+}
+
+#btnCheck {
+	background-color: #007acc;
+}
+
+#btnCheck:hover {
+	background-color: #0099FF;
+}
+
+#btnAnalysis {
+	background-color: #e6b800;
+}
+
+#btnAnalysis:hover {
+	background-color: #FFD11A;
+}
+
+#btnLogout {
+	background-color: #e62e00;
+}
+
+#btnLogout:hover {
+	background-color: #FF481A;
+}
+
+#menuFrame {
+	padding: 10px 0px;
+}
+
+#labelWelcome {
+	font-size: 36px;
+	color: white;
+}
+
+#labelStudentName {
+	font-size: 48px;
+	color: white;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QFrame" name="horizontalFrame">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QFrame" name="menuFrame">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="labelMainMenuTitle">
+            <property name="text">
+             <string>CHOOSE A CATEGORY</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="line">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnGenerate">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>ESAS</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnCheck">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>Mathematics</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnAnalysis">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>EEPS</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QFrame" name="header">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="2">
+        <widget class="QFrame" name="frame">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QPushButton" name="btnBack">
+          <property name="geometry">
+           <rect>
+            <x>370</x>
+            <y>20</y>
+            <width>201</width>
+            <height>81</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Back</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../qrc/main_menu_rc.qrc">
+            <normaloff>:/images/assets/arrow-left.svg</normaloff>:/images/assets/arrow-left.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>28</width>
+            <height>28</height>
+           </size>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="logo">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../qrc/main_menu_rc.qrc">:/images/assets/logo-white.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="title">
+         <property name="text">
+          <string>PROJECT: WattWise</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../qrc/main_menu_rc.qrc"/>
+ </resources>
+ <connections/>
+</ui>

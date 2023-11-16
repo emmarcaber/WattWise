@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_menu.ui'
+## Form generated from reading UI file 'generate.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.1
 ##
@@ -15,16 +15,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QGridLayout,
-    QHBoxLayout, QLabel, QLayout, QMainWindow,
-    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
+    QLabel, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QVBoxLayout, QWidget)
 from app.resources import main_menu_rc
 
-class Ui_MainMenu(object):
+class Ui_Generate(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1112, 887)
+        MainWindow.resize(1112, 1012)
         MainWindow.setStyleSheet(u"#header {\n"
 "	background-color: #004d99;\n"
 "	padding-left: 10px;\n"
@@ -44,6 +44,13 @@ class Ui_MainMenu(object):
 "	font-size: 36px;\n"
 "}\n"
 "\n"
+"#btnBack {\n"
+"	background-color: lightblue;\n"
+"	color: black;\n"
+"	margin-top: 10px;\n"
+"	font-size: 28px;\n"
+"}\n"
+"\n"
 "#profileFrame {\n"
 "	padding-left: 10px;\n"
 "	background-color: #0073e6;\n"
@@ -52,9 +59,10 @@ class Ui_MainMenu(object):
 "\n"
 "QPushButton {\n"
 "	height: 160px;\n"
-"	font-size: 28px;\n"
+"	font-size: 32px;\n"
 "	color: white;\n"
 "	margin-bottom: 20px;\n"
+"	width: 500px;\n"
 "}\n"
 "\n"
 "#btnGenerate {\n"
@@ -77,7 +85,8 @@ class Ui_MainMenu(object):
 "	background-color: #e6b800;\n"
 "}\n"
 "\n"
-"#btnAnalysis:hover {\n"
+"#btnAnal"
+                        "ysis:hover {\n"
 "	background-color: #FFD11A;\n"
 "}\n"
 "\n"
@@ -86,8 +95,7 @@ class Ui_MainMenu(object):
 "}\n"
 "\n"
 "#btnLogout:hover {\n"
-""
-                        "	background-color: #FF481A;\n"
+"	background-color: #FF481A;\n"
 "}\n"
 "\n"
 "#menuFrame {\n"
@@ -107,57 +115,13 @@ class Ui_MainMenu(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.header = QFrame(self.centralwidget)
-        self.header.setObjectName(u"header")
-        self.formLayout = QFormLayout(self.header)
-        self.formLayout.setObjectName(u"formLayout")
-        self.logo = QLabel(self.header)
-        self.logo.setObjectName(u"logo")
-        self.logo.setEnabled(True)
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.logo.sizePolicy().hasHeightForWidth())
-        self.logo.setSizePolicy(sizePolicy)
-        self.logo.setMaximumSize(QSize(100, 100))
-        self.logo.setFrameShadow(QFrame.Sunken)
-        self.logo.setPixmap(QPixmap(u":/images/assets/logo-white.png"))
-        self.logo.setScaledContents(True)
-
-        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.logo)
-
-        self.title = QLabel(self.header)
-        self.title.setObjectName(u"title")
-
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.title)
-
-
-        self.gridLayout.addWidget(self.header, 0, 0, 1, 1)
-
         self.horizontalFrame = QFrame(self.centralwidget)
         self.horizontalFrame.setObjectName(u"horizontalFrame")
         self.horizontalLayout = QHBoxLayout(self.horizontalFrame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.profileFrame = QFrame(self.horizontalFrame)
-        self.profileFrame.setObjectName(u"profileFrame")
-        self.formLayout_3 = QFormLayout(self.profileFrame)
-        self.formLayout_3.setObjectName(u"formLayout_3")
-        self.formLayout_3.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.formLayout_3.setFormAlignment(Qt.AlignCenter)
-        self.labelWelcome = QLabel(self.profileFrame)
-        self.labelWelcome.setObjectName(u"labelWelcome")
-        self.labelWelcome.setAlignment(Qt.AlignCenter)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.formLayout_3.setWidget(0, QFormLayout.SpanningRole, self.labelWelcome)
-
-        self.labelStudentName = QLabel(self.profileFrame)
-        self.labelStudentName.setObjectName(u"labelStudentName")
-        self.labelStudentName.setAlignment(Qt.AlignCenter)
-
-        self.formLayout_3.setWidget(1, QFormLayout.SpanningRole, self.labelStudentName)
-
-
-        self.horizontalLayout.addWidget(self.profileFrame)
+        self.horizontalLayout.addItem(self.horizontalSpacer)
 
         self.menuFrame = QFrame(self.horizontalFrame)
         self.menuFrame.setObjectName(u"menuFrame")
@@ -179,9 +143,6 @@ class Ui_MainMenu(object):
         self.btnGenerate = QPushButton(self.menuFrame)
         self.btnGenerate.setObjectName(u"btnGenerate")
         self.btnGenerate.setCursor(QCursor(Qt.PointingHandCursor))
-        icon = QIcon()
-        icon.addFile(u":/images/assets/printer.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnGenerate.setIcon(icon)
         self.btnGenerate.setIconSize(QSize(50, 50))
 
         self.verticalLayout_2.addWidget(self.btnGenerate)
@@ -189,9 +150,6 @@ class Ui_MainMenu(object):
         self.btnCheck = QPushButton(self.menuFrame)
         self.btnCheck.setObjectName(u"btnCheck")
         self.btnCheck.setCursor(QCursor(Qt.PointingHandCursor))
-        icon1 = QIcon()
-        icon1.addFile(u":/images/assets/archive.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnCheck.setIcon(icon1)
         self.btnCheck.setIconSize(QSize(50, 50))
 
         self.verticalLayout_2.addWidget(self.btnCheck)
@@ -199,28 +157,65 @@ class Ui_MainMenu(object):
         self.btnAnalysis = QPushButton(self.menuFrame)
         self.btnAnalysis.setObjectName(u"btnAnalysis")
         self.btnAnalysis.setCursor(QCursor(Qt.PointingHandCursor))
-        icon2 = QIcon()
-        icon2.addFile(u":/images/assets/zoom-out.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnAnalysis.setIcon(icon2)
         self.btnAnalysis.setIconSize(QSize(50, 50))
 
         self.verticalLayout_2.addWidget(self.btnAnalysis)
 
-        self.btnLogout = QPushButton(self.menuFrame)
-        self.btnLogout.setObjectName(u"btnLogout")
-        self.btnLogout.setCursor(QCursor(Qt.PointingHandCursor))
-        icon3 = QIcon()
-        icon3.addFile(u":/images/assets/log-out.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnLogout.setIcon(icon3)
-        self.btnLogout.setIconSize(QSize(50, 50))
-
-        self.verticalLayout_2.addWidget(self.btnLogout)
-
 
         self.horizontalLayout.addWidget(self.menuFrame)
 
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
 
         self.gridLayout.addWidget(self.horizontalFrame, 1, 0, 1, 1)
+
+        self.header = QFrame(self.centralwidget)
+        self.header.setObjectName(u"header")
+        self.gridLayout_2 = QGridLayout(self.header)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.frame = QFrame(self.header)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.btnBack = QPushButton(self.frame)
+        self.btnBack.setObjectName(u"btnBack")
+        self.btnBack.setGeometry(QRect(370, 20, 201, 81))
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnBack.sizePolicy().hasHeightForWidth())
+        self.btnBack.setSizePolicy(sizePolicy)
+        self.btnBack.setMinimumSize(QSize(0, 0))
+        self.btnBack.setBaseSize(QSize(100, 100))
+        self.btnBack.setCursor(QCursor(Qt.PointingHandCursor))
+        icon = QIcon()
+        icon.addFile(u":/images/assets/arrow-left.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnBack.setIcon(icon)
+        self.btnBack.setIconSize(QSize(28, 28))
+
+        self.gridLayout_2.addWidget(self.frame, 0, 2, 1, 1)
+
+        self.logo = QLabel(self.header)
+        self.logo.setObjectName(u"logo")
+        self.logo.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.logo.sizePolicy().hasHeightForWidth())
+        self.logo.setSizePolicy(sizePolicy)
+        self.logo.setMaximumSize(QSize(100, 100))
+        self.logo.setFrameShadow(QFrame.Sunken)
+        self.logo.setPixmap(QPixmap(u":/images/assets/logo-white.png"))
+        self.logo.setScaledContents(True)
+
+        self.gridLayout_2.addWidget(self.logo, 0, 0, 1, 1)
+
+        self.title = QLabel(self.header)
+        self.title.setObjectName(u"title")
+
+        self.gridLayout_2.addWidget(self.title, 0, 1, 1, 1)
+
+
+        self.gridLayout.addWidget(self.header, 0, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -231,14 +226,12 @@ class Ui_MainMenu(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.labelMainMenuTitle.setText(QCoreApplication.translate("MainWindow", u"CHOOSE A CATEGORY", None))
+        self.btnGenerate.setText(QCoreApplication.translate("MainWindow", u"ESAS", None))
+        self.btnCheck.setText(QCoreApplication.translate("MainWindow", u"Mathematics", None))
+        self.btnAnalysis.setText(QCoreApplication.translate("MainWindow", u"EEPS", None))
+        self.btnBack.setText(QCoreApplication.translate("MainWindow", u"Back", None))
         self.logo.setText("")
         self.title.setText(QCoreApplication.translate("MainWindow", u"PROJECT: WattWise", None))
-        self.labelWelcome.setText(QCoreApplication.translate("MainWindow", u"Welcome,", None))
-        self.labelStudentName.setText(QCoreApplication.translate("MainWindow", u"EMMAR CABER", None))
-        self.labelMainMenuTitle.setText(QCoreApplication.translate("MainWindow", u"MAIN MENU", None))
-        self.btnGenerate.setText(QCoreApplication.translate("MainWindow", u"Generate", None))
-        self.btnCheck.setText(QCoreApplication.translate("MainWindow", u"Check", None))
-        self.btnAnalysis.setText(QCoreApplication.translate("MainWindow", u"Analysis", None))
-        self.btnLogout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
     # retranslateUi
 
