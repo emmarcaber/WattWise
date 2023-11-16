@@ -14,7 +14,6 @@ class MainMenu(QMainWindow, Ui_MainMenu):
         self.modifyWindow()
 
     def modifyWindow(self):
-        pass
         self.btnLogout.clicked.connect(self.logout)
 
     def logout(self):

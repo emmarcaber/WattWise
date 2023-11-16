@@ -45,11 +45,6 @@ class LoginController(QObject):
             current_student = self.all_users.get(student_id)
 
             if current_student['password'] == student_password:
-                msg = QMessageBox()
-                msg.setWindowTitle("Success")
-                msg.setIcon(QMessageBox.Information)
-                msg.setText("Successfully login!")
-                msg.exec()
                 
                 self.main_menu_window = MainMenu(f"{current_student['first_name']} {current_student['last_name']}")
                 self.main_menu_window.show()
