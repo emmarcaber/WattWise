@@ -25,6 +25,7 @@ class Ui_Generate(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1112, 1012)
+        MainWindow.setCursor(QCursor(Qt.PointingHandCursor))
         MainWindow.setStyleSheet(u"#header {\n"
 "	background-color: #004d99;\n"
 "	padding-left: 10px;\n"
@@ -45,10 +46,15 @@ class Ui_Generate(object):
 "}\n"
 "\n"
 "#btnBack {\n"
-"	background-color: lightblue;\n"
-"	color: black;\n"
+"	background-color: #4db8ff;\n"
+"	border-radius: 20px;\n"
+"	color: white;\n"
 "	margin-top: 10px;\n"
 "	font-size: 28px;\n"
+"}\n"
+"\n"
+"#btnBack:hover {\n"
+"	background-color: #1AA4FF;\n"
 "}\n"
 "\n"
 "#profileFrame {\n"
@@ -65,37 +71,29 @@ class Ui_Generate(object):
 "	width: 500px;\n"
 "}\n"
 "\n"
-"#btnGenerate {\n"
+"#btnESAS {\n"
 "	background-color: #00cc00;\n"
 "}\n"
 "\n"
-"#btnGenerate:hover {\n"
+"#btnESAS:hover {\n"
 "	background-color: #00FF00;\n"
 "}\n"
 "\n"
-"#btnCheck {\n"
+"#btnMathematics {\n"
 "	background-color: #007acc;\n"
 "}\n"
 "\n"
-"#btnCheck:hover {\n"
-"	background-color: #0099FF;\n"
+"#btnMathematics:hover {\n"
+"	background-color: #0"
+                        "099FF;\n"
 "}\n"
 "\n"
-"#btnAnalysis {\n"
+"#btnEEPS {\n"
 "	background-color: #e6b800;\n"
 "}\n"
 "\n"
-"#btnAnal"
-                        "ysis:hover {\n"
+"#btnEEPS:hover {\n"
 "	background-color: #FFD11A;\n"
-"}\n"
-"\n"
-"#btnLogout {\n"
-"	background-color: #e62e00;\n"
-"}\n"
-"\n"
-"#btnLogout:hover {\n"
-"	background-color: #FF481A;\n"
 "}\n"
 "\n"
 "#menuFrame {\n"
@@ -140,26 +138,26 @@ class Ui_Generate(object):
 
         self.verticalLayout_2.addWidget(self.line)
 
-        self.btnGenerate = QPushButton(self.menuFrame)
-        self.btnGenerate.setObjectName(u"btnGenerate")
-        self.btnGenerate.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnGenerate.setIconSize(QSize(50, 50))
+        self.btnESAS = QPushButton(self.menuFrame)
+        self.btnESAS.setObjectName(u"btnESAS")
+        self.btnESAS.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnESAS.setIconSize(QSize(50, 50))
 
-        self.verticalLayout_2.addWidget(self.btnGenerate)
+        self.verticalLayout_2.addWidget(self.btnESAS)
 
-        self.btnCheck = QPushButton(self.menuFrame)
-        self.btnCheck.setObjectName(u"btnCheck")
-        self.btnCheck.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnCheck.setIconSize(QSize(50, 50))
+        self.btnMathematics = QPushButton(self.menuFrame)
+        self.btnMathematics.setObjectName(u"btnMathematics")
+        self.btnMathematics.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnMathematics.setIconSize(QSize(50, 50))
 
-        self.verticalLayout_2.addWidget(self.btnCheck)
+        self.verticalLayout_2.addWidget(self.btnMathematics)
 
-        self.btnAnalysis = QPushButton(self.menuFrame)
-        self.btnAnalysis.setObjectName(u"btnAnalysis")
-        self.btnAnalysis.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnAnalysis.setIconSize(QSize(50, 50))
+        self.btnEEPS = QPushButton(self.menuFrame)
+        self.btnEEPS.setObjectName(u"btnEEPS")
+        self.btnEEPS.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnEEPS.setIconSize(QSize(50, 50))
 
-        self.verticalLayout_2.addWidget(self.btnAnalysis)
+        self.verticalLayout_2.addWidget(self.btnEEPS)
 
 
         self.horizontalLayout.addWidget(self.menuFrame)
@@ -181,7 +179,7 @@ class Ui_Generate(object):
         self.frame.setFrameShadow(QFrame.Raised)
         self.btnBack = QPushButton(self.frame)
         self.btnBack.setObjectName(u"btnBack")
-        self.btnBack.setGeometry(QRect(370, 20, 201, 81))
+        self.btnBack.setGeometry(QRect(370, 10, 201, 91))
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -227,9 +225,9 @@ class Ui_Generate(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.labelMainMenuTitle.setText(QCoreApplication.translate("MainWindow", u"CHOOSE A CATEGORY", None))
-        self.btnGenerate.setText(QCoreApplication.translate("MainWindow", u"ESAS", None))
-        self.btnCheck.setText(QCoreApplication.translate("MainWindow", u"Mathematics", None))
-        self.btnAnalysis.setText(QCoreApplication.translate("MainWindow", u"EEPS", None))
+        self.btnESAS.setText(QCoreApplication.translate("MainWindow", u"ESAS", None))
+        self.btnMathematics.setText(QCoreApplication.translate("MainWindow", u"Mathematics", None))
+        self.btnEEPS.setText(QCoreApplication.translate("MainWindow", u"EEPS", None))
         self.btnBack.setText(QCoreApplication.translate("MainWindow", u"Back", None))
         self.logo.setText("")
         self.title.setText(QCoreApplication.translate("MainWindow", u"PROJECT: WattWise", None))

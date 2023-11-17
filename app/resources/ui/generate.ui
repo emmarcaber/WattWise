@@ -10,6 +10,9 @@
     <height>1012</height>
    </rect>
   </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -34,10 +37,15 @@
 }
 
 #btnBack {
-	background-color: lightblue;
-	color: black;
+	background-color: #4db8ff;
+	border-radius: 20px;
+	color: white;
 	margin-top: 10px;
 	font-size: 28px;
+}
+
+#btnBack:hover {
+	background-color: #1AA4FF;
 }
 
 #profileFrame {
@@ -54,36 +62,28 @@ QPushButton {
 	width: 500px;
 }
 
-#btnGenerate {
+#btnESAS {
 	background-color: #00cc00;
 }
 
-#btnGenerate:hover {
+#btnESAS:hover {
 	background-color: #00FF00;
 }
 
-#btnCheck {
+#btnMathematics {
 	background-color: #007acc;
 }
 
-#btnCheck:hover {
+#btnMathematics:hover {
 	background-color: #0099FF;
 }
 
-#btnAnalysis {
+#btnEEPS {
 	background-color: #e6b800;
 }
 
-#btnAnalysis:hover {
+#btnEEPS:hover {
 	background-color: #FFD11A;
-}
-
-#btnLogout {
-	background-color: #e62e00;
-}
-
-#btnLogout:hover {
-	background-color: #FF481A;
 }
 
 #menuFrame {
@@ -142,7 +142,7 @@ QPushButton {
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnGenerate">
+           <widget class="QPushButton" name="btnESAS">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -158,7 +158,7 @@ QPushButton {
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnCheck">
+           <widget class="QPushButton" name="btnMathematics">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -174,7 +174,7 @@ QPushButton {
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnAnalysis">
+           <widget class="QPushButton" name="btnEEPS">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -223,9 +223,9 @@ QPushButton {
           <property name="geometry">
            <rect>
             <x>370</x>
-            <y>20</y>
+            <y>10</y>
             <width>201</width>
-            <height>81</height>
+            <height>91</height>
            </rect>
           </property>
           <property name="sizePolicy">
