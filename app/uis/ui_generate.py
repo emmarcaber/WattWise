@@ -20,12 +20,12 @@ from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
     QSpacerItem, QVBoxLayout, QWidget)
 from app.resources import main_menu_rc
 
-class Ui_Generate(object):
+class Ui_GenerateWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1112, 1012)
-        MainWindow.setCursor(QCursor(Qt.PointingHandCursor))
+        MainWindow.setCursor(QCursor(Qt.ArrowCursor))
         MainWindow.setStyleSheet(u"#header {\n"
 "	background-color: #004d99;\n"
 "	padding-left: 10px;\n"
@@ -50,7 +50,8 @@ class Ui_Generate(object):
 "	border-radius: 20px;\n"
 "	color: white;\n"
 "	margin-top: 10px;\n"
-"	font-size: 28px;\n"
+"	font-size: 24px;\n"
+"	height: 50px;\n"
 "}\n"
 "\n"
 "#btnBack:hover {\n"
@@ -84,8 +85,8 @@ class Ui_Generate(object):
 "}\n"
 "\n"
 "#btnMathematics:hover {\n"
-"	background-color: #0"
-                        "099FF;\n"
+"	b"
+                        "ackground-color: #0099FF;\n"
 "}\n"
 "\n"
 "#btnEEPS {\n"
@@ -179,7 +180,7 @@ class Ui_Generate(object):
         self.frame.setFrameShadow(QFrame.Raised)
         self.btnBack = QPushButton(self.frame)
         self.btnBack.setObjectName(u"btnBack")
-        self.btnBack.setGeometry(QRect(370, 10, 201, 91))
+        self.btnBack.setGeometry(QRect(430, 10, 131, 81))
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

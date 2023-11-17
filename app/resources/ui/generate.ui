@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="cursor">
-   <cursorShape>PointingHandCursor</cursorShape>
+   <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -41,7 +41,8 @@
 	border-radius: 20px;
 	color: white;
 	margin-top: 10px;
-	font-size: 28px;
+	font-size: 24px;
+	height: 50px;
 }
 
 #btnBack:hover {
@@ -222,10 +223,10 @@ QPushButton {
          <widget class="QPushButton" name="btnBack">
           <property name="geometry">
            <rect>
-            <x>370</x>
+            <x>430</x>
             <y>10</y>
-            <width>201</width>
-            <height>91</height>
+            <width>131</width>
+            <height>81</height>
            </rect>
           </property>
           <property name="sizePolicy">
