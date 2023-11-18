@@ -6,107 +6,184 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1144</width>
-    <height>730</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#loginFrame {
-	background-color: #172F5F;
-	padding: 100px 300px;
+   <string notr="true">#formFrame {
+	background-color: white;
 }
 
-QLabel {
-	color: white;
-	font-size: 28px;
-	margin-top: 10px;
+#logoFrame {
+	background-color: #0067FF;
 }
 
-#lblTitle {
-	font-size: 60px;
-    font-weight: bold;
+#separator {
+	background-color: #0067FF;
+}
+
+#labelWelcome {
+	font-size: 40px;
+	margin-top: 80px;
+	margin-bottom: 30px;
+	font-family: Arial;
+}
+
+#labelIDNumber, #labelPassword {
+	font-size: 24px;
+	font-family: Arial;
+}
+
+#lineIDNumber, #linePassword {
+	font-size: 25px;
 	margin-bottom: 20px;
-}
-
-QLineEdit {
-	height: 50px;
-	margin-top: 10px;
-    border: 2px solid gray;
-	padding: 5px 15px;
-	font-size: 28px;
-}
-
-QLineEdit:hover {
-	border: 2px solid #007bff;
-}
-
-QLineEdit:focus {
-	border: 2px solid green;
+	font-family: Century Gothic;
+	padding: 10px 12px;
+	border: 2px solid #0067FF;
+	background-color: #0067FF; 
+	border-radius: 20px;
+	color: white;
 }
 
 #btnLogin {
+	font-size: 24px;
+	padding: 10px 12px;
 	margin-top: 30px;
-	height: 80px;
-	width: 100px;
+	background-color: #0067FF;
 	color: white;
-	background-color: green;
-	border-radius: 15px;
-	font-size: 28px;
+	height: 40px;
 }
 
 #btnLogin:hover {
-	border: 2px solid green;
-	color: green;
+	border: 2px solid #0067FF;
+	background-color: #eee;
+	color: black;
+}
+
+#btnSignUp {
+	font-size: 16px;
+	color: #0067FF;
 	background-color: white;
+	border: 0;
+}
+
+#btnSignUp:hover{
+	color: #3385FF;
 }</string>
   </property>
-  <widget class="QWidget" name="LoginWidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QFrame" name="loginFrame">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QFrame" name="logoFrame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="1">
-        <widget class="QLabel" name="lblTitle">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>300</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>300</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>300</width>
+           <height>300</height>
+          </size>
+         </property>
          <property name="text">
-          <string>WattWise</string>
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../qrc/main_menu_rc.qrc">:/images/assets/logo-white.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="lblUsername">
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="Line" name="separator">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="formFrame">
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="labelWelcome">
+         <property name="text">
+          <string>Welcome to WattWise!</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="labelIDNumber">
          <property name="text">
           <string>ID Number</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
+       <item row="2" column="0" colspan="2">
         <widget class="QLineEdit" name="lineIDNumber">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="placeholderText">
           <string>ID Number</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
-        <widget class="QLabel" name="lblPassword">
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="labelPassword">
          <property name="text">
           <string>Password</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="4" column="0" colspan="2">
         <widget class="QLineEdit" name="linePassword">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
          </property>
@@ -115,7 +192,7 @@ QLineEdit:focus {
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
+       <item row="5" column="0" colspan="2">
         <widget class="QPushButton" name="btnLogin">
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
@@ -125,12 +202,24 @@ QLineEdit:focus {
          </property>
         </widget>
        </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QPushButton" name="btnSignUp">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>Don't have an account? Sign up.</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../qrc/main_menu_rc.qrc"/>
+ </resources>
  <connections/>
 </ui>

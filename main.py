@@ -1,14 +1,14 @@
 import sys
 
 from PySide6.QtWidgets import QApplication
-from app.views.login_view import LoginForm
+from app.views.login_view import LoginWindow
 
 
 def main():
     app = QApplication(sys.argv)
 
-    # Create an instance of the LoginForm
-    login_form = LoginForm()
+    # Create an instance of the LoginWindow
+    login_form = LoginWindow()
     login_form.show()
 
     # Start the application event loop

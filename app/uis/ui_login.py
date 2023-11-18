@@ -15,110 +15,170 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QGridLayout,
+from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QHBoxLayout,
     QLabel, QLineEdit, QMainWindow, QPushButton,
     QSizePolicy, QWidget)
+from app.resources import main_menu_rc
 
-class Ui_Login(object):
+class Ui_LoginWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1144, 730)
-        MainWindow.setStyleSheet(u"#loginFrame {\n"
-"	background-color: #172F5F;\n"
-"	padding: 100px 300px;\n"
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet(u"#formFrame {\n"
+"	background-color: white;\n"
 "}\n"
 "\n"
-"QLabel {\n"
-"	color: white;\n"
-"	font-size: 28px;\n"
-"	margin-top: 10px;\n"
+"#logoFrame {\n"
+"	background-color: #0067FF;\n"
 "}\n"
 "\n"
-"#lblTitle {\n"
-"	font-size: 60px;\n"
-"    font-weight: bold;\n"
+"#separator {\n"
+"	background-color: #0067FF;\n"
+"}\n"
+"\n"
+"#labelWelcome {\n"
+"	font-size: 40px;\n"
+"	margin-top: 80px;\n"
+"	margin-bottom: 30px;\n"
+"	font-family: Arial;\n"
+"}\n"
+"\n"
+"#labelIDNumber, #labelPassword {\n"
+"	font-size: 24px;\n"
+"	font-family: Arial;\n"
+"}\n"
+"\n"
+"#lineIDNumber, #linePassword {\n"
+"	font-size: 25px;\n"
 "	margin-bottom: 20px;\n"
-"}\n"
-"\n"
-"QLineEdit {\n"
-"	height: 50px;\n"
-"	margin-top: 10px;\n"
-"    border: 2px solid gray;\n"
-"	padding: 5px 15px;\n"
-"	font-size: 28px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover {\n"
-"	border: 2px solid #007bff;\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"	border: 2px solid green;\n"
+"	font-family: Century Gothic;\n"
+"	padding: 10px 12px;\n"
+"	border: 2px solid #0067FF;\n"
+"	background-color: #0067FF; \n"
+"	border-radius: 20px;\n"
+"	color: white;\n"
 "}\n"
 "\n"
 "#btnLogin {\n"
+"	font-size: 24px;\n"
+"	padding: 10px 12px;\n"
 "	margin-top: 30px;\n"
-"	height: 80px;\n"
-"	width: 100px;\n"
+"	background-color: #0067FF;\n"
 "	color: white;\n"
-"	background-color: green;\n"
-"	border-radius: 15px;\n"
-"	font-size: 28px;\n"
+"	height: 40px;\n"
 "}\n"
 "\n"
 "#btnLogin:hover {\n"
-"	border: 2px solid green;\n"
-"	color: green;\n"
-"	background-color: white;\n"
+"	border: 2px solid #0067FF;\n"
+"	background-color: #eee;\n"
+"	color: black;\n"
+"}\n"
+"\n"
+"#btnSignUp {\n"
+"	font-size: 16px;\n"
+"	color: #0067FF;\n"
+"	background-color: whi"
+                        "te;\n"
+"	border: 0;\n"
+"}\n"
+"\n"
+"#btnSignUp:hover{\n"
+"	color: #3385FF;\n"
 "}")
-        self.LoginWidget = QWidget(MainWindow)
-        self.LoginWidget.setObjectName(u"LoginWidget")
-        self.gridLayout = QGridLayout(self.LoginWidget)
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.loginFrame = QFrame(self.LoginWidget)
-        self.loginFrame.setObjectName(u"loginFrame")
-        self.loginFrame.setFrameShape(QFrame.StyledPanel)
-        self.loginFrame.setFrameShadow(QFrame.Raised)
-        self.formLayout = QFormLayout(self.loginFrame)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.horizontalLayout = QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.logoFrame = QFrame(self.centralwidget)
+        self.logoFrame.setObjectName(u"logoFrame")
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.logoFrame.sizePolicy().hasHeightForWidth())
+        self.logoFrame.setSizePolicy(sizePolicy)
+        self.horizontalLayout_2 = QHBoxLayout(self.logoFrame)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label = QLabel(self.logoFrame)
+        self.label.setObjectName(u"label")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy1)
+        self.label.setMinimumSize(QSize(300, 300))
+        self.label.setMaximumSize(QSize(300, 300))
+        self.label.setBaseSize(QSize(300, 300))
+        self.label.setPixmap(QPixmap(u":/images/assets/logo-white.png"))
+        self.label.setScaledContents(True)
+        self.label.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_2.addWidget(self.label)
+
+
+        self.horizontalLayout.addWidget(self.logoFrame)
+
+        self.separator = QFrame(self.centralwidget)
+        self.separator.setObjectName(u"separator")
+        self.separator.setFrameShape(QFrame.VLine)
+        self.separator.setFrameShadow(QFrame.Sunken)
+
+        self.horizontalLayout.addWidget(self.separator)
+
+        self.formFrame = QFrame(self.centralwidget)
+        self.formFrame.setObjectName(u"formFrame")
+        self.formLayout = QFormLayout(self.formFrame)
         self.formLayout.setObjectName(u"formLayout")
-        self.lblTitle = QLabel(self.loginFrame)
-        self.lblTitle.setObjectName(u"lblTitle")
-        self.lblTitle.setAlignment(Qt.AlignCenter)
+        self.labelWelcome = QLabel(self.formFrame)
+        self.labelWelcome.setObjectName(u"labelWelcome")
+        self.labelWelcome.setAlignment(Qt.AlignCenter)
 
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.lblTitle)
+        self.formLayout.setWidget(0, QFormLayout.SpanningRole, self.labelWelcome)
 
-        self.lblUsername = QLabel(self.loginFrame)
-        self.lblUsername.setObjectName(u"lblUsername")
+        self.labelIDNumber = QLabel(self.formFrame)
+        self.labelIDNumber.setObjectName(u"labelIDNumber")
 
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.lblUsername)
+        self.formLayout.setWidget(1, QFormLayout.SpanningRole, self.labelIDNumber)
 
-        self.lineIDNumber = QLineEdit(self.loginFrame)
+        self.lineIDNumber = QLineEdit(self.formFrame)
         self.lineIDNumber.setObjectName(u"lineIDNumber")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.lineIDNumber.sizePolicy().hasHeightForWidth())
+        self.lineIDNumber.setSizePolicy(sizePolicy2)
 
-        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.lineIDNumber)
+        self.formLayout.setWidget(2, QFormLayout.SpanningRole, self.lineIDNumber)
 
-        self.lblPassword = QLabel(self.loginFrame)
-        self.lblPassword.setObjectName(u"lblPassword")
+        self.labelPassword = QLabel(self.formFrame)
+        self.labelPassword.setObjectName(u"labelPassword")
 
-        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.lblPassword)
+        self.formLayout.setWidget(3, QFormLayout.SpanningRole, self.labelPassword)
 
-        self.linePassword = QLineEdit(self.loginFrame)
+        self.linePassword = QLineEdit(self.formFrame)
         self.linePassword.setObjectName(u"linePassword")
+        sizePolicy2.setHeightForWidth(self.linePassword.sizePolicy().hasHeightForWidth())
+        self.linePassword.setSizePolicy(sizePolicy2)
         self.linePassword.setEchoMode(QLineEdit.Password)
 
-        self.formLayout.setWidget(5, QFormLayout.FieldRole, self.linePassword)
+        self.formLayout.setWidget(4, QFormLayout.SpanningRole, self.linePassword)
 
-        self.btnLogin = QPushButton(self.loginFrame)
+        self.btnLogin = QPushButton(self.formFrame)
         self.btnLogin.setObjectName(u"btnLogin")
         self.btnLogin.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.formLayout.setWidget(6, QFormLayout.FieldRole, self.btnLogin)
+        self.formLayout.setWidget(5, QFormLayout.SpanningRole, self.btnLogin)
+
+        self.btnSignUp = QPushButton(self.formFrame)
+        self.btnSignUp.setObjectName(u"btnSignUp")
+        self.btnSignUp.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.formLayout.setWidget(6, QFormLayout.SpanningRole, self.btnSignUp)
 
 
-        self.gridLayout.addWidget(self.loginFrame, 0, 0, 1, 1)
+        self.horizontalLayout.addWidget(self.formFrame)
 
-        MainWindow.setCentralWidget(self.LoginWidget)
+        MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
@@ -127,11 +187,13 @@ class Ui_Login(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.lblTitle.setText(QCoreApplication.translate("MainWindow", u"WattWise", None))
-        self.lblUsername.setText(QCoreApplication.translate("MainWindow", u"ID Number", None))
+        self.label.setText("")
+        self.labelWelcome.setText(QCoreApplication.translate("MainWindow", u"Welcome to WattWise!", None))
+        self.labelIDNumber.setText(QCoreApplication.translate("MainWindow", u"ID Number", None))
         self.lineIDNumber.setPlaceholderText(QCoreApplication.translate("MainWindow", u"ID Number", None))
-        self.lblPassword.setText(QCoreApplication.translate("MainWindow", u"Password", None))
+        self.labelPassword.setText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.linePassword.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.btnLogin.setText(QCoreApplication.translate("MainWindow", u"Login", None))
+        self.btnSignUp.setText(QCoreApplication.translate("MainWindow", u"Don't have an account? Sign up.", None))
     # retranslateUi
 

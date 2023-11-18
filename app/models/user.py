@@ -19,3 +19,6 @@ class User:
         cursor.close()
         return user_dict
 
+    @staticmethod
+    def read_first_names():
+        pass

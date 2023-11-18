@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="images">
+    <file>../../../assets/gg-removebg-preview.png</file>
+    <file>../../../assets/user.svg</file>
     <file>../../../assets/chevrons-left.svg</file>
     <file>../../../assets/arrow-left.svg</file>
     <file>../../../assets/archive.svg</file>

@@ -27,8 +27,8 @@ class MainMenu(QMainWindow, Ui_MainMenu):
         self.hide()
 
     def open_logout_window(self):
-        from app.views.login_view import LoginForm
+        from app.views.login_view import LoginWindow
 
-        self.login_window = LoginForm()
+        self.login_window = LoginWindow()
         self.login_window.show()
         self.hide()
