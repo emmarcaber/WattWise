@@ -11,9 +11,10 @@ class SignUpController(QObject):
         self.model = model
 
         # Connect signals from the view to controller methods
-        self.view.btnSignUp.clicked.connect(self.verify_student)
-        self.all_users = User.read_users()
-        # print(self.all_users)
+        self.view.btnSignUp.clicked.connect(self.verify_info)
+        self.student_names = User.read_student_names()
+        self.id_numbers = User.read_id_numbers()
+        # print(self.id_numbers)
 
     def message_box_error(self, text): 
         msg = QMessageBox()
@@ -30,29 +31,51 @@ class SignUpController(QObject):
         self.empty_fields()
 
     def empty_fields(self):
+        self.view.lineFirstName.setText("")
+        self.view.lineLastName.setText("")
+        self.view.lineIDNumber.setText("")
         self.view.linePassword.setText("")
+        self.view.lineConfirmPassword.setText("")
 
-    def verify_student(self):
+    def verify_info(self):
+        student_first_name = self.view.lineFirstName.text()
+        student_last_name = self.view.lineLastName.text()
         student_id = self.view.lineIDNumber.text()
         student_password = self.view.linePassword.text()
+        confirm_password = self.view.lineConfirmPassword.text()
 
-        if not student_id or not student_password:
+        # print(student_first_name, student_last_name, student_id, student_password, confirm_password)
+
+        if not student_first_name or not student_last_name or not student_id or not student_password or not confirm_password:
             msg = self.message_box_error("Please fill in all the fields!")
             msg.exec()
 
-        # Verify if there is existing student ID number in DB
-        elif (self.all_users.get(student_id)):
-            current_student = self.all_users.get(student_id)
+        elif f"{student_first_name} {student_last_name}" in self.student_names:
+            msg = self.message_box_error("Student name has been already registered!")
+            msg.exec()
+            self.empty_fields()
 
-            if current_student['password'] == student_password:
-                
-                self.main_menu_window = MainMenu(f"{current_student['first_name']} {current_student['last_name']}")
-                self.main_menu_window.show()
-                self.view.hide()
-                
+        elif student_id in self.id_numbers:
+            msg = self.message_box_error("Student ID Number has been already registered!")
+            msg.exec()
+            self.empty_fields()
 
-            else:
-                self.invalid_credentials_error()
+        elif student_password != confirm_password:
+            msg = self.message_box_error("Password does not matched!")
+            msg.exec()
+            self.view.lineConfirmPassword.setText("")
 
         else:
-            self.invalid_credentials_error()
+            User.register_user(student_first_name, student_last_name, student_id, student_password)
+
+            # Prompt a messagebox 
+            msg = QMessageBox()
+            msg.setWindowTitle("Success")
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("Student has been registered successfully!")
+            msg.exec()
+
+            # Redirect automatically to main menu
+            self.main_menu_window = MainMenu(f"{student_first_name} {student_last_name}")
+            self.main_menu_window.show()
+            self.view.hide()
