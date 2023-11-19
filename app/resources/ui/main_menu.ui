@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1112</width>
-    <height>887</height>
+    <height>955</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,11 +62,11 @@ QPushButton {
 	background-color: #0099FF;
 }
 
-#btnAnalysis {
+#btnProfile {
 	background-color: #e6b800;
 }
 
-#btnAnalysis:hover {
+#btnProfile:hover {
 	background-color: #FFD11A;
 }
 
@@ -234,21 +234,21 @@ QPushButton {
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnAnalysis">
+           <widget class="QPushButton" name="btnProfile">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
-             <string>Analysis</string>
+             <string>Profile</string>
             </property>
             <property name="icon">
              <iconset resource="../qrc/main_menu_rc.qrc">
-              <normaloff>:/images/assets/zoom-out.svg</normaloff>:/images/assets/zoom-out.svg</iconset>
+              <normaloff>:/images/assets/user.svg</normaloff>:/images/assets/user.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
-              <width>50</width>
-              <height>50</height>
+              <width>60</width>
+              <height>60</height>
              </size>
             </property>
            </widget>

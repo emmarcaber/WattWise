@@ -24,7 +24,7 @@ class Ui_MainMenu(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1112, 887)
+        MainWindow.resize(1112, 955)
         MainWindow.setStyleSheet(u"#header {\n"
 "	background-color: #004d99;\n"
 "	padding-left: 10px;\n"
@@ -73,11 +73,11 @@ class Ui_MainMenu(object):
 "	background-color: #0099FF;\n"
 "}\n"
 "\n"
-"#btnAnalysis {\n"
+"#btnProfile {\n"
 "	background-color: #e6b800;\n"
 "}\n"
 "\n"
-"#btnAnalysis:hover {\n"
+"#btnProfile:hover {\n"
 "	background-color: #FFD11A;\n"
 "}\n"
 "\n"
@@ -86,8 +86,8 @@ class Ui_MainMenu(object):
 "}\n"
 "\n"
 "#btnLogout:hover {\n"
-""
-                        "	background-color: #FF481A;\n"
+"	b"
+                        "ackground-color: #FF481A;\n"
 "}\n"
 "\n"
 "#menuFrame {\n"
@@ -196,15 +196,15 @@ class Ui_MainMenu(object):
 
         self.verticalLayout_2.addWidget(self.btnCheck)
 
-        self.btnAnalysis = QPushButton(self.menuFrame)
-        self.btnAnalysis.setObjectName(u"btnAnalysis")
-        self.btnAnalysis.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnProfile = QPushButton(self.menuFrame)
+        self.btnProfile.setObjectName(u"btnProfile")
+        self.btnProfile.setCursor(QCursor(Qt.PointingHandCursor))
         icon2 = QIcon()
-        icon2.addFile(u":/images/assets/zoom-out.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnAnalysis.setIcon(icon2)
-        self.btnAnalysis.setIconSize(QSize(50, 50))
+        icon2.addFile(u":/images/assets/user.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnProfile.setIcon(icon2)
+        self.btnProfile.setIconSize(QSize(60, 60))
 
-        self.verticalLayout_2.addWidget(self.btnAnalysis)
+        self.verticalLayout_2.addWidget(self.btnProfile)
 
         self.btnLogout = QPushButton(self.menuFrame)
         self.btnLogout.setObjectName(u"btnLogout")
@@ -238,7 +238,7 @@ class Ui_MainMenu(object):
         self.labelMainMenuTitle.setText(QCoreApplication.translate("MainWindow", u"MAIN MENU", None))
         self.btnGenerate.setText(QCoreApplication.translate("MainWindow", u"Generate", None))
         self.btnCheck.setText(QCoreApplication.translate("MainWindow", u"Check", None))
-        self.btnAnalysis.setText(QCoreApplication.translate("MainWindow", u"Analysis", None))
+        self.btnProfile.setText(QCoreApplication.translate("MainWindow", u"Profile", None))
         self.btnLogout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
     # retranslateUi
 
