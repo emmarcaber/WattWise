@@ -309,7 +309,7 @@ class Ui_EEPSWindow(object):
         self.btnControlSystem.setText(QCoreApplication.translate("MainWindow", u"Control System", None))
         self.btnPrinciplesCommunication.setText(QCoreApplication.translate("MainWindow", u"Principles of Communication", None))
         self.btnElectricalEquipment.setText(QCoreApplication.translate("MainWindow", u"Electrical Equipment", None))
-        self.btnComponentsDevices.setText(QCoreApplication.translate("MainWindow", u"Components Devices", None))
+        self.btnComponentsDevices.setText(QCoreApplication.translate("MainWindow", u"Components && Devices", None))
         self.btnElectricalMachines.setText(QCoreApplication.translate("MainWindow", u"Electrical Machines", None))
         self.btnPowerPlant.setText(QCoreApplication.translate("MainWindow", u"Power Plant", None))
         self.btnIllumination.setText(QCoreApplication.translate("MainWindow", u"Illumination", None))
