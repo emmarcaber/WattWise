@@ -24,7 +24,7 @@ class Ui_MathWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1503, 887)
+        MainWindow.resize(1503, 762)
         MainWindow.setCursor(QCursor(Qt.ArrowCursor))
         MainWindow.setStyleSheet(u"#header {\n"
 "	background-color: #004d99;\n"
@@ -216,12 +216,6 @@ class Ui_MathWindow(object):
 
         self.verticalLayout_2.addWidget(self.btnComplexNumbers)
 
-        self.btnProbabilityStatistics = QPushButton(self.frame_3)
-        self.btnProbabilityStatistics.setObjectName(u"btnProbabilityStatistics")
-        self.btnProbabilityStatistics.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.verticalLayout_2.addWidget(self.btnProbabilityStatistics)
-
         self.btnMatrices = QPushButton(self.frame_3)
         self.btnMatrices.setObjectName(u"btnMatrices")
 
@@ -256,11 +250,11 @@ class Ui_MathWindow(object):
 
         self.verticalLayout.addWidget(self.btnLaplaceTransforms)
 
-        self.btnRandom = QPushButton(self.frame_2)
-        self.btnRandom.setObjectName(u"btnRandom")
-        self.btnRandom.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnProbabilityStatistics = QPushButton(self.frame_2)
+        self.btnProbabilityStatistics.setObjectName(u"btnProbabilityStatistics")
+        self.btnProbabilityStatistics.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout.addWidget(self.btnRandom)
+        self.verticalLayout.addWidget(self.btnProbabilityStatistics)
 
 
         self.horizontalLayout_2.addWidget(self.frame_2)
@@ -297,12 +291,11 @@ class Ui_MathWindow(object):
         self.btnDifferentialEquations.setText(QCoreApplication.translate("MainWindow", u"Differential Equations", None))
         self.btnIntegralCalculus.setText(QCoreApplication.translate("MainWindow", u"Integral Calculus", None))
         self.btnComplexNumbers.setText(QCoreApplication.translate("MainWindow", u"Complex Numbers", None))
-        self.btnProbabilityStatistics.setText(QCoreApplication.translate("MainWindow", u"Probability && Statistics", None))
         self.btnMatrices.setText(QCoreApplication.translate("MainWindow", u"Matrices", None))
         self.btnPowerSeries.setText(QCoreApplication.translate("MainWindow", u"Power Series", None))
         self.btnFourierAnalysis.setText(QCoreApplication.translate("MainWindow", u"Fourier Analysis", None))
         self.btnLaplaceTransforms.setText(QCoreApplication.translate("MainWindow", u"Laplace Transforms", None))
-        self.btnRandom.setText(QCoreApplication.translate("MainWindow", u"RANDOM", None))
+        self.btnProbabilityStatistics.setText(QCoreApplication.translate("MainWindow", u"Probability && Statistics", None))
         self.labelSelection.setText(QCoreApplication.translate("MainWindow", u"Please choose a subcategory", None))
     # retranslateUi
 
