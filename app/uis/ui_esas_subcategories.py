@@ -298,7 +298,7 @@ class Ui_ESASWindow(object):
         self.btnPEC.setText(QCoreApplication.translate("MainWindow", u"Philippine Electrical Code \n"
 "Parts 1 && 2", None))
         self.btnComputerProgramming.setText(QCoreApplication.translate("MainWindow", u"Computer Fundamentals \n"
-"Programming", None))
+" && Programming", None))
         self.btnFluidMechanics.setText(QCoreApplication.translate("MainWindow", u"Fluid Mechanics", None))
         self.btnStrengthMaterials.setText(QCoreApplication.translate("MainWindow", u"Strength of Materials", None))
         self.btnThermodynamics.setText(QCoreApplication.translate("MainWindow", u"Thermodynamics", None))

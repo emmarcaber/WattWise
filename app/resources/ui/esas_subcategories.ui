@@ -251,7 +251,7 @@ Parts 1 &amp;&amp; 2</string>
                </property>
                <property name="text">
                 <string>Computer Fundamentals 
-Programming</string>
+ &amp;&amp; Programming</string>
                </property>
               </widget>
              </item>
