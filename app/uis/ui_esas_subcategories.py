@@ -209,11 +209,11 @@ class Ui_ESASWindow(object):
 
         self.verticalLayout_2.addWidget(self.btnThermodynamics)
 
-        self.btnComponentsDevices = QPushButton(self.frame_3)
-        self.btnComponentsDevices.setObjectName(u"btnComponentsDevices")
-        self.btnComponentsDevices.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnElectricalEngineeringLaw = QPushButton(self.frame_3)
+        self.btnElectricalEngineeringLaw.setObjectName(u"btnElectricalEngineeringLaw")
+        self.btnElectricalEngineeringLaw.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_2.addWidget(self.btnComponentsDevices)
+        self.verticalLayout_2.addWidget(self.btnElectricalEngineeringLaw)
 
         self.btnEngineeringEconomics = QPushButton(self.frame_3)
         self.btnEngineeringEconomics.setObjectName(u"btnEngineeringEconomics")
@@ -302,7 +302,7 @@ class Ui_ESASWindow(object):
         self.btnFluidMechanics.setText(QCoreApplication.translate("MainWindow", u"Fluid Mechanics", None))
         self.btnStrengthMaterials.setText(QCoreApplication.translate("MainWindow", u"Strength of Materials", None))
         self.btnThermodynamics.setText(QCoreApplication.translate("MainWindow", u"Thermodynamics", None))
-        self.btnComponentsDevices.setText(QCoreApplication.translate("MainWindow", u"Electrical Engineering Law", None))
+        self.btnElectricalEngineeringLaw.setText(QCoreApplication.translate("MainWindow", u"Electrical Engineering Law", None))
         self.btnEngineeringEconomics.setText(QCoreApplication.translate("MainWindow", u"Engineering Economics", None))
         self.btnEngineeringManagement.setText(QCoreApplication.translate("MainWindow", u"Engineering Management", None))
         self.btnContractsSpecifications.setText(QCoreApplication.translate("MainWindow", u"Contracts Specifications", None))

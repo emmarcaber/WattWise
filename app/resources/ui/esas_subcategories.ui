@@ -298,7 +298,7 @@ Parts 1 &amp;&amp; 2</string>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnComponentsDevices">
+              <widget class="QPushButton" name="btnElectricalEngineeringLaw">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
