@@ -170,30 +170,17 @@ class Ui_ESASWindow(object):
 
         self.verticalLayout_3.addWidget(self.btnCollegePhysics)
 
+        self.btnPEC = QPushButton(self.frame_4)
+        self.btnPEC.setObjectName(u"btnPEC")
+        self.btnPEC.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_3.addWidget(self.btnPEC)
+
         self.btnComputerProgramming = QPushButton(self.frame_4)
         self.btnComputerProgramming.setObjectName(u"btnComputerProgramming")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.btnComputerProgramming.sizePolicy().hasHeightForWidth())
-        self.btnComputerProgramming.setSizePolicy(sizePolicy1)
         self.btnComputerProgramming.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnComputerProgramming.setStyleSheet(u"")
-        self.btnComputerProgramming.setAutoRepeat(False)
 
         self.verticalLayout_3.addWidget(self.btnComputerProgramming)
-
-        self.btnEngineeringMaterials = QPushButton(self.frame_4)
-        self.btnEngineeringMaterials.setObjectName(u"btnEngineeringMaterials")
-        self.btnEngineeringMaterials.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.verticalLayout_3.addWidget(self.btnEngineeringMaterials)
-
-        self.btnEngineeringMechanics = QPushButton(self.frame_4)
-        self.btnEngineeringMechanics.setObjectName(u"btnEngineeringMechanics")
-        self.btnEngineeringMechanics.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.verticalLayout_3.addWidget(self.btnEngineeringMechanics)
 
 
         self.horizontalLayout_2.addWidget(self.frame_4)
@@ -261,19 +248,22 @@ class Ui_ESASWindow(object):
 
         self.verticalLayout.addWidget(self.btnCodeProfessionalEthics)
 
-        self.btnPEC = QPushButton(self.frame_2)
-        self.btnPEC.setObjectName(u"btnPEC")
-        sizePolicy1.setHeightForWidth(self.btnPEC.sizePolicy().hasHeightForWidth())
-        self.btnPEC.setSizePolicy(sizePolicy1)
-        self.btnPEC.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnEngineeringMaterials = QPushButton(self.frame_2)
+        self.btnEngineeringMaterials.setObjectName(u"btnEngineeringMaterials")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.btnEngineeringMaterials.sizePolicy().hasHeightForWidth())
+        self.btnEngineeringMaterials.setSizePolicy(sizePolicy1)
+        self.btnEngineeringMaterials.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout.addWidget(self.btnPEC)
+        self.verticalLayout.addWidget(self.btnEngineeringMaterials)
 
-        self.btnRandom = QPushButton(self.frame_2)
-        self.btnRandom.setObjectName(u"btnRandom")
-        self.btnRandom.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnEngineeringMechanics = QPushButton(self.frame_2)
+        self.btnEngineeringMechanics.setObjectName(u"btnEngineeringMechanics")
+        self.btnEngineeringMechanics.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout.addWidget(self.btnRandom)
+        self.verticalLayout.addWidget(self.btnEngineeringMechanics)
 
 
         self.horizontalLayout_2.addWidget(self.frame_2)
@@ -305,9 +295,10 @@ class Ui_ESASWindow(object):
         self.labelMainMenuTitle.setText(QCoreApplication.translate("MainWindow", u"Engineering Sciences and Allied Subjects (ESAS)", None))
         self.btnGeneralChemistry.setText(QCoreApplication.translate("MainWindow", u"General Chemistry", None))
         self.btnCollegePhysics.setText(QCoreApplication.translate("MainWindow", u"College Physics", None))
-        self.btnComputerProgramming.setText(QCoreApplication.translate("MainWindow", u"Computer Programming", None))
-        self.btnEngineeringMaterials.setText(QCoreApplication.translate("MainWindow", u"Engineering Materials", None))
-        self.btnEngineeringMechanics.setText(QCoreApplication.translate("MainWindow", u"Engineering Mechanics", None))
+        self.btnPEC.setText(QCoreApplication.translate("MainWindow", u"Philippine Electrical Code \n"
+"Parts 1 && 2", None))
+        self.btnComputerProgramming.setText(QCoreApplication.translate("MainWindow", u"Computer Fundamentals \n"
+"Programming", None))
         self.btnFluidMechanics.setText(QCoreApplication.translate("MainWindow", u"Fluid Mechanics", None))
         self.btnStrengthMaterials.setText(QCoreApplication.translate("MainWindow", u"Strength of Materials", None))
         self.btnThermodynamics.setText(QCoreApplication.translate("MainWindow", u"Thermodynamics", None))
@@ -316,9 +307,8 @@ class Ui_ESASWindow(object):
         self.btnEngineeringManagement.setText(QCoreApplication.translate("MainWindow", u"Engineering Management", None))
         self.btnContractsSpecifications.setText(QCoreApplication.translate("MainWindow", u"Contracts Specifications", None))
         self.btnCodeProfessionalEthics.setText(QCoreApplication.translate("MainWindow", u"Code of Professional Ethics", None))
-        self.btnPEC.setText(QCoreApplication.translate("MainWindow", u"Philippine Electrical Code \n"
-"Parts 1 && 2", None))
-        self.btnRandom.setText(QCoreApplication.translate("MainWindow", u"RANDOM", None))
+        self.btnEngineeringMaterials.setText(QCoreApplication.translate("MainWindow", u"Engineering Materials", None))
+        self.btnEngineeringMechanics.setText(QCoreApplication.translate("MainWindow", u"Engineering Mechanics", None))
         self.labelSelection.setText(QCoreApplication.translate("MainWindow", u"Please choose a subcategory", None))
     # retranslateUi
 

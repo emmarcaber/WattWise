@@ -234,44 +234,24 @@
               </widget>
              </item>
              <item>
+              <widget class="QPushButton" name="btnPEC">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>Philippine Electrical Code 
+Parts 1 &amp;&amp; 2</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QPushButton" name="btnComputerProgramming">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="text">
-                <string>Computer Programming</string>
-               </property>
-               <property name="autoRepeat">
-                <bool>false</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnEngineeringMaterials">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>Engineering Materials</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnEngineeringMechanics">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Engineering Mechanics</string>
+                <string>Computer Fundamentals 
+Programming</string>
                </property>
               </widget>
              </item>
@@ -380,7 +360,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnPEC">
+              <widget class="QPushButton" name="btnEngineeringMaterials">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -391,18 +371,17 @@
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>Philippine Electrical Code 
-Parts 1 &amp;&amp; 2</string>
+                <string>Engineering Materials</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnRandom">
+              <widget class="QPushButton" name="btnEngineeringMechanics">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>RANDOM</string>
+                <string>Engineering Mechanics</string>
                </property>
               </widget>
              </item>

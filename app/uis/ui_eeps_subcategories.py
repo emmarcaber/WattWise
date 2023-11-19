@@ -24,7 +24,7 @@ class Ui_EEPSWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1364, 992)
+        MainWindow.resize(1364, 994)
         MainWindow.setCursor(QCursor(Qt.ArrowCursor))
         MainWindow.setStyleSheet(u"#header {\n"
 "	background-color: #004d99;\n"
@@ -233,12 +233,6 @@ class Ui_EEPSWindow(object):
 
         self.verticalLayout_2.addWidget(self.btnElectricalMachines)
 
-        self.btnElectricSystems = QPushButton(self.frame_3)
-        self.btnElectricSystems.setObjectName(u"btnElectricSystems")
-        self.btnElectricSystems.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.verticalLayout_2.addWidget(self.btnElectricSystems)
-
 
         self.horizontalLayout_2.addWidget(self.frame_3)
 
@@ -272,11 +266,11 @@ class Ui_EEPSWindow(object):
 
         self.verticalLayout.addWidget(self.btnElectronicPowerEquipment)
 
-        self.btnRandom = QPushButton(self.frame_2)
-        self.btnRandom.setObjectName(u"btnRandom")
-        self.btnRandom.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnElectricSystems = QPushButton(self.frame_2)
+        self.btnElectricSystems.setObjectName(u"btnElectricSystems")
+        self.btnElectricSystems.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout.addWidget(self.btnRandom)
+        self.verticalLayout.addWidget(self.btnElectricSystems)
 
 
         self.horizontalLayout_2.addWidget(self.frame_2)
@@ -311,18 +305,17 @@ class Ui_EEPSWindow(object):
         self.btnEnergyConversion.setText(QCoreApplication.translate("MainWindow", u"Energy Conversion", None))
         self.btnPowerTransmissionDistribution.setText(QCoreApplication.translate("MainWindow", u"Power Transmission && Distribution", None))
         self.btnInstrumentationMeasurement.setText(QCoreApplication.translate("MainWindow", u"Instrumentation && Measurement", None))
-        self.btnCircuitLineProtection.setText(QCoreApplication.translate("MainWindow", u"Circuit and Line Protection", None))
+        self.btnCircuitLineProtection.setText(QCoreApplication.translate("MainWindow", u"Circuit && Line Protection", None))
         self.btnControlSystem.setText(QCoreApplication.translate("MainWindow", u"Control System", None))
         self.btnPrinciplesCommunication.setText(QCoreApplication.translate("MainWindow", u"Principles of Communication", None))
         self.btnElectricalEquipment.setText(QCoreApplication.translate("MainWindow", u"Electrical Equipment", None))
         self.btnComponentsDevices.setText(QCoreApplication.translate("MainWindow", u"Components Devices", None))
         self.btnElectricalMachines.setText(QCoreApplication.translate("MainWindow", u"Electrical Machines", None))
-        self.btnElectricSystems.setText(QCoreApplication.translate("MainWindow", u"Electric Systems", None))
         self.btnPowerPlant.setText(QCoreApplication.translate("MainWindow", u"Power Plant", None))
         self.btnIllumination.setText(QCoreApplication.translate("MainWindow", u"Illumination", None))
         self.btnBuildingWiring.setText(QCoreApplication.translate("MainWindow", u"Building Wiring", None))
         self.btnElectronicPowerEquipment.setText(QCoreApplication.translate("MainWindow", u"Electronic Power Equipment", None))
-        self.btnRandom.setText(QCoreApplication.translate("MainWindow", u"RANDOM", None))
+        self.btnElectricSystems.setText(QCoreApplication.translate("MainWindow", u"Electric Systems", None))
         self.labelSelection.setText(QCoreApplication.translate("MainWindow", u"Please choose a subcategory", None))
     # retranslateUi
 

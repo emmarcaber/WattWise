@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1364</width>
-    <height>992</height>
+    <height>994</height>
    </rect>
   </property>
   <property name="cursor">
@@ -269,7 +269,7 @@
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>Circuit and Line Protection</string>
+                <string>Circuit &amp;&amp; Line Protection</string>
                </property>
               </widget>
              </item>
@@ -335,16 +335,6 @@
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QPushButton" name="btnElectricSystems">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Electric Systems</string>
-               </property>
-              </widget>
-             </item>
             </layout>
            </widget>
           </item>
@@ -398,12 +388,12 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnRandom">
+              <widget class="QPushButton" name="btnElectricSystems">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>RANDOM</string>
+                <string>Electric Systems</string>
                </property>
               </widget>
              </item>
