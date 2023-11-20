@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
     QSpacerItem, QVBoxLayout, QWidget)
 from app.resources import main_menu_rc
 
-class Ui_GenerateWindow(object):
+class Ui_CategoriesWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")

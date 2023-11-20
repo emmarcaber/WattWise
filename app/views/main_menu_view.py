@@ -17,13 +17,13 @@ class MainMenu(QMainWindow, Ui_MainMenu):
 
     def modifyWindow(self):
         self.btnLogout.clicked.connect(self.open_logout_window)
-        self.btnGenerate.clicked.connect(self.open_generate_window)
+        self.btnGenerate.clicked.connect(self.open_categories_window)
 
-    def open_generate_window(self):
-        from app.views.generate_view import GenerateWindow
+    def open_categories_window(self):
+        from app.views.categories_view import CategoriesWindow
         
-        self.generate_window = GenerateWindow(self.student_name, main_menu_window = self)
-        self.generate_window.show()
+        self.categories_window = CategoriesWindow(self.student_name, main_menu_window = self)
+        self.categories_window.show()
         self.hide()
 
     def open_logout_window(self):

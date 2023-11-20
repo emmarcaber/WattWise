@@ -1,10 +1,10 @@
 from PySide6.QtWidgets import QMainWindow
-from ..uis.ui_generate import Ui_GenerateWindow
+from ..uis.ui_categories import Ui_CategoriesWindow
 from app.views.eeps_subcategories_view import EEPSWindow
 from app.views.esas_subcategories_view import ESASWindow
 from app.views.math_subcategories_view import MathWindow
 
-class GenerateWindow(QMainWindow, Ui_GenerateWindow):
+class CategoriesWindow(QMainWindow, Ui_CategoriesWindow):
     def __init__(self, student_name, main_menu_window = None):
         super().__init__()
 
