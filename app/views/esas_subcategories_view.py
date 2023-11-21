@@ -1,5 +1,9 @@
 from PySide6.QtWidgets import QMainWindow
 from ..uis.ui_esas_subcategories import Ui_ESASWindow
+from app.models.question import Question
+from app.models.option import Option
+
+import random
 
 class ESASWindow(QMainWindow, Ui_ESASWindow):
     def __init__(self, student_name, categories_window = None):
@@ -9,6 +13,9 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.setWindowTitle("WattWise | ESAS")
         self.student_name = student_name
         self.categories_window = categories_window
+
+        self.question = Question()
+        self.option = Option()
 
         self.showMaximized()
 
@@ -32,10 +39,59 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.btnEngineeringMaterials.clicked.connect(self.generate_engineeringMaterials)
         self.btnEngineeringMechanics.clicked.connect(self.generate_engineeringMechanics)
 
-    
-    def generate_generalChemistry(self):
-        print("General Chemistry")
 
+    def format_questions_and_options(self, questions, options):
+        formatted_questions = {}
+
+        # Get all the questions first
+        for question in questions:
+            question_text = question["text"]
+            question_id = question["id"]
+            correct_option = question["correct_option"]
+
+            question_options = {}
+            
+            # Iterate through all the options
+            # and if matches the questionId, include it
+            for option in options:
+                if option['questionId'] == question_id:
+                    question_options[option['option']] = option['text']
+        
+            # Finalize and format the questions
+            formatted_questions[question_text] = {
+                "options": question_options,
+                "correct_option": correct_option,
+            }
+
+        return formatted_questions
+
+
+
+    def generate_generalChemistry(self):
+        subcategory_name = "General Chemistry"
+        print(subcategory_name)
+
+        questions_from_db = Question.get_questions_by_subcategories(subcategory_name)
+        options_from_db = Option.get_options_by_subcategories(subcategory_name)
+
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options(questions_from_db, options_from_db)
+        
+        # Select random 20 questions from DB without replicates
+        selected_questions = random.sample(list(formatted_questions.keys()), 20)
+
+        # Print the formatted data for the selected questions
+        count = 1
+        for question_text in selected_questions:
+            question_data = formatted_questions[question_text]
+            print(f"{count}. Question: {question_text}")
+            print("Options:")
+            for option, text in question_data['options'].items():
+                print(f"{option}: {text}")
+            print(f"Correct Option: {question_data['correct_option']}")
+            print()
+            count += 1
+       
     
     def generate_collegePhysics(self):
         print("College Physics")
