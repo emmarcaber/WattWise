@@ -9,6 +9,17 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         # Get the questions
         self.questions = questions
 
+        # count = 1
+        # for question_text in selected_questions:
+        #     question_data = formatted_questions[question_text]
+        #     print(f"{count}. Question: {question_text}")
+        #     print("Options:")
+        #     for option, text in question_data['options'].items():
+        #         print(f"{option}: {text}")
+        #     print(f"Correct Option: {question_data['correct_option']}")
+        #     print()
+        #     count += 1
+
         self.setupUi(self)
         self.setWindowTitle(f"WattWise | {window_title}")
         self.labelSubcategory.setText(window_title)

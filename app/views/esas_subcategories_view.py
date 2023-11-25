@@ -94,7 +94,7 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         #     print()
         #     count += 1
         
-        self.randomize_window = RandomizeWindow("ESAS - General Chemistry", selected_questions, subcategories_window=self)
+        self.randomize_window = RandomizeWindow("ESAS - General Chemistry", formatted_questions, subcategories_window=self)
         self.randomize_window.show()
         self.hide()
        
