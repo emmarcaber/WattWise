@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="images">
+    <file>../../../assets/check-circle.svg</file>
+    <file>../../../assets/refresh-ccw.svg</file>
     <file>../../../assets/gg-removebg-preview.png</file>
     <file>../../../assets/user.svg</file>
     <file>../../../assets/chevrons-left.svg</file>

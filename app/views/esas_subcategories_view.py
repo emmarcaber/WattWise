@@ -1,5 +1,7 @@
 from PySide6.QtWidgets import QMainWindow
 from ..uis.ui_esas_subcategories import Ui_ESASWindow
+from app.views.randomize_view import RandomizeWindow
+
 from app.models.question import Question
 from app.models.option import Option
 
@@ -80,17 +82,21 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         # Select random 20 questions from DB without replicates
         selected_questions = random.sample(list(formatted_questions.keys()), 20)
 
-        # Print the formatted data for the selected questions
-        count = 1
-        for question_text in selected_questions:
-            question_data = formatted_questions[question_text]
-            print(f"{count}. Question: {question_text}")
-            print("Options:")
-            for option, text in question_data['options'].items():
-                print(f"{option}: {text}")
-            print(f"Correct Option: {question_data['correct_option']}")
-            print()
-            count += 1
+        # # Print the formatted data for the selected questions
+        # count = 1
+        # for question_text in selected_questions:
+        #     question_data = formatted_questions[question_text]
+        #     print(f"{count}. Question: {question_text}")
+        #     print("Options:")
+        #     for option, text in question_data['options'].items():
+        #         print(f"{option}: {text}")
+        #     print(f"Correct Option: {question_data['correct_option']}")
+        #     print()
+        #     count += 1
+        
+        self.randomize_window = RandomizeWindow("ESAS - General Chemistry", selected_questions, subcategories_window=self)
+        self.randomize_window.show()
+        self.hide()
        
     
     def generate_collegePhysics(self):
