@@ -50,7 +50,12 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.btnEngineeringMaterials.clicked.connect(self.generate_engineeringMaterials)
         self.btnEngineeringMechanics.clicked.connect(self.generate_engineeringMechanics)
 
-    def format_questions_and_options(self, questions, options):
+    def format_questions_and_options(self, subcategory_name):
+        # Get the questions and options from db
+        questions = Question.get_questions_by_subcategories(subcategory_name)
+        options = Option.get_options_by_subcategories(subcategory_name)
+
+        # Initialize an empty dict that will hold questions
         formatted_questions = {}
 
         # Get all the questions first
@@ -84,16 +89,8 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         return shuffle_formatted_questions
 
     def generate_generalChemistry(self):
-        subcategory_name = "General Chemistry"
-        # print(subcategory_name)
-
-        questions_from_db = Question.get_questions_by_subcategories(subcategory_name)
-        options_from_db = Option.get_options_by_subcategories(subcategory_name)
-
         # Get all the questions from db and format it
-        formatted_questions = self.format_questions_and_options(
-            questions_from_db, options_from_db
-        )
+        formatted_questions = self.format_questions_and_options("General Chemistry")
 
         self.randomize_window = RandomizeWindow(
             "ESAS - General Chemistry",
