@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QMainWindow, QMessageBox
 
 from ..uis.ui_randomize import Ui_RandomizeWindow
+from app.views.print_view import PrintWindow
 
 from app.models.test import Test
 
@@ -82,6 +83,7 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         self.add_questions_to_textEdit()
 
     def finalize_paper(self):
+        # Generate the paper to print
         self.test_controller.generator(
             self.student_id,
             self.student_name,
@@ -89,6 +91,13 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
             self.test_id,
             self.questions,
         )
+
+        # Proceed to open the printing window
+        self.print_window = PrintWindow(
+            self.student_name, self.student_id, randomize_window=self
+        )
+        self.print_window.show()
+        self.hide()
 
     def back_to_subcategories_window(self):
         if self.subcategories_window:

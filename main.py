@@ -1,10 +1,13 @@
 import sys
 
 from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import Qt
 from app.views.login_view import LoginWindow
 
 
 def main():
+    QApplication.setAttribute(Qt.AA_ShareOpenGLContexts, True)
+
     app = QApplication(sys.argv)
 
     # Create an instance of the LoginWindow
