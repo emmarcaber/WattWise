@@ -38,6 +38,6 @@ class Test:
             connection.commit()
             print("Test created successfully!")
         except sqlite3.Error as e:
-            print(f"Error registering user: {e}")
+            print(f"Error creating test: {e}")
         finally:
             connection.close()
