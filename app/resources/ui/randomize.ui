@@ -63,22 +63,22 @@
 	margin-bottom: 10px;
 }
 
+#mainFrame #btnFinalize {
+	background-color: #00CC00;
+}
+
+#mainFrame #btnFinalize:hover {
+	background-color: #00FF00;
+}
+
 #mainFrame QPushButton:hover {
 	background-color: #0067CC;
 }
 
-#mainFrame #btnPrint {
-	background-color: green;
-}
-
-#menuFrame #btnPrint:hover {
-	background-color: #398416;
-}
 
 #labelSubcategory {
-	font-size: 28px;
+	font-size: 32px;
 	font-weight: bold;
-	font-family: Arial;
 	margin-bottom: 10px;
 }
 
@@ -230,7 +230,7 @@
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QPushButton" name="btnPrint">
+           <widget class="QPushButton" name="btnFinalize">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -274,6 +274,9 @@
          </property>
          <property name="cursor" stdset="0">
           <cursorShape>IBeamCursor</cursorShape>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

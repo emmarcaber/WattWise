@@ -7,8 +7,9 @@ from app.models.option import Option
 
 import random
 
+
 class ESASWindow(QMainWindow, Ui_ESASWindow):
-    def __init__(self, student_name, categories_window = None):
+    def __init__(self, student_name, categories_window=None):
         super().__init__()
 
         self.setupUi(self)
@@ -33,14 +34,21 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.btnFluidMechanics.clicked.connect(self.generate_fluidMechanics)
         self.btnStrengthMaterials.clicked.connect(self.generate_strengthMaterials)
         self.btnThermodynamics.clicked.connect(self.generate_thermodynamics)
-        self.btnElectricalEngineeringLaw.clicked.connect(self.generate_electricalEngineeringLaw)
+        self.btnElectricalEngineeringLaw.clicked.connect(
+            self.generate_electricalEngineeringLaw
+        )
         self.btnEngineeringEconomics.clicked.connect(self.generate_engineeringEconomics)
-        self.btnEngineeringManagement.clicked.connect(self.generate_engineeringManagement)
-        self.btnContractsSpecifications.clicked.connect(self.generate_contractsSpecifications)
-        self.btnCodeProfessionalEthics.clicked.connect(self.generate_codeProfessionalEthics)
+        self.btnEngineeringManagement.clicked.connect(
+            self.generate_engineeringManagement
+        )
+        self.btnContractsSpecifications.clicked.connect(
+            self.generate_contractsSpecifications
+        )
+        self.btnCodeProfessionalEthics.clicked.connect(
+            self.generate_codeProfessionalEthics
+        )
         self.btnEngineeringMaterials.clicked.connect(self.generate_engineeringMaterials)
         self.btnEngineeringMechanics.clicked.connect(self.generate_engineeringMechanics)
-
 
     def format_questions_and_options(self, questions, options):
         formatted_questions = {}
@@ -52,104 +60,88 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
             correct_option = question["correct_option"]
 
             question_options = {}
-            
+
             # Iterate through all the options
             # and if matches the questionId, include it
             for option in options:
-                if option['questionId'] == question_id:
-                    question_options[option['option']] = option['text']
-        
+                if option["questionId"] == question_id:
+                    question_options[option["option"]] = option["text"]
+
             # Finalize and format the questions
             formatted_questions[question_text] = {
                 "options": question_options,
                 "correct_option": correct_option,
             }
 
-        return formatted_questions
+        # Select random 20 questions from DB without replicates
+        selected_questions = random.sample(list(formatted_questions.keys()), 20)
 
+        # Shuffle the formatted questions based on selected random 20 questions
+        shuffle_formatted_questions = {
+            key: formatted_questions[key] for key in selected_questions
+        }
 
+        return shuffle_formatted_questions
 
     def generate_generalChemistry(self):
         subcategory_name = "General Chemistry"
-        print(subcategory_name)
+        # print(subcategory_name)
 
         questions_from_db = Question.get_questions_by_subcategories(subcategory_name)
         options_from_db = Option.get_options_by_subcategories(subcategory_name)
 
         # Get all the questions from db and format it
-        formatted_questions = self.format_questions_and_options(questions_from_db, options_from_db)
-        
-        # Select random 20 questions from DB without replicates
-        selected_questions = random.sample(list(formatted_questions.keys()), 20)
+        formatted_questions = self.format_questions_and_options(
+            questions_from_db, options_from_db
+        )
 
-        # # Print the formatted data for the selected questions
-        # count = 1
-        # for question_text in selected_questions:
-        #     question_data = formatted_questions[question_text]
-        #     print(f"{count}. Question: {question_text}")
-        #     print("Options:")
-        #     for option, text in question_data['options'].items():
-        #         print(f"{option}: {text}")
-        #     print(f"Correct Option: {question_data['correct_option']}")
-        #     print()
-        #     count += 1
-        
-        self.randomize_window = RandomizeWindow("ESAS - General Chemistry", formatted_questions, subcategories_window=self)
+        self.randomize_window = RandomizeWindow(
+            "ESAS - General Chemistry",
+            formatted_questions,
+            subcategories_window=self,
+        )
+
         self.randomize_window.show()
         self.hide()
-       
-    
+
     def generate_collegePhysics(self):
         print("College Physics")
 
-    
     def generate_PEC(self):
         print("Philippine Electrical Code Parts 1 and 2")
 
-    
     def generate_computerProgramming(self):
         print("Computer Fundamentals and Programming")
 
-    
     def generate_fluidMechanics(self):
         print("Fluid Mechanics")
 
-    
     def generate_strengthMaterials(self):
         print("Strength of Materials")
 
-    
     def generate_thermodynamics(self):
         print("Thermodynamics")
 
-    
     def generate_electricalEngineeringLaw(self):
         print("Electrical Engineering Law")
 
-    
     def generate_engineeringEconomics(self):
         print("Engineering Economics")
 
-    
     def generate_engineeringManagement(self):
         print("Engineering Management")
 
-    
     def generate_contractsSpecifications(self):
         print("Contracts Specifications")
 
-    
     def generate_codeProfessionalEthics(self):
         print("Code of Professional Ethics")
 
-    
     def generate_engineeringMaterials(self):
         print("Engineering Materials")
 
-    
     def generate_engineeringMechanics(self):
         print("Engineering Mechanics")
-
 
     def back_to_categories_window(self):
         if self.back_to_categories_window:
