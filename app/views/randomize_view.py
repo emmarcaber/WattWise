@@ -6,6 +6,7 @@ from app.views.print_view import PrintWindow
 from app.models.test import Test
 
 import random
+from datetime import datetime
 
 from app.controllers.test_controller import TestController
 
@@ -90,6 +91,24 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
             self.category_subcategory,
             self.test_id,
             self.questions,
+        )
+
+        # Get all the correct answers of the test
+        correct_answers = ""
+        for question in self.questions.values():
+            correct_answers += f"{question['correct_option']}, "
+
+        # Get the current date
+        current_date = datetime.now()
+        formatted_date = current_date.strftime("%B %d, %Y")
+        # print(formatted_date)
+
+        Test.create_test(
+            self.test_id,
+            self.category_subcategory,
+            self.student_id,
+            correct_answers,
+            formatted_date,
         )
 
         # Proceed to open the printing window
