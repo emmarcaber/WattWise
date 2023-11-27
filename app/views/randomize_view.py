@@ -37,7 +37,7 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
             for option, text in options.items():
                 prev_content = self.txtEditQuestions.toPlainText()
                 self.txtEditQuestions.setPlainText(
-                    f"{prev_content} {option}. {text} \n"
+                    f"{prev_content}    {option}. {text} \n"
                 )
 
             prev_content = self.txtEditQuestions.toPlainText()
