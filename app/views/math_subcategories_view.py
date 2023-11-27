@@ -80,7 +80,17 @@ class MathWindow(QMainWindow, Ui_MathWindow):
         return shuffle_formatted_questions
 
     def generate_algebra(self):
-        print("Algebra")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options("Algebra")
+
+        self.randomize_window = RandomizeWindow(
+            "Mathematics - Algebra",
+            formatted_questions,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_trigonometry(self):
         print("Trigonometry")
