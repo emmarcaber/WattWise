@@ -28,13 +28,22 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
     def add_questions_to_textEdit(self):
         self.txtEditQuestions.setPlainText(" QUESTIONS: \n\n")
 
-        questions = list(self.questions.keys())
-
-        for i in range((len(questions))):
+        count = 1
+        for question, details in self.questions.items():
             prev_content = self.txtEditQuestions.toPlainText()
-            self.txtEditQuestions.setPlainText(
-                f"{prev_content} {i + 1}. {questions[i]} \n\n"
-            )
+            self.txtEditQuestions.setPlainText(f"{prev_content} {count}. {question} \n")
+
+            options = details["options"]
+            for option, text in options.items():
+                prev_content = self.txtEditQuestions.toPlainText()
+                self.txtEditQuestions.setPlainText(
+                    f"{prev_content} {option}. {text} \n"
+                )
+
+            prev_content = self.txtEditQuestions.toPlainText()
+            self.txtEditQuestions.setPlainText(f"{prev_content} \n")
+
+            count += 1
 
     def randomize_questions(self):
         old_questions = self.questions.copy()
