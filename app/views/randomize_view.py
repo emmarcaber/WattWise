@@ -1,6 +1,9 @@
 from PySide6.QtWidgets import QMainWindow, QMessageBox
 
 from ..uis.ui_randomize import Ui_RandomizeWindow
+
+from app.models.test import Test
+
 import random
 
 
@@ -16,6 +19,8 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         self.labelSubcategory.setText(window_title)
 
         self.subcategories_window = subcategories_window
+
+        new_last_test_id = Test.new_last_test_id()
 
         self.showMaximized()
         self.modifyWindow()
