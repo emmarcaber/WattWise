@@ -91,7 +91,7 @@ class Ui_PrintWindow(object):
             "\n"
             "#mainFrame {\n"
             "	border: 2px solid #0073e6;\n"
-            "   margin-left: 10px;"
+            "   margin-left: 3px;"
             "   margin-right: 10px;"
             "}"
         )
