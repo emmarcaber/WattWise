@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QMessageBox, QMainWindow
 from app.models.user import User
 from app.views.main_menu_view import MainMenu
 
+
 class LoginController(QObject):
     def __init__(self, view, model):
         super().__init__()
@@ -15,13 +16,13 @@ class LoginController(QObject):
         self.all_users = User.read_users()
         # print(self.all_users)
 
-    def message_box_error(self, text): 
+    def message_box_error(self, text):
         msg = QMessageBox()
         msg.setWindowTitle("Error")
         msg.setIcon(QMessageBox.Critical)
         msg.setText(text)
         return msg
-    
+
     def invalid_credentials_error(self):
         msg = self.message_box_error("Invalid ID Number or Password!")
         msg.exec()
@@ -41,15 +42,16 @@ class LoginController(QObject):
             msg.exec()
 
         # Verify if there is existing student ID number in DB
-        elif (self.all_users.get(student_id)):
+        elif self.all_users.get(student_id):
             current_student = self.all_users.get(student_id)
 
-            if current_student['password'] == student_password:
-                
-                self.main_menu_window = MainMenu(f"{current_student['first_name']} {current_student['last_name']}")
+            if current_student["password"] == student_password:
+                self.main_menu_window = MainMenu(
+                    f"{current_student['first_name']} {current_student['last_name']}",
+                    student_id,
+                )
                 self.main_menu_window.show()
                 self.view.hide()
-                
 
             else:
                 self.invalid_credentials_error()

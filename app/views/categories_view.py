@@ -4,13 +4,15 @@ from app.views.eeps_subcategories_view import EEPSWindow
 from app.views.esas_subcategories_view import ESASWindow
 from app.views.math_subcategories_view import MathWindow
 
+
 class CategoriesWindow(QMainWindow, Ui_CategoriesWindow):
-    def __init__(self, student_name, main_menu_window = None):
+    def __init__(self, student_name, student_id, main_menu_window=None):
         super().__init__()
 
         self.setupUi(self)
         self.setWindowTitle("WattWise | Generate")
         self.student_name = student_name
+        self.student_id = student_id
         self.main_menu_window = main_menu_window
 
         self.showMaximized()
@@ -24,17 +26,17 @@ class CategoriesWindow(QMainWindow, Ui_CategoriesWindow):
         self.btnMathematics.clicked.connect(self.open_MathWindow)
 
     def open_EEPSWindow(self):
-        self.eeps_window = EEPSWindow(self.student_name, self)
+        self.eeps_window = EEPSWindow(self.student_name, self.student_id, self)
         self.eeps_window.show()
         self.hide()
 
     def open_ESASWindow(self):
-        self.esas_window = ESASWindow(self.student_name, self)
+        self.esas_window = ESASWindow(self.student_name, self.student_id, self)
         self.esas_window.show()
         self.hide()
 
     def open_MathWindow(self):
-        self.math_window = MathWindow(self.student_name, self)
+        self.math_window = MathWindow(self.student_name, self.student_id, self)
         self.math_window.show()
         self.hide()
 

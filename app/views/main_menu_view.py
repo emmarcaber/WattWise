@@ -1,14 +1,16 @@
 from PySide6.QtWidgets import QMainWindow
 from ..uis.ui_main_menu import Ui_MainMenu
 
+
 class MainMenu(QMainWindow, Ui_MainMenu):
-    def __init__(self, student_name):
+    def __init__(self, student_name, student_id):
         super().__init__()
 
         self.setupUi(self)
         self.setWindowTitle("WattWise | Main Menu")
 
         self.student_name = student_name
+        self.student_id = student_id
         self.labelStudentName.setText(student_name + "!")
 
         self.showMaximized()
@@ -21,8 +23,10 @@ class MainMenu(QMainWindow, Ui_MainMenu):
 
     def open_categories_window(self):
         from app.views.categories_view import CategoriesWindow
-        
-        self.categories_window = CategoriesWindow(self.student_name, main_menu_window = self)
+
+        self.categories_window = CategoriesWindow(
+            self.student_name, self.student_id, main_menu_window=self
+        )
         self.categories_window.show()
         self.hide()
 

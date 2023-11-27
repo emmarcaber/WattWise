@@ -8,11 +8,20 @@ import random
 
 
 class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
-    def __init__(self, window_title, questions, subcategories_window=None):
+    def __init__(
+        self,
+        window_title,
+        questions,
+        student_name,
+        student_id,
+        subcategories_window=None,
+    ):
         super().__init__()
 
         # Get the questions
         self.questions = questions
+        self.student_id = student_id
+        self.student_name = student_name
 
         self.setupUi(self)
         self.setWindowTitle(f"WattWise | {window_title}")
@@ -21,6 +30,7 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         self.subcategories_window = subcategories_window
 
         new_last_test_id = Test.new_last_test_id()
+        # print(self.questions)
 
         self.showMaximized()
         self.modifyWindow()

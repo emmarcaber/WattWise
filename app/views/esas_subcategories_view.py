@@ -9,12 +9,13 @@ import random
 
 
 class ESASWindow(QMainWindow, Ui_ESASWindow):
-    def __init__(self, student_name, categories_window=None):
+    def __init__(self, student_name, student_id, categories_window=None):
         super().__init__()
 
         self.setupUi(self)
         self.setWindowTitle("WattWise | ESAS")
         self.student_name = student_name
+        self.student_id = student_id
         self.categories_window = categories_window
 
         self.question = Question()
@@ -95,6 +96,8 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.randomize_window = RandomizeWindow(
             "ESAS - General Chemistry",
             formatted_questions,
+            self.student_name,
+            self.student_id,
             subcategories_window=self,
         )
 

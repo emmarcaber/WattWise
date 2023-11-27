@@ -9,12 +9,13 @@ import random
 
 
 class MathWindow(QMainWindow, Ui_MathWindow):
-    def __init__(self, student_name, categories_window=None):
+    def __init__(self, student_name, student_id, categories_window=None):
         super().__init__()
 
         self.setupUi(self)
         self.setWindowTitle("WattWise | Mathematics")
         self.student_name = student_name
+        self.student_id = student_id
         self.categories_window = categories_window
 
         self.showMaximized()
@@ -86,6 +87,8 @@ class MathWindow(QMainWindow, Ui_MathWindow):
         self.randomize_window = RandomizeWindow(
             "Mathematics - Algebra",
             formatted_questions,
+            self.student_name,
+            self.student_id,
             subcategories_window=self,
         )
 
