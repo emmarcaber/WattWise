@@ -6,6 +6,8 @@ from app.models.test import Test
 
 import random
 
+from app.controllers.test_controller import TestController
+
 
 class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
     def __init__(
@@ -22,6 +24,10 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         self.questions = questions
         self.student_id = student_id
         self.student_name = student_name
+        self.test_id = Test.new_last_test_id()
+        self.category_subcategory = window_title
+
+        self.test_controller = TestController()
 
         self.setupUi(self)
         self.setWindowTitle(f"WattWise | {window_title}")
@@ -29,7 +35,6 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
 
         self.subcategories_window = subcategories_window
 
-        new_last_test_id = Test.new_last_test_id()
         # print(self.questions)
 
         self.showMaximized()
@@ -38,6 +43,7 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
     def modifyWindow(self):
         self.btnBack.clicked.connect(self.back_to_subcategories_window)
         self.btnRandomize.clicked.connect(self.randomize_questions)
+        self.btnFinalize.clicked.connect(self.finalize_paper)
         self.add_questions_to_textEdit()
 
     def add_questions_to_textEdit(self):
@@ -74,6 +80,15 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         msg.exec()
 
         self.add_questions_to_textEdit()
+
+    def finalize_paper(self):
+        self.test_controller.generator(
+            self.student_id,
+            self.student_name,
+            self.category_subcategory,
+            self.test_id,
+            self.questions,
+        )
 
     def back_to_subcategories_window(self):
         if self.subcategories_window:
