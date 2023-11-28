@@ -21,7 +21,7 @@ class Test:
         last_id = last_row[0]
 
         prefix, numeric_part = last_id.split("-T")
-        incremented_numeric_part = str(int(numeric_part) + 1)
+        incremented_numeric_part = str(int(numeric_part) + 1).zfill(len(numeric_part))
         return f"{prefix}-T{incremented_numeric_part}"
 
     @staticmethod

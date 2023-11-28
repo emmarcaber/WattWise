@@ -83,6 +83,17 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
 
         self.add_questions_to_textEdit()
 
+        # Disable the randomize button after one click
+        self.btnRandomize.setEnabled(False)
+
+        self.btnRandomize.setStyleSheet(
+            """
+        QPushButton {
+            background-color: #DDDDDD;
+        }
+                                        """
+        )
+
     def finalize_paper(self):
         # Generate the paper to print
         self.test_controller.generator(
@@ -103,6 +114,7 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         formatted_date = current_date.strftime("%B %d, %Y")
         # print(formatted_date)
 
+        print(self.test_id)
         Test.create_test(
             self.test_id,
             self.category_subcategory,
