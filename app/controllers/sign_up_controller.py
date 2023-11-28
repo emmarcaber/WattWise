@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QMessageBox, QMainWindow
 from app.models.user import User
 from app.views.main_menu_view import MainMenu
 
+
 class SignUpController(QObject):
     def __init__(self, view, model):
         super().__init__()
@@ -16,13 +17,13 @@ class SignUpController(QObject):
         self.id_numbers = User.read_id_numbers()
         # print(self.id_numbers)
 
-    def message_box_error(self, text): 
+    def message_box_error(self, text):
         msg = QMessageBox()
         msg.setWindowTitle("Error")
         msg.setIcon(QMessageBox.Critical)
         msg.setText(text)
         return msg
-    
+
     def invalid_credentials_error(self):
         msg = self.message_box_error("Invalid ID Number or Password!")
         msg.exec()
@@ -46,7 +47,13 @@ class SignUpController(QObject):
 
         # print(student_first_name, student_last_name, student_id, student_password, confirm_password)
 
-        if not student_first_name or not student_last_name or not student_id or not student_password or not confirm_password:
+        if (
+            not student_first_name
+            or not student_last_name
+            or not student_id
+            or not student_password
+            or not confirm_password
+        ):
             msg = self.message_box_error("Please fill in all the fields!")
             msg.exec()
 
@@ -56,7 +63,9 @@ class SignUpController(QObject):
             self.empty_fields()
 
         elif student_id in self.id_numbers:
-            msg = self.message_box_error("Student ID Number has been already registered!")
+            msg = self.message_box_error(
+                "Student ID Number has been already registered!"
+            )
             msg.exec()
             self.empty_fields()
 
@@ -66,9 +75,11 @@ class SignUpController(QObject):
             self.view.lineConfirmPassword.setText("")
 
         else:
-            User.register_user(student_first_name, student_last_name, student_id, student_password)
+            User.register_user(
+                student_first_name, student_last_name, student_id, student_password
+            )
 
-            # Prompt a messagebox 
+            # Prompt a messagebox
             msg = QMessageBox()
             msg.setWindowTitle("Success")
             msg.setIcon(QMessageBox.Information)
@@ -76,6 +87,8 @@ class SignUpController(QObject):
             msg.exec()
 
             # Redirect automatically to main menu
-            self.main_menu_window = MainMenu(f"{student_first_name} {student_last_name}")
+            self.main_menu_window = MainMenu(
+                f"{student_first_name} {student_last_name}", student_id
+            )
             self.main_menu_window.show()
             self.view.hide()

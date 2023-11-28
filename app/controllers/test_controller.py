@@ -41,7 +41,7 @@ class TestController:
         )
 
         self.final_paper_path = os.path.normpath(
-            os.path.join(current_directory, output_folder, "final_paper.pdf")
+            os.path.join(current_directory, output_folder, "Print.pdf")
         )
 
         # Create the output folder if it doesn't exist
