@@ -22,8 +22,9 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
         self.setWindowTitle(f"WattWise | Print")
         self.randomize_window = randomize_window
 
-        self.showMaximized()
         self.modifyWindow()
+
+        self.showMaximized()
 
     def modifyWindow(self):
         self.add_web_view()
