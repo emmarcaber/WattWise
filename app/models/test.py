@@ -1,4 +1,5 @@
 import sqlite3
+import re
 
 
 class Test:
@@ -18,11 +19,19 @@ class Test:
         if last_row == None:
             return "WattWise-T1"
 
-        last_id = last_row[0]
+        last_test_id = last_row[0]
 
-        prefix, numeric_part = last_id.split("-T")
-        incremented_numeric_part = str(int(numeric_part) + 1).zfill(len(numeric_part))
-        return f"{prefix}-T{incremented_numeric_part}"
+        # Create a nested function for incrementing the test_id
+        def increment(test_id):
+            def increase_version(match):
+                version_number = int(match.group(1))
+                new_version = version_number + 1
+                return f"WattWise-T{new_version}"
+
+            pattern = re.compile(r"WattWise-T(\d+)")
+            return pattern.sub(increase_version, test_id)
+
+        return increment(last_test_id)
 
     @staticmethod
     def create_test(test_id, test_title, id_number, correct_answers, test_taken):

@@ -1,4 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QMessageBox
+from PySide6.QtGui import QCursor
+from PySide6.QtCore import Qt
 
 from ..uis.ui_randomize import Ui_RandomizeWindow
 from app.views.print_view import PrintWindow
@@ -93,6 +95,7 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         }
                                         """
         )
+        self.btnRandomize.setCursor(QCursor(Qt.ForbiddenCursor))
 
     def finalize_paper(self):
         # Generate the paper to print
@@ -115,6 +118,8 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         # print(formatted_date)
 
         print(self.test_id)
+
+        # Create the new test row inside the database
         Test.create_test(
             self.test_id,
             self.category_subcategory,
