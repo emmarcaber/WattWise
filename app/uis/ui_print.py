@@ -91,8 +91,23 @@ class Ui_PrintWindow(object):
             "\n"
             "#mainFrame {\n"
             "	border: 2px solid #0073e6;\n"
-            "   margin-left: 3px;"
-            "   margin-right: 10px;"
+            "	margin-left: 3px;\n"
+            "	margin-right: 10px;\n"
+            "}\n"
+            "\n"
+            "#mainFrame #btnPrint {\n"
+            "	color: #ffffff;\n"
+            "	background-color:  #004d99;\n"
+            "	border-radius: 15px;\n"
+            "	font-weight: bold;\n"
+            "	font-size: 24px;\n"
+            "	height: 80px;\n"
+            "	padding: 10px 16px;\n"
+            "	margin-bottom: 10px;\n"
+            "}\n"
+            "\n"
+            "#mainFrame #btnPrint:hover {\n"
+            "	background-color: #0067CC;\n"
             "}"
         )
         self.centralwidget = QWidget(MainWindow)
@@ -157,7 +172,23 @@ class Ui_PrintWindow(object):
         self.verticalLayout = QVBoxLayout(self.printFrame)
         self.verticalLayout.setObjectName("verticalLayout")
 
-        self.gridLayout_3.addWidget(self.printFrame, 0, 0, 1, 2)
+        self.gridLayout_3.addWidget(self.printFrame, 0, 1, 1, 2)
+
+        self.btnPrint = QPushButton(self.mainFrame)
+        self.btnPrint.setObjectName("btnPrint")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.btnPrint.sizePolicy().hasHeightForWidth())
+        self.btnPrint.setSizePolicy(sizePolicy1)
+        self.btnPrint.setMinimumSize(QSize(0, 0))
+        self.btnPrint.setCursor(QCursor(Qt.PointingHandCursor))
+        icon1 = QIcon()
+        icon1.addFile(":/images/assets/printer.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnPrint.setIcon(icon1)
+        self.btnPrint.setIconSize(QSize(30, 30))
+
+        self.gridLayout_3.addWidget(self.btnPrint, 0, 3, 1, 1)
 
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.mainFrame)
 
@@ -180,5 +211,6 @@ class Ui_PrintWindow(object):
         self.title.setText(
             QCoreApplication.translate("MainWindow", "PROJECT: WattWise", None)
         )
+        self.btnPrint.setText(QCoreApplication.translate("MainWindow", "Print", None))
 
     # retranslateUi
