@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QMainWindow
+from PySide6.QtCore import Qt
 from ..uis.ui_math_subcategories import Ui_MathWindow
 from app.views.randomize_view import RandomizeWindow
 
@@ -19,6 +20,9 @@ class MathWindow(QMainWindow, Ui_MathWindow):
         self.categories_window = categories_window
 
         self.showMaximized()
+        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
+        self.setWindowFlag(Qt.WindowMaximizeButtonHint, False)
 
         self.modifyWindow()
 

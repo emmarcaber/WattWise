@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QMainWindow
+from PySide6.QtCore import Qt
 from ..uis.ui_esas_subcategories import Ui_ESASWindow
 from app.views.randomize_view import RandomizeWindow
 
@@ -22,6 +23,9 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.option = Option()
 
         self.showMaximized()
+        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
+        self.setWindowFlag(Qt.WindowMaximizeButtonHint, False)
 
         self.modifyWindow()
 

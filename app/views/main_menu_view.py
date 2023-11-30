@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QMainWindow
+from PySide6.QtCore import Qt
 from ..uis.ui_main_menu import Ui_MainMenu
 
 
@@ -14,6 +15,9 @@ class MainMenu(QMainWindow, Ui_MainMenu):
         self.labelStudentName.setText(student_name + "!")
 
         self.showMaximized()
+        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
+        self.setWindowFlag(Qt.WindowMaximizeButtonHint, False)
 
         self.modifyWindow()
 

@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QMainWindow
+from PySide6.QtCore import Qt
 from ..uis.ui_eeps_subcategories import Ui_EEPSWindow
 from app.views.randomize_view import RandomizeWindow
 
@@ -19,6 +20,9 @@ class EEPSWindow(QMainWindow, Ui_EEPSWindow):
         self.categories_window = categories_window
 
         self.showMaximized()
+        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
+        self.setWindowFlag(Qt.WindowMaximizeButtonHint, False)
 
         self.modifyWindow()
 

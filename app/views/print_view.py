@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QMainWindow, QVBoxLayout
+from PySide6.QtWidgets import QMainWindow
+from PySide6.QtCore import Qt
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtCore import QUrl
 
@@ -25,6 +26,9 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
         self.modifyWindow()
 
         self.showMaximized()
+        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
+        self.setWindowFlag(Qt.WindowMaximizeButtonHint, False)
 
     def modifyWindow(self):
         self.add_web_view()

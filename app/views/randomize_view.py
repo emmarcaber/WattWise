@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QMainWindow, QMessageBox
+from PySide6.QtCore import Qt
 from PySide6.QtGui import QCursor
 from PySide6.QtCore import Qt
 
@@ -42,6 +43,10 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         # print(self.questions)
 
         self.showMaximized()
+        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
+        self.setWindowFlag(Qt.WindowMaximizeButtonHint, False)
+
         self.modifyWindow()
 
     def modifyWindow(self):

@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QMainWindow
+from PySide6.QtCore import Qt
 from ..uis.ui_categories import Ui_CategoriesWindow
 from app.views.eeps_subcategories_view import EEPSWindow
 from app.views.esas_subcategories_view import ESASWindow
@@ -16,6 +17,9 @@ class CategoriesWindow(QMainWindow, Ui_CategoriesWindow):
         self.main_menu_window = main_menu_window
 
         self.showMaximized()
+        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
+        self.setWindowFlag(Qt.WindowMaximizeButtonHint, False)
 
         self.modifyWindow()
 
