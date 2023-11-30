@@ -77,7 +77,7 @@ class Ui_PrintWindow(object):
             "}\n"
             "\n"
             "#btnBackMainMenu {\n"
-            "	background-color: #4db8ff;\n"
+            "	background-color: #DDDDDD;\n"
             "	border-radius: 20px;\n"
             "	color: white;\n"
             "	margin-top: 10px;\n"
@@ -125,6 +125,7 @@ class Ui_PrintWindow(object):
         self.frame.setFrameShadow(QFrame.Raised)
         self.btnBackMainMenu = QPushButton(self.frame)
         self.btnBackMainMenu.setObjectName("btnBackMainMenu")
+        self.btnBackMainMenu.setEnabled(False)
         self.btnBackMainMenu.setGeometry(QRect(330, 10, 261, 61))
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)

@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow, QMessageBox
 from PySide6.QtCore import Qt
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtCore import QUrl
@@ -37,6 +37,38 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
 
     def print(self):
         print("Print button clicked")
+
+        # Prompt the user that the printing is happening
+        msg = QMessageBox()
+        msg.setWindowTitle("Success")
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("WattWise is printing your questionnaire and answer sheet!")
+        msg.exec()
+
+        # Disable the print button after one click
+        # To avoid spamming
+        self.btnPrint.setEnabled(False)
+        self.btnPrint.setStyleSheet(
+            """
+        QPushButton {
+            background-color: #DDDDDD;
+        }
+            """
+        )
+
+        # Enable the backToMainMenu button
+        self.btnBackMainMenu.setEnabled(True)
+        self.btnBackMainMenu.setStyleSheet(
+            """
+        QPushButton {
+            background-color: #4db8ff;
+        }
+
+        QPushButton:hover {
+            background-color: #1AA4FF;
+        }
+            """
+        )
 
     def back_to_main_menu(self):
         self.main_menu_window = MainMenu(

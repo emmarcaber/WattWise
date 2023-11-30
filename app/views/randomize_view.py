@@ -93,14 +93,14 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
         # Disable the randomize button after one click
         self.btnRandomize.setEnabled(False)
 
+        # Change its appearance
         self.btnRandomize.setStyleSheet(
             """
         QPushButton {
             background-color: #DDDDDD;
         }
-                                        """
+            """
         )
-        self.btnRandomize.setCursor(QCursor(Qt.ForbiddenCursor))
 
     def finalize_paper(self):
         # Generate the paper to print

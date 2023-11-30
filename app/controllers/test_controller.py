@@ -65,10 +65,7 @@ class TestController:
         img.save(self.qr_path)
 
     def modify_answer_sheet(
-        self,
-        student_name,
-        id_number,
-        category_subcategory,
+        self, student_name, id_number, category_subcategory, test_id
     ):
         # Create a PDF reader object
         pdf_reader = PyPDF2.PdfReader(open(self.answer_sheet_path, "rb"))
@@ -91,6 +88,7 @@ class TestController:
 
             # Draw the image on the canvas
             can.drawImage(self.qr_path, x, y, width=1.43 * inch, height=1.43 * inch)
+            can.drawString(x + 3, y, test_id)
 
             # Draw the string on the canvas
             can.drawString(155, y + 30, student_name)
@@ -208,7 +206,9 @@ class TestController:
     ):
         self.create_paths()
         self.generate_qr_code(test_id)
-        self.modify_answer_sheet(student_name, student_id, category_subcategory)
+        self.modify_answer_sheet(
+            student_name, student_id, category_subcategory, test_id
+        )
         self.create_questionnaire(questions, test_id)
         self.merge_answer_sheet_and_questionnaire()
 

@@ -32,7 +32,7 @@
 }
 
 #btnBackMainMenu {
-	background-color: #4db8ff;
+	background-color: #DDDDDD;
 	border-radius: 20px;
 	color: white;
 	margin-top: 10px;
@@ -85,6 +85,9 @@
           <enum>QFrame::Raised</enum>
          </property>
          <widget class="QPushButton" name="btnBackMainMenu">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="geometry">
            <rect>
             <x>330</x>
