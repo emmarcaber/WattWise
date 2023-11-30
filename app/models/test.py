@@ -9,9 +9,9 @@ class Test:
         connection = sqlite3.connect(db_path)
 
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM tests ORDER BY TestID DESC LIMIT 1")
+        cursor.execute("SELECT * FROM tests")
 
-        last_row = cursor.fetchone()
+        last_row = cursor.fetchall()[-1]
 
         cursor.close()
         connection.close()
@@ -31,7 +31,9 @@ class Test:
             pattern = re.compile(r"WattWise-T(\d+)")
             return pattern.sub(increase_version, test_id)
 
-        return increment(last_test_id)
+        result = increment(last_test_id)
+
+        return result
 
     @staticmethod
     def create_test(test_id, test_title, id_number, correct_answers, test_taken):

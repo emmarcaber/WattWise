@@ -29,6 +29,10 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
     def modifyWindow(self):
         self.add_web_view()
         self.btnBackMainMenu.clicked.connect(self.back_to_main_menu)
+        self.btnPrint.clicked.connect(self.print)
+
+    def print(self):
+        print("Print button clicked")
 
     def back_to_main_menu(self):
         self.main_menu_window = MainMenu(
