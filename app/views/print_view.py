@@ -12,6 +12,7 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
         self,
         student_name,
         student_id,
+        test_controller,
         randomize_window=None,
     ):
         super().__init__()
@@ -22,6 +23,7 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
         self.setupUi(self)
         self.setWindowTitle(f"WattWise | Print")
         self.randomize_window = randomize_window
+        self.test_controller = test_controller
 
         self.modifyWindow()
 
@@ -33,10 +35,9 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
     def modifyWindow(self):
         self.add_web_view()
         self.btnBackMainMenu.clicked.connect(self.back_to_main_menu)
-        self.btnPrint.clicked.connect(self.print)
+        self.btnPrint.clicked.connect(self.print_pdf)
 
-    def print(self):
-        print("Print button clicked")
+    def print_pdf(self):
 
         # Prompt the user that the printing is happening
         msg = QMessageBox()
@@ -70,6 +71,9 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
             """
         )
 
+        self.test_controller.print_questionnaire_answer_sheet()
+
+
     def back_to_main_menu(self):
         self.main_menu_window = MainMenu(
             self.student_name,
@@ -92,7 +96,7 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
 
         web_view.setUrl(
             QUrl.fromLocalFile(
-                "C:/Users/caber/OneDrive/Documents/Coding/WattWise/app/print/Print.pdf"
+                "F:/Emboy/WattWise/app/print/Print.pdf"
             )
         )
 

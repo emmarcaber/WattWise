@@ -2,6 +2,7 @@ import qrcode
 import PyPDF2
 import io
 import os
+import aspose.pdf as pdf
 
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
@@ -15,7 +16,7 @@ class TestController:
     def create_paths(self):
         # Get the current working directory
         current_directory = (
-            "C:/Users/caber/OneDrive/Documents/Coding/WattWise/app/controllers"
+                    "F:/Emboy/WattWise/app/controllers"
         )
         output_folder = "../print"
 
@@ -211,6 +212,23 @@ class TestController:
         )
         self.create_questionnaire(questions, test_id)
         self.merge_answer_sheet_and_questionnaire()
+
+    def print_questionnaire_answer_sheet(self):
+
+        image_files = [self.questionnaire_path, self.answer_sheet_with_qr_path]
+
+        if not image_files:
+            print("No pdf files found in the specified directory.")
+            return
+
+        for image_file in image_files:
+            # Initialize PdfViewer class object
+            viewer = pdf.facades.PdfViewer()
+
+            # Bind PDF document
+            viewer.bind_pdf(image_file)
+
+            viewer.print_document()
 
 
 # if __name__ == "__main__":

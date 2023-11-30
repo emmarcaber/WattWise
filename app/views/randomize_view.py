@@ -135,7 +135,7 @@ class RandomizeWindow(QMainWindow, Ui_RandomizeWindow):
 
         # Proceed to open the printing window
         self.print_window = PrintWindow(
-            self.student_name, self.student_id, randomize_window=self
+            self.student_name, self.student_id, self.test_controller, randomize_window=self
         )
         self.print_window.show()
         self.hide()
