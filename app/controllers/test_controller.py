@@ -131,7 +131,7 @@ class TestController:
 
         # Set the font size for questions
         question_style.fontName = "Helvetica"
-        question_style.fontSize = 12
+        question_style.fontSize = 10
         question_style.leading = 15
 
         # Set the margin
