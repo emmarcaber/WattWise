@@ -38,7 +38,6 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
         self.btnPrint.clicked.connect(self.print_pdf)
 
     def print_pdf(self):
-
         # Prompt the user that the printing is happening
         msg = QMessageBox()
         msg.setWindowTitle("Success")
@@ -73,7 +72,6 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
 
         self.test_controller.print_questionnaire_answer_sheet()
 
-
     def back_to_main_menu(self):
         self.main_menu_window = MainMenu(
             self.student_name,
@@ -96,7 +94,7 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
 
         web_view.setUrl(
             QUrl.fromLocalFile(
-                "F:/Emboy/WattWise/app/print/Print.pdf"
+                "C:/Users/caber/OneDrive/Documents/Coding/WattWise/app/print_check/Print.pdf"
             )
         )
 

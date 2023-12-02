@@ -16,9 +16,9 @@ class TestController:
     def create_paths(self):
         # Get the current working directory
         current_directory = (
-                    "F:/Emboy/WattWise/app/controllers"
+            "C:/Users/caber/OneDrive/Documents/Coding/WattWise/app/controllers"
         )
-        output_folder = "../print"
+        output_folder = "../print_check"
 
         # Construct the relative path
         self.qr_path = os.path.normpath(
@@ -214,7 +214,6 @@ class TestController:
         self.merge_answer_sheet_and_questionnaire()
 
     def print_questionnaire_answer_sheet(self):
-
         image_files = [self.questionnaire_path, self.answer_sheet_with_qr_path]
 
         if not image_files:
