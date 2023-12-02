@@ -6,10 +6,11 @@ from ..uis.ui_check import Ui_CheckWindow
 from app.views.main_menu_view import MainMenu
 
 import cv2
+import os
 
 
 class CheckWindow(QMainWindow, Ui_CheckWindow):
-    def __init__(self, student_id, student_name, main_menu_window=None):
+    def __init__(self, student_name, student_id, main_menu_window=None):
         super().__init__()
 
         self.student_name = student_name
@@ -28,6 +29,7 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
 
     def modifyWindow(self):
         self.btnBackMainMenu.clicked.connect(self.back_to_main_menu)
+        self.btnCapture.clicked.connect(self.capture_image)
         self.integrate_camera_to_frame()
 
     def integrate_camera_to_frame(self):
@@ -59,6 +61,41 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
             pixmap = QPixmap.fromImage(q_image)
             self.video_label.setPixmap(pixmap)
 
+    def capture_image(self):
+        ret, frame = self.video_capture.read()
+
+        if ret:
+            current_directory = "C:/Users/caber/OneDrive/Documents/Coding/WattWise/app/"
+            output_folder = "print_check"
+            image_path = os.path.normpath(
+                os.path.join(
+                    current_directory, output_folder, "captured_answer_sheet.jpg"
+                )
+            )
+
+            cv2.imwrite(image_path, frame)  # Save the captured image
+            self.timer.stop()  # Stop the timer (camera feed)
+
+            # Release the video capture
+            self.video_capture.release()
+
+        msg = self.message_box_creator(
+            "The answer sheet was successfully captured!", False
+        )
+        msg.exec()
+
+        # Disable the capture button after one click
+        self.btnCapture.setEnabled(False)
+
+        # Change its appearance
+        self.btnCapture.setStyleSheet(
+            """
+        QPushButton {
+            background-color: #DDDDDD;
+        }
+            """
+        )
+
     def closeCamera(self):
         # Release the video capture when the application is closed
         self.video_capture.release()
@@ -71,3 +108,12 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
         )
         self.main_menu_window.show()
         self.hide()
+
+    def message_box_creator(self, text, is_error):
+        # Prompt the user that the randomization is succesful
+        msg = QMessageBox()
+        msg.setWindowTitle("Success" if not is_error else "Error")
+        msg.setIcon(QMessageBox.Information if not is_error else QMessageBox.Warning)
+        msg.setText(text)
+
+        return msg
