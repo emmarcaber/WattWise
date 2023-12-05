@@ -112,7 +112,21 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         print("College Physics")
 
     def generate_PEC(self):
-        print("Philippine Electrical Code Parts 1 and 2")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options(
+            "Philippine Electrical Code Parts 1 and 2"
+        )
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Philippine Electrical Code Parts 1 and 2",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_computerProgramming(self):
         print("Computer Fundamentals and Programming")

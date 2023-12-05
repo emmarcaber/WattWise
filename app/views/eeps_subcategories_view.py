@@ -126,7 +126,19 @@ class EEPSWindow(QMainWindow, Ui_EEPSWindow):
         print("Circuit Line and Protection")
 
     def generate_controlSystem(self):
-        print("Control System")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options("Control System")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Control System",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_principlesCommunication(self):
         print("Principles of Communication")
