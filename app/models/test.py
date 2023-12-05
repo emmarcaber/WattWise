@@ -52,3 +52,61 @@ class Test:
             print(f"Error creating test: {e}")
         finally:
             connection.close()
+
+    @staticmethod
+    def get_total_tests_of_user(student_id):
+        db_path = "app/database/kiosk.db"
+        connection = sqlite3.connect(db_path)
+
+        cursor = connection.cursor()
+        cursor.execute(
+            """
+                SELECT COUNT(*) FROM tests
+                JOIN users ON tests.UserIDNumber = users.id_number
+                WHERE users.id_number = ?
+            """,
+            (student_id,),
+        )
+
+        row = cursor.fetchone()
+
+        result = row[0]
+
+        cursor.close()
+        connection.close()
+
+        return result
+
+    @staticmethod
+    def get_total_tests_per_subcategory_of_user(student_id):
+        db_path = "app/database/kiosk.db"
+        connection = sqlite3.connect(db_path)
+
+        cursor = connection.cursor()
+        cursor.execute(
+            """
+                SELECT TestTitle FROM tests
+                JOIN users ON tests.UserIDNumber = users.id_number
+                WHERE users.id_number = ?
+            """,
+            (student_id,),
+        )
+
+        rows = cursor.fetchall()
+
+        esas_taken = 0
+        math_taken = 0
+        eeps_taken = 0
+
+        for row in rows:
+            if "ESAS" in row[0]:
+                esas_taken += 1
+            elif "Mathematics" in row[0]:
+                math_taken += 1
+            elif "EEPS" in row[0]:
+                eeps_taken += 1
+
+        cursor.close()
+        connection.close()
+
+        return [esas_taken, math_taken, eeps_taken]
