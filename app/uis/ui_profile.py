@@ -217,7 +217,7 @@ class Ui_ProfileWindow(object):
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.tableFrame = QFrame(self.mainFrame)
         self.tableFrame.setObjectName("tableFrame")
-        self.tableFrame.setMinimumSize(QSize(0, 835))
+        self.tableFrame.setMinimumSize(QSize(0, 300))
         self.verticalLayout = QVBoxLayout(self.tableFrame)
         self.verticalLayout.setObjectName("verticalLayout")
 
