@@ -36,6 +36,63 @@ class Test:
         return result
 
     @staticmethod
+    def is_test_checked(test_id):
+        db_path = "app/database/kiosk.db"
+        connection = sqlite3.connect(db_path)
+
+        cursor = connection.cursor()
+        cursor.execute(
+            "SELECT Status FROM tests WHERE TestID = ?",
+            (test_id,),
+        )
+
+        row = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+
+        return True if row[0] != "PENDING" else False
+
+    @staticmethod
+    def test_belong_to_current_user(test_id, student_id):
+        db_path = "app/database/kiosk.db"
+        connection = sqlite3.connect(db_path)
+
+        cursor = connection.cursor()
+        cursor.execute(
+            "SELECT * FROM tests WHERE TestID = ? AND UserIDNumber = ?",
+            (
+                test_id,
+                student_id,
+            ),
+        )
+
+        row = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+
+        return False if row[0] is None else True
+
+    @staticmethod
+    def get_correct_answers_of_test_from_db(test_id):
+        db_path = "app/database/kiosk.db"
+        connection = sqlite3.connect(db_path)
+
+        cursor = connection.cursor()
+        cursor.execute(
+            "SELECT CorrectAnswers FROM tests WHERE TestID = ?",
+            (test_id,),
+        )
+
+        row = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+
+        return row[0]
+
+    @staticmethod
     def create_test(test_id, test_title, id_number, correct_answers, test_taken):
         db_path = "app/database/kiosk.db"
         connection = sqlite3.connect(db_path)
@@ -50,6 +107,24 @@ class Test:
             print("Test created successfully!")
         except sqlite3.Error as e:
             print(f"Error creating test: {e}")
+        finally:
+            connection.close()
+
+    @staticmethod
+    def update_score_of_tests_in_db(score, test_id):
+        db_path = "app/database/kiosk.db"
+        connection = sqlite3.connect(db_path)
+
+        try:
+            cursor = connection.cursor()
+            cursor.execute(
+                "UPDATE tests SET Score = ?, Status = 'CHECKED' WHERE TestID = ?",
+                (score, test_id),
+            )
+            connection.commit()
+            print("Test updated successfully!")
+        except sqlite3.Error as e:
+            print(f"Error updating test: {e}")
         finally:
             connection.close()
 
