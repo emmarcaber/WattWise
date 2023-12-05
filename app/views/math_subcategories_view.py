@@ -154,7 +154,21 @@ class MathWindow(QMainWindow, Ui_MathWindow):
         print("Laplace Transforms")
 
     def generate_probabilityStatistics(self):
-        print("Probability and Statistics")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options(
+            "Probability and Statistics"
+        )
+
+        self.randomize_window = RandomizeWindow(
+            "Mathematics - Probability and Statistics",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def back_to_categories_window(self):
         if self.back_to_categories_window:
