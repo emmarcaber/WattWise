@@ -156,7 +156,19 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.hide()
 
     def generate_engineeringEconomics(self):
-        print("Engineering Economics")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options("Engineering Economics")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Engineering Economics",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_engineeringManagement(self):
         print("Engineering Management")
