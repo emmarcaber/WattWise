@@ -109,7 +109,19 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.hide()
 
     def generate_collegePhysics(self):
-        print("College Physics")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options("College Physics")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - College Physics",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_PEC(self):
         # Get all the questions from db and format it
