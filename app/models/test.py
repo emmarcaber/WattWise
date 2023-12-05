@@ -110,3 +110,25 @@ class Test:
         connection.close()
 
         return [esas_taken, math_taken, eeps_taken]
+
+    @staticmethod
+    def get_tests_from_db(student_id):
+        db_path = "app/database/kiosk.db"
+        connection = sqlite3.connect(db_path)
+
+        cursor = connection.cursor()
+        cursor.execute(
+            """
+                SELECT TestID, TestTitle, TestTaken, Score, Status FROM tests
+                JOIN users ON tests.UserIDNumber = users.id_number
+                WHERE users.id_number = ?
+            """,
+            (student_id,),
+        )
+
+        rows = cursor.fetchall()
+
+        cursor.close()
+        connection.close()
+
+        return rows
