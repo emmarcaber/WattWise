@@ -24,6 +24,7 @@ class MainMenu(QMainWindow, Ui_MainMenu):
     def modifyWindow(self):
         self.btnLogout.clicked.connect(self.open_login_window)
         self.btnGenerate.clicked.connect(self.open_categories_window)
+        self.btnProfile.clicked.connect(self.open_profile_window)
         self.btnCheck.clicked.connect(self.open_check_window)
 
     def open_categories_window(self):
@@ -49,4 +50,13 @@ class MainMenu(QMainWindow, Ui_MainMenu):
             self.student_name, self.student_id, main_menu_window=self
         )
         self.check_window.show()
+        self.hide()
+
+    def open_profile_window(self):
+        from app.views.profile_view import ProfileWindow
+
+        self.profile_window = ProfileWindow(
+            self.student_name, self.student_id, main_menu_window=self
+        )
+        self.profile_window.show()
         self.hide()
