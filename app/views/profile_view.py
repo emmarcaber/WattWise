@@ -1,7 +1,5 @@
 from PySide6.QtWidgets import (
     QMainWindow,
-    QMessageBox,
-    QLabel,
     QTableWidget,
     QTableWidgetItem,
 )
@@ -36,7 +34,7 @@ class ProfileWindow(QMainWindow, Ui_ProfileWindow):
     def modifyWindow(self):
         self.database_methods()
         self.setup_text_labels()
-        self.setup_test_table()
+        self.populate_table(self.testsTable)
 
         self.btnBackMainMenu.clicked.connect(self.back_to_main_menu)
 
@@ -55,30 +53,11 @@ class ProfileWindow(QMainWindow, Ui_ProfileWindow):
             str(title)
             for title in test.get_total_tests_per_subcategory_of_user(self.student_id)
         ]
-
-    def setup_test_table(self):
-        self.tableFrame_layout = self.tableFrame.layout()
-
-        # Create a QTableWidget
-        table_widget = QTableWidget(self)
-        table_widget.setColumnCount(3)  # Adjust the number of columns as needed
-        table_widget.setHorizontalHeaderLabels(["Column 1", "Column 2", "Column 3"])
-
-        # Populate the table with some data (optional)
-        self.populate_table(table_widget)
-
-        # Add the QTableWidget to the layout
-        self.tableFrame_layout.addWidget(table_widget)
+        self.tests = test.get_tests_from_db(self.student_id)
 
     def populate_table(self, table_widget):
         # Populate the table with some sample data
-        data = [
-            ("Data 1", "Data 2", "Data 3"),
-            ("Data 4", "Data 5", "Data 6"),
-            # Add more rows as needed
-        ]
-
-        for row, row_data in enumerate(data):
+        for row, row_data in enumerate(self.tests):
             table_widget.insertRow(row)
             for col, col_data in enumerate(row_data):
                 item = QTableWidgetItem(col_data)
