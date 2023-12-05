@@ -124,10 +124,36 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         print("Strength of Materials")
 
     def generate_thermodynamics(self):
-        print("Thermodynamics")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options("Thermodynamics")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Thermodynamics",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_electricalEngineeringLaw(self):
-        print("Electrical Engineering Law")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options(
+            "Electrical Engineering Law"
+        )
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Electrical Engineering Law",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_engineeringEconomics(self):
         print("Engineering Economics")

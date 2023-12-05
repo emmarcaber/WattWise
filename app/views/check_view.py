@@ -41,6 +41,7 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
         self.cameraFrame_layout.addWidget(self.video_label)
 
         self.video_capture = cv2.VideoCapture(0)
+
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_frame)
         self.timer.start(30)

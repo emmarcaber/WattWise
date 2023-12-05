@@ -103,7 +103,19 @@ class MathWindow(QMainWindow, Ui_MathWindow):
         print("Trigonometry")
 
     def generate_analyticalGeometry(self):
-        print("Analytical Geometry")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options("Analytical Geometry")
+
+        self.randomize_window = RandomizeWindow(
+            "Mathematics - Analytical Geometry",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_differentialCalculus(self):
         print("Differential Calculus")
