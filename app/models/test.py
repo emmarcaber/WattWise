@@ -72,7 +72,10 @@ class Test:
         cursor.close()
         connection.close()
 
-        return False if row[0] is None else True
+        if row is None:
+            return False
+
+        return True
 
     @staticmethod
     def get_correct_answers_of_test_from_db(test_id):
