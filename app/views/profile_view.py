@@ -60,7 +60,7 @@ class ProfileWindow(QMainWindow, Ui_ProfileWindow):
         for row, row_data in enumerate(self.tests):
             table_widget.insertRow(row)
             for col, col_data in enumerate(row_data):
-                item = QTableWidgetItem(col_data)
+                item = QTableWidgetItem(str(col_data) if col_data != None else "")
                 table_widget.setItem(row, col, item)
 
     def back_to_main_menu(self):
