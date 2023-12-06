@@ -204,7 +204,11 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
             self.video_capture.release()
 
         self.test_id = self.check_controller.scan_qrcode()
-        self.validate_test_id(self.test_id)
+
+        if self.test_id is None:
+            self.error_validation("No QR Code available in the image captured!")
+        else:
+            self.validate_test_id(self.test_id)
 
     def closeCamera(self):
         # Release the video capture when the application is closed
