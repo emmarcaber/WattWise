@@ -33,6 +33,8 @@ class CheckController:
             if obj.data.decode("utf-8"):
                 return obj.data.decode("utf-8")
 
+        return None
+
     def get_answers_from_captured_answer_sheet(self):
         detected_options = []
 
