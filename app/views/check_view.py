@@ -152,6 +152,7 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
 
     def show_score(self):
         score = 0
+        count = 1
         for label, (answer, correct_answer) in zip(
             self.label_items, zip(self.answers, self.correct_answers)
         ):
@@ -161,9 +162,11 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
                 )
                 score += 1
             else:
+                label.setText(f"{count}. {answer} - {correct_answer}")
                 label.setStyleSheet(
                     "background-color: #B22222; color: white; padding-left: 3px"
                 )
+            count += 1
 
         self.labelResults.setText(f"{score}/20")
 
