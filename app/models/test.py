@@ -199,7 +199,7 @@ class Test:
             """
                 SELECT TestID, TestTitle, TestTaken, Score, Status FROM tests
                 JOIN users ON tests.UserIDNumber = users.id_number
-                WHERE users.id_number = ?
+                WHERE users.id_number = ? ORDER BY Status
             """,
             (student_id,),
         )
