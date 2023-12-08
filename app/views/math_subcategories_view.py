@@ -150,7 +150,19 @@ class MathWindow(QMainWindow, Ui_MathWindow):
         self.hide()
 
     def generate_integralCalculus(self):
-        print("Integral Calculus")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options("Integral Calculus")
+
+        self.randomize_window = RandomizeWindow(
+            "Mathematics - Integral Calculus",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_complexNumbers(self):
         print("Complex Numbers")
