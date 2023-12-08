@@ -100,7 +100,19 @@ class MathWindow(QMainWindow, Ui_MathWindow):
         self.hide()
 
     def generate_trigonometry(self):
-        print("Trigonometry")
+        # Get all the questions from db and format it
+        formatted_questions = self.format_questions_and_options("Trigonometry")
+
+        self.randomize_window = RandomizeWindow(
+            "Mathematics - Trigonometry",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_analyticalGeometry(self):
         # Get all the questions from db and format it
