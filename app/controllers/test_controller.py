@@ -41,6 +41,12 @@ class TestController:
             os.path.join(current_directory, output_folder, "questionnaire.pdf")
         )
 
+        self.excess_questionnaire_page_path = os.path.normpath(
+            os.path.join(
+                current_directory, output_folder, "excess_questionnaire_page.pdf"
+            )
+        )
+
         self.final_paper_path = os.path.normpath(
             os.path.join(current_directory, output_folder, "Print.pdf")
         )
@@ -213,8 +219,36 @@ class TestController:
         self.create_questionnaire(questions, test_id)
         self.merge_answer_sheet_and_questionnaire()
 
+    def is_questionnaire_five_pages(self):
+        with open(self.questionnaire_path, "rb") as file:
+            # Create PDF Reader and Writer
+            pdf_reader = PyPDF2.PdfReader(file)
+            pdf_writer = PyPDF2.PdfWriter()
+
+            # Get all the total pages of the questionnaire
+            total_pages = len(pdf_reader.pages)
+
+            # If questionnaire has five pages, get the last page
+            # then create a new PDF file from that page and return True
+            if total_pages == 5:
+                last_page = pdf_reader.pages[-1]
+                pdf_writer.add_page(last_page)
+
+                # Create the pdf file from the last page
+                with open(self.excess_questionnaire_page_path, "wb") as output_file:
+                    pdf_writer.write(output_file)
+                    return True
+
+            # Else, just return false
+            return False
+
     def print_questionnaire_answer_sheet(self):
         qa_files = [self.questionnaire_path, self.answer_sheet_with_qr_path]
+
+        # If the questionnaire has five pages, insert the
+        # excess_questionnaire_page_path in the middle
+        if self.is_questionnaire_five_pages():
+            qa_files.insert(1, self.excess_questionnaire_page_path)
 
         if not qa_files:
             print("No pdf files found in the specified directory.")
@@ -227,4 +261,5 @@ class TestController:
             # Bind PDF document
             viewer.bind_pdf(file)
 
+            # Print the documents
             viewer.print_document()
