@@ -105,6 +105,18 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
 
         msg.exec()
 
+        # Enable the check button
+        self.btnCheck.setEnabled(True)
+
+        # Change its appearance
+        self.btnCheck.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #00cc00;
+            }
+            """
+        )
+
         self.setup_answers()
 
     def setup_answers(self):
@@ -173,7 +185,7 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
         # Update the tests table in the database
         self.test.update_score_of_tests_in_db(score, self.test_id)
 
-        # Disable the capture button after one click
+        # Disable the check button after one click
         self.btnCheck.setEnabled(False)
 
         # Change its appearance
@@ -181,6 +193,18 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
             """
             QPushButton {
                 background-color: #DDDDDD;
+            }
+            """
+        )
+
+        # Enable the profile button
+        self.btnProfile.setEnabled(True)
+
+        # Change its appearance
+        self.btnProfile.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #D2691E;
             }
             """
         )
