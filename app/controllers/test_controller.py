@@ -41,6 +41,12 @@ class TestController:
             os.path.join(current_directory, output_folder, "questionnaire.pdf")
         )
 
+        self.excess_questionnaire_page_path = os.path.normpath(
+            os.path.join(
+                current_directory, output_folder, "excess_questionnaire_page.pdf"
+            )
+        )
+
         self.final_paper_path = os.path.normpath(
             os.path.join(current_directory, output_folder, "Print.pdf")
         )
@@ -213,136 +219,47 @@ class TestController:
         self.create_questionnaire(questions, test_id)
         self.merge_answer_sheet_and_questionnaire()
 
-    def print_questionnaire_answer_sheet(self):
-        image_files = [self.questionnaire_path, self.answer_sheet_with_qr_path]
+    def is_questionnaire_five_pages(self):
+        with open(self.questionnaire_path, "rb") as file:
+            # Create PDF Reader and Writer
+            pdf_reader = PyPDF2.PdfReader(file)
+            pdf_writer = PyPDF2.PdfWriter()
 
-        if not image_files:
+            # Get all the total pages of the questionnaire
+            total_pages = len(pdf_reader.pages)
+
+            # If questionnaire has five pages, get the last page
+            # then create a new PDF file from that page and return True
+            if total_pages == 5:
+                last_page = pdf_reader.pages[-1]
+                pdf_writer.add_page(last_page)
+
+                # Create the pdf file from the last page
+                with open(self.excess_questionnaire_page_path, "wb") as output_file:
+                    pdf_writer.write(output_file)
+                    return True
+
+            # Else, just return false
+            return False
+
+    def print_questionnaire_answer_sheet(self):
+        qa_files = [self.questionnaire_path, self.answer_sheet_with_qr_path]
+
+        # If the questionnaire has five pages, insert the
+        # excess_questionnaire_page_path in the middle
+        if self.is_questionnaire_five_pages():
+            qa_files.insert(1, self.excess_questionnaire_page_path)
+
+        if not qa_files:
             print("No pdf files found in the specified directory.")
             return
 
-        for image_file in image_files:
+        for file in qa_files:
             # Initialize PdfViewer class object
             viewer = pdf.facades.PdfViewer()
 
             # Bind PDF document
-            viewer.bind_pdf(image_file)
+            viewer.bind_pdf(file)
 
+            # Print the documents
             viewer.print_document()
-
-
-# if __name__ == "__main__":
-#     student_id = "1234567890"
-#     student_name = "Angel Bianca Nacario"
-#     category_subcategory = "Mathematics - Probability and Statistics"
-#     test_id = "WattWise-T2"
-#     questions = {
-#         "What is the pH of a solution with a hydrogen ion concentration of 1 x 10^-9 M?": {
-#             "options": {"A": "7", "B": "9", "C": "5", "D": "3", "E": "11"},
-#             "correct_option": "B",
-#         },
-#         "What is the pH of a neutral solution?": {
-#             "options": {"A": "9", "B": "8", "C": "7", "D": "6", "E": "5"},
-#             "correct_option": "C",
-#         },
-#         "What is Avogadro's number?": {
-#             "options": {
-#                 "A": "6.02 x 10^23",
-#                 "B": "14",
-#                 "C": "0",
-#                 "D": "7",
-#                 "E": "22.4",
-#             },
-#             "correct_option": "A",
-#         },
-#         "What is the chemical name for table salt?": {
-#             "options": {
-#                 "A": "Ferrous Sulfate",
-#                 "B": "Sodium Chloride",
-#                 "C": "Dihydrogen Oxide",
-#                 "D": "Sodium Dichloride",
-#                 "E": "Iron Oxide",
-#             },
-#             "correct_option": "B",
-#         },
-#         "Which gas is commonly known as laughing gas?": {
-#             "options": {
-#                 "A": "Oxygen",
-#                 "B": "Carbon dioxide",
-#                 "C": "Nitrous oxide",
-#                 "D": "Hydrogen",
-#                 "E": "Helium",
-#             },
-#             "correct_option": "C",
-#         },
-#         "Which of the following is a transition metal?": {
-#             "options": {
-#                 "A": "Aluminum",
-#                 "B": "Sodium",
-#                 "C": "Calcium",
-#                 "D": "Potassium",
-#                 "E": "Iron",
-#             },
-#             "correct_option": "E",
-#         },
-#         "What is the chemical symbol for oxygen?": {
-#             "options": {"A": "O", "B": "Ox", "C": "Oz", "D": "On", "E": "Oy"},
-#             "correct_option": "A",
-#         },
-#         "Which element is a noble gas and commonly used in lighting?": {
-#             "options": {
-#                 "A": "Helium",
-#                 "B": "Neon",
-#                 "C": "Krypton",
-#                 "D": "Argon",
-#                 "E": "Radon",
-#             },
-#             "correct_option": "D",
-#         },
-#         "Which gas is responsible for the smell of rotten eggs?": {
-#             "options": {
-#                 "A": "Oxygen",
-#                 "B": "Nitrogen",
-#                 "C": "Hydrogen",
-#                 "D": "Sulfur dioxide",
-#                 "E": "Carbon dioxide",
-#             },
-#             "correct_option": "D",
-#         },
-#         "What is the name of the process where a substance changes directly from a gas to a solid without passing through the liquid phase?": {
-#             "options": {
-#                 "A": "Sublimation",
-#                 "B": "Deposition",
-#                 "C": "Condensation",
-#                 "D": "Evaporation",
-#                 "E": "Freezing",
-#             },
-#             "correct_option": "B",
-#         },
-#         "Which type of bond involves the sharing of electrons between atoms?": {
-#             "options": {
-#                 "A": "Ionic",
-#                 "B": "Covalent",
-#                 "C": "Metallic",
-#                 "D": "Polar",
-#                 "E": "Nonpolar",
-#             },
-#             "correct_option": "B",
-#         },
-#         "What is the chemical formula for water?": {
-#             "options": {"A": "H2O2", "B": "CO2", "C": "H2SO4", "D": "NH3", "E": "H2O"},
-#             "correct_option": "E",
-#         },
-#         "Which of the following is a halogen?": {
-#             "options": {
-#                 "A": "Calcium",
-#                 "B": "Sodium",
-#                 "C": "Fluorine",
-#                 "D": "Potassium",
-#                 "E": "Iron",
-#             },
-#             "correct_option": "C",
-#         },
-#     }
-
-#     test = TestController()
-#     test.generator(student_id, student_name, category_subcategory, test_id, questions)

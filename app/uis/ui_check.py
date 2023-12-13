@@ -130,7 +130,7 @@ class Ui_CheckWindow(object):
             "\n"
             "#btnCheck {\n"
             "	color: #ffffff;\n"
-            "	background-color: #00cc00;\n"
+            "	background-color: #DDDDDD;\n"
             "	font-weight: bold;\n"
             "}\n"
             "\n"
@@ -140,7 +140,7 @@ class Ui_CheckWindow(object):
             "\n"
             "#btnProfile {\n"
             "	color: #ffffff;\n"
-            "	background-color:  #d2691e;\n"
+            "	background-color:  #DDDDDD;\n"
             "	font-weight: bold;\n"
             "}\n"
             "\n"
@@ -385,6 +385,7 @@ class Ui_CheckWindow(object):
 
         self.btnCheck = QPushButton(self.optionFrame)
         self.btnCheck.setObjectName("btnCheck")
+        self.btnCheck.setEnabled(False)
         sizePolicy2.setHeightForWidth(self.btnCheck.sizePolicy().hasHeightForWidth())
         self.btnCheck.setSizePolicy(sizePolicy2)
         self.btnCheck.setFont(font1)
@@ -394,6 +395,7 @@ class Ui_CheckWindow(object):
 
         self.btnProfile = QPushButton(self.optionFrame)
         self.btnProfile.setObjectName("btnProfile")
+        self.btnProfile.setEnabled(False)
         sizePolicy2.setHeightForWidth(self.btnProfile.sizePolicy().hasHeightForWidth())
         self.btnProfile.setSizePolicy(sizePolicy2)
         self.btnProfile.setFont(font1)
