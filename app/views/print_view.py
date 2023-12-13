@@ -94,7 +94,7 @@ class PrintWindow(QMainWindow, Ui_PrintWindow):
 
         web_view.setUrl(
             QUrl.fromLocalFile(
-                "C:/Users/caber/OneDrive/Documents/Coding/WattWise/app/print_check/Print.pdf"
+                "C:/Users/Admin/Documents/GitHub/WattWise/app/print_check/Print.pdf"
             )
         )
 

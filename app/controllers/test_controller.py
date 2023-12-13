@@ -16,7 +16,7 @@ class TestController:
     def create_paths(self):
         # Get the current working directory
         current_directory = (
-            "C:/Users/caber/OneDrive/Documents/Coding/WattWise/app/controllers"
+            "C:/Users/Admin/Documents/GitHub/WattWise/app/controllers"
         )
         output_folder = "../print_check"
 

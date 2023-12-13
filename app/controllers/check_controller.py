@@ -9,7 +9,7 @@ class CheckController:
     def create_paths(self):
         # Get the current working directory
         current_directory = (
-            "C:/Users/caber/OneDrive/Documents/Coding/WattWise/app/controllers"
+            "C:/Users/Admin/Documents/GitHub/WattWise/app/controllers"
         )
         output_folder = "../print_check"
 
@@ -40,16 +40,12 @@ class CheckController:
 
         def process_option(img, option_contour):
             pt1 = np.float32(option_contour)
-            pt2 = np.float32(
-                [[0, 0], [widthImg, 0], [0, heightImg], [widthImg, heightImg]]
-            )
+            pt2 = np.float32([[0, 0], [widthImg, 0], [0, heightImg], [widthImg, heightImg]])
             matrix = cv2.getPerspectiveTransform(pt1, pt2)
             img_warp_colored = cv2.warpPerspective(img, matrix, (widthImg, heightImg))
 
             img_warp_gray = cv2.cvtColor(img_warp_colored, cv2.COLOR_BGR2GRAY)
-            img_thresh = cv2.threshold(img_warp_gray, 170, 255, cv2.THRESH_BINARY_INV)[
-                1
-            ]
+            img_thresh = cv2.threshold(img_warp_gray, 170, 255, cv2.THRESH_BINARY_INV)[1]
 
             boxes = tries.splitBoxes(img_thresh)
 
@@ -80,7 +76,7 @@ class CheckController:
         choices = 5
 
         img = cv2.imread(path)
-        img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
         img = cv2.resize(img, (widthImg, heightImg))
         img_contours = img.copy()
         img_biggest_contours = img.copy()

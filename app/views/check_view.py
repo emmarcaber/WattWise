@@ -109,6 +109,7 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
 
     def setup_answers(self):
         self.answers = self.check_controller.get_answers_from_captured_answer_sheet()
+        print(*self.answers)
 
         self.label_items = [
             self.labelItem1,
@@ -189,7 +190,7 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
         ret, frame = self.video_capture.read()
 
         if ret:
-            current_directory = "C:/Users/caber/OneDrive/Documents/Coding/WattWise/app/"
+            current_directory = "C:/Users/Admin/Documents/GitHub/WattWise/app"
             output_folder = "print_check"
             image_path = os.path.normpath(
                 os.path.join(
