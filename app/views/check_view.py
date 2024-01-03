@@ -222,7 +222,7 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
                 )
             )
 
-            # cv2.imwrite(image_path, frame)  # Save the captured image
+            cv2.imwrite(image_path, frame)  # Save the captured image
             self.timer.stop()  # Stop the timer (camera feed)
 
             # Release the video capture
@@ -231,7 +231,7 @@ class CheckWindow(QMainWindow, Ui_CheckWindow):
         self.test_id = self.check_controller.scan_qrcode()
 
         if self.test_id is None:
-            self.error_validation("No QR Code available in the image captured!")
+            self.error_validation("No QR Code available in the image captured!!!")
         else:
             self.validate_test_id(self.test_id)
 

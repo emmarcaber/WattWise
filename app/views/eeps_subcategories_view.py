@@ -111,19 +111,79 @@ class EEPSWindow(QMainWindow, Ui_EEPSWindow):
         self.hide()
 
     def generate_electronicTheoryCircuits(self):
-        print("Electronic Theory Circuits")
+        #print("Electronic Theory Circuits")
+        formatted_questions = self.format_questions_and_options("Electronic Theory Circuits")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Electronic Theory Circuits",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_energyConversion(self):
-        print("Energy Conversion")
+        #print("Energy Conversion")
+        formatted_questions = self.format_questions_and_options("Energy Conversion")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Energy Conversion",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_powerTransmissionDistribution(self):
-        print("Power Transmission and Distribution")
+        #print("Power Transmission and Distribution")
+        formatted_questions = self.format_questions_and_options("Power Transmission and Distribution")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Power Transmission and Distribution",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_instrumentationMeasurement(self):
-        print("Instrumentation and Measurement ")
+        #print("Instrumentation and Measurement ")
+        formatted_questions = self.format_questions_and_options("Instrumentation and Measurement")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Instrumentation and Measurement",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_circuitLineProtection(self):
-        print("Circuit Line and Protection")
+        #print("Circuit Line and Protection")
+        formatted_questions = self.format_questions_and_options("Circuit Line and Protection")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Circuit Line and Protection",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_controlSystem(self):
         # Get all the questions from db and format it
@@ -141,28 +201,124 @@ class EEPSWindow(QMainWindow, Ui_EEPSWindow):
         self.hide()
 
     def generate_principlesCommunication(self):
-        print("Principles of Communication")
+        #print("Principles of Communication")
+        formatted_questions = self.format_questions_and_options("Principles of Communication")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Principles of Communication",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_componentsDevices(self):
-        print("Components and Devices")
+        #print("Components and Devices")
+        formatted_questions = self.format_questions_and_options("Components and Devices")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Components and Devices",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_electricalMachines(self):
-        print("Electrical Machines")
+        #print("Electrical Machines")
+        formatted_questions = self.format_questions_and_options("Electrical Machines")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Electrical Machines",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_powerPlant(self):
-        print("Power Plant")
+        #print("Power Plant")
+        formatted_questions = self.format_questions_and_options("Power Plant")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Power Plant",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_illumination(self):
-        print("Illumination")
+        #print("Illumination")
+        formatted_questions = self.format_questions_and_options("Illumination")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Illumination",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_buildingWiring(self):
-        print("Building Wiring")
+        #print("Building Wiring")
+        formatted_questions = self.format_questions_and_options("Building Wiring")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Building Wiring",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_electronicPowerEquipment(self):
-        print("Electronic Power Equipment")
+        #print("Electronic Power Equipment")
+        formatted_questions = self.format_questions_and_options("Electronic Power Equipment")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Electronic Power Equipment",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_electricSystems(self):
-        print("Electric Systems")
+        #print("Electric Systems")
+        formatted_questions = self.format_questions_and_options("Electric Systems")
+
+        self.randomize_window = RandomizeWindow(
+            "EEPS - Electric Systems",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def back_to_categories_window(self):
         if self.back_to_categories_window:

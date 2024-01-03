@@ -177,19 +177,79 @@ class MathWindow(QMainWindow, Ui_MathWindow):
         self.hide()
 
     def generate_complexNumbers(self):
-        print("Complex Numbers")
+        #print("Complex Numbers")
+        formatted_questions = self.format_questions_and_options("Complex Numbers")
+
+        self.randomize_window = RandomizeWindow(
+            "Mathematics - Complex Numbers",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_matrices(self):
-        print("Matrices")
+        #print("Matrices")
+        formatted_questions = self.format_questions_and_options("Matrices")
+
+        self.randomize_window = RandomizeWindow(
+            "Mathematics - Matrices",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_powerSeries(self):
-        print("Power Series")
+        #print("Power Series")
+        formatted_questions = self.format_questions_and_options("Power Series")
+
+        self.randomize_window = RandomizeWindow(
+            "Mathematics - Power Series",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_fourierAnalysis(self):
-        print("Fourier Analysis")
+        #print("Fourier Analysis")
+        formatted_questions = self.format_questions_and_options("Fourier Analysis")
+
+        self.randomize_window = RandomizeWindow(
+            "Fourier Analysis",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_laplaceTransforms(self):
-        print("Laplace Transforms")
+        #print("Laplace Transforms")
+        formatted_questions = self.format_questions_and_options("Laplace Transforms")
+
+        self.randomize_window = RandomizeWindow(
+            "Laplace Transforms",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_probabilityStatistics(self):
         # Get all the questions from db and format it

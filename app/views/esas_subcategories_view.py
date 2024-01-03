@@ -141,13 +141,49 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.hide()
 
     def generate_computerProgramming(self):
-        print("Computer Fundamentals and Programming")
+        #print("Computer Fundamentals and Programming")
+        formatted_questions = self.format_questions_and_options("Computer Fundamentals and Programming")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Computer Fundamentals and Programming",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_fluidMechanics(self):
-        print("Fluid Mechanics")
+        #print("Fluid Mechanics")
+        formatted_questions = self.format_questions_and_options("Fluid Mechanics")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Fluid Mechanics",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_strengthMaterials(self):
-        print("Strength of Materials")
+        #print("Strength of Materials")
+        formatted_questions = self.format_questions_and_options("Strength of Materials")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Strength of Materials",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_thermodynamics(self):
         # Get all the questions from db and format it
@@ -197,19 +233,79 @@ class ESASWindow(QMainWindow, Ui_ESASWindow):
         self.hide()
 
     def generate_engineeringManagement(self):
-        print("Engineering Management")
+        #print("Engineering Management")
+        formatted_questions = self.format_questions_and_options("Engineering Management")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Engineering Management",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_contractsSpecifications(self):
-        print("Contracts Specifications")
+        #print("Contracts Specifications")
+        formatted_questions = self.format_questions_and_options("Contracts Specifications")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Contracts Specifications",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_codeProfessionalEthics(self):
-        print("Code of Professional Ethics")
+        #print("Code of Professional Ethics")
+        formatted_questions = self.format_questions_and_options("Code of Professional Ethics")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Code of Professional Ethics",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_engineeringMaterials(self):
-        print("Engineering Materials")
+        #print("Engineering Materials")
+        formatted_questions = self.format_questions_and_options("Engineering Materials")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Engineering Materials",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def generate_engineeringMechanics(self):
-        print("Engineering Mechanics")
+        #print("Engineering Mechanics")
+        formatted_questions = self.format_questions_and_options("Engineering Mechanics")
+
+        self.randomize_window = RandomizeWindow(
+            "ESAS - Engineering Mechanics",
+            formatted_questions,
+            self.student_name,
+            self.student_id,
+            subcategories_window=self,
+        )
+
+        self.randomize_window.show()
+        self.hide()
 
     def back_to_categories_window(self):
         if self.back_to_categories_window:

@@ -1,0 +1,1 @@
+start /b py main.py

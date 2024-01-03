@@ -43,16 +43,16 @@ class CheckController:
             pt2 = np.float32([[0, 0], [widthImg, 0], [0, heightImg], [widthImg, heightImg]])
             matrix = cv2.getPerspectiveTransform(pt1, pt2)
             img_warp_colored = cv2.warpPerspective(img, matrix, (widthImg, heightImg))
-
+        
             img_warp_gray = cv2.cvtColor(img_warp_colored, cv2.COLOR_BGR2GRAY)
             img_thresh = cv2.threshold(img_warp_gray, 170, 255, cv2.THRESH_BINARY_INV)[1]
-
+        
             boxes = tries.splitBoxes(img_thresh)
-
+        
             my_pixels_val = np.zeros((questions, choices))
             count_c = 0
             count_r = 0
-
+        
             for image in boxes:
                 total_pixels = cv2.countNonZero(image)
                 my_pixels_val[count_r][count_c] = total_pixels
@@ -60,36 +60,42 @@ class CheckController:
                 if count_c == choices:
                     count_r += 1
                     count_c = 0
-
+        
             for x in range(questions):
                 arr = my_pixels_val[x]
-                my_index_val = np.where(arr == np.amax(arr))
-                option = chr(ord("A") + my_index_val[0][0])
-                detected_options.append(option)
-
+                max_val = np.amax(arr)
+        
+                # Check if there are two or more occurrences of 1000 in the row
+                if np.count_nonzero(arr > 1000) >= 2:
+                    detected_options.append("Excessive Answers")
+                elif max_val < 1000:
+                    detected_options.append('Empty Answer')
+                else:
+                    my_index_val = np.where(arr == max_val)
+                    option = chr(ord('A') + my_index_val[0][0])
+                    detected_options.append(option)
+        
             return img_warp_colored, detected_options
-
+        
         path = self.captured_answer_sheet_path
         widthImg = 500
         heightImg = 650
         questions = 10
         choices = 5
-
+        
         img = cv2.imread(path)
         img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
         img = cv2.resize(img, (widthImg, heightImg))
         img_contours = img.copy()
         img_biggest_contours = img.copy()
-
+        
         img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img_blur = cv2.GaussianBlur(img_gray, (5, 5), 1)
         img_canny = cv2.Canny(img_blur, 10, 50)
-
-        contours, hierarchy = cv2.findContours(
-            img_canny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE
-        )
+        
+        contours, hierarchy = cv2.findContours(img_canny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         cv2.drawContours(img_contours, contours, -1, (0, 255, 0), 10)
-
+        
         rect_contours = tries.rectCountour(contours)
         first_contour = tries.getCornerPoints(rect_contours[0])
         second_contour = tries.getCornerPoints(rect_contours[1])
