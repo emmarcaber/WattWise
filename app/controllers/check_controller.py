@@ -66,6 +66,7 @@ class CheckController:
                 max_val = np.amax(arr)
         
                 # Check if there are two or more occurrences of 1000 in the row
+                # Adjuster Area
                 if np.count_nonzero(arr > 1000) >= 2:
                     detected_options.append("Excessive Answers")
                 elif max_val < 1000:
