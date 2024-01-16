@@ -1,39 +1,24 @@
-# WattWise
-A Kiosk which facilitates test generation and checking.
+# WattWise: Kiosk Test Generator and Checker
 
-## Naming Convention
-Naming convention in programming refers to a set of rules and guidelines used to name variables, functions, classes, and other programmatic elements in a consistent and meaningful way. Having a well-defined naming convention is essential for writing readable, maintainable, and understandable code. It helps developers to quickly identify the purpose and scope of a variable or function just by looking at its name. This is especially important when working with large codebases or collaborating with other developers. 
+The **Kiosk Test Generator and Checker Device** represents a significant advancement in generating Electrical Board Exam test questions. Its primary purpose is to efficiently generate test questions, accompanying answer sheets, and check answered answer sheets using the device to store the gathered data in the system. The design embraces a modernized approach to taking exams, utilizing the kiosk device for student self-assessment.
 
-Here are the recommended naming conventions which will be followed in developing WattWise:  
+## Key Features
 
-- For __views__, *\<name\>_view.py*.
+### 1. Test Question Generation
 
-   ```
-   user_model.py
-   ```
-- For __models__, *\<name\>_model.py*. 
+- Students log in to the system using their unique student ID number and password for account protection.
+- The main menu appears, allowing students to choose their desired categories (**MATHEMATICS, ESAS, and EEPS**).
+- After selecting categories, subcategories are displayed, and questions are generated based on their subcategory choices.
+- Each subcategory is associated with a limited set of 20 questions in a question bank.
+- A preview of the generated questions, along with the answer sheet, is shown before printing.
+- Once satisfied, students can click the print button, and upon completion, return to the login menu.
 
-   ```
-   login_view.py
-   ```
+### 2. Answer Sheet Checking
 
-## Models
-Model is responsible for managing data and the rules that govern its behavior. It contains the application's core logic and handles tasks such as validation, data storage, and retrieval. In short, the models are responsible for managing data inside the database and the business logic of WattWise.
+- The checking process begins with the login procedure, followed by navigating to the main menu and selecting the checking option.
+- The device features a drawer-type mechanism to securely place the answer sheet.
+- A preview function utilizing the webcam allows students to monitor their answer sheet.
+- Upon confirmation, clicking the check button initiates the checking process.
+- The resulting score is previewed, providing immediate feedback to the student, and then stored in the system.
 
-1. user_model
-    * Model for Accounts database processes, especially for logging in and creating accounts
-
-2. admin_model
-    * Model for Admin database processes
-
-3. board_examiner_model 
-    * Model for Board Examiner database processes
-
-## Views
-The view is completely separate from the model. It does not contain any application logic, but simply presents the data managed by the model to the user. The view receives data from the model, formats it for display. Basically, the views are responsible for presenting data to the user.
-
-1. create_account_view
-    * View for creating accounts
-
-2. login_view
-    * View for user logging in 
+This innovative system streamlines the exam process, ensuring efficiency and accuracy in generating and checking test questions for Electrical Board Exams.
